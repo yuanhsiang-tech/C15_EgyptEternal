@@ -1,0 +1,134 @@
+{
+  "ver": "1.0.27",
+  "importer": "image",
+  "imported": true,
+  "uuid": "920341cf-c221-414b-a8a7-1e825f96ad8b",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "920341cf-c221-414b-a8a7-1e825f96ad8b@6c48a",
+      "displayName": "SlotLight02",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "clamp-to-edge",
+        "wrapModeT": "clamp-to-edge",
+        "imageUuidOrDatabaseUri": "920341cf-c221-414b-a8a7-1e825f96ad8b",
+        "isUuid": true,
+        "visible": false,
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9941": {
+      "importer": "sprite-frame",
+      "uuid": "920341cf-c221-414b-a8a7-1e825f96ad8b@f9941",
+      "displayName": "SlotLight02",
+      "id": "f9941",
+      "name": "spriteFrame",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 5.5,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 65,
+        "height": 74,
+        "rawWidth": 65,
+        "rawHeight": 85,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [
+            -32.5,
+            -37,
+            0,
+            32.5,
+            -37,
+            0,
+            -32.5,
+            37,
+            0,
+            32.5,
+            37,
+            0
+          ],
+          "indexes": [
+            0,
+            1,
+            2,
+            2,
+            1,
+            3
+          ],
+          "uv": [
+            0,
+            85,
+            65,
+            85,
+            0,
+            11,
+            65,
+            11
+          ],
+          "nuv": [
+            0,
+            0.12941176470588237,
+            1,
+            0.12941176470588237,
+            0,
+            1,
+            1,
+            1
+          ],
+          "minPos": [
+            -32.5,
+            -37,
+            0
+          ],
+          "maxPos": [
+            32.5,
+            37,
+            0
+          ]
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "920341cf-c221-414b-a8a7-1e825f96ad8b@6c48a",
+        "atlasUuid": ""
+      },
+      "ver": "1.0.12",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "hasAlpha": true,
+    "fixAlphaTransparencyArtifacts": false,
+    "redirect": "920341cf-c221-414b-a8a7-1e825f96ad8b@6c48a"
+  }
+}

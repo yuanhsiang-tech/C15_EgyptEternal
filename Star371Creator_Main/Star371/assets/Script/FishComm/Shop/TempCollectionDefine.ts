@@ -1,0 +1,65 @@
+export const CollectionCardRes = {
+    [10101]: "Lua/InannaResource/warHeadUI/img/Btn_BulletSelect/Btn_BulletSelect_Buullet01.png",
+    [10102]: "Lua/InannaResource/warHeadUI/img/Btn_BulletSelect/Btn_BulletSelect_Buullet01.png",
+    [10103]: "Lua/InannaResource/warHeadUI/img/Btn_BulletSelect/Btn_BulletSelect_Buullet02.png",
+    [10104]: "Lua/InannaResource/warHeadUI/img/Btn_BulletSelect/Btn_BulletSelect_Buullet02.png",
+    [10105]: "Lua/InannaResource/warHeadUI/img/Btn_BulletSelect/Btn_BulletSelect_Buullet03.png",
+    [10106]: "Lua/InannaResource/warHeadUI/img/Btn_BulletSelect/Btn_BulletSelect_Buullet03.png",
+
+    [88001]: "Lua/WuShiResource/Img/Collection/Word01.png",
+    [88002]: "Lua/WuShiResource/Img/Collection/Word02.png",
+    [88003]: "Lua/WuShiResource/Img/Collection/Word03.png",
+    [88004]: "Lua/WuShiResource/Img/Collection/Word04.png",
+    [88005]: "Lua/WuShiResource/Img/Collection/Word05.png",
+    [88006]: "Lua/WuShiResource/Img/Collection/Word06.png",
+    [88007]: "Lua/WuShiResource/Img/Collection/Word07.png",
+    [88008]: "Lua/WuShiResource/Img/Collection/Word08.png",
+
+    [88011]: "Lua/WuShiResource/Img/Collection/Word11.png",
+    [88012]: "Lua/WuShiResource/Img/Collection/Word12.png",
+    [88013]: "Lua/WuShiResource/Img/Collection/Word13.png",
+    [88014]: "Lua/WuShiResource/Img/Collection/Word14.png",
+    [88015]: "Lua/WuShiResource/Img/Collection/Word15.png",
+    [88016]: "Lua/WuShiResource/Img/Collection/Word16.png",
+    [88017]: "Lua/WuShiResource/Img/Collection/Word17.png",
+    [88018]: "Lua/WuShiResource/Img/Collection/Word18.png",
+
+    [88171]: "Lua/WuShiResource/Img/Collection/Word21.png",
+    [88172]: "Lua/WuShiResource/Img/Collection/Word22.png",
+    [88173]: "Lua/WuShiResource/Img/Collection/Word23.png",
+    [88174]: "Lua/WuShiResource/Img/Collection/Word24.png",
+    [88175]: "Lua/WuShiResource/Img/Collection/Word25.png",
+    [88176]: "Lua/WuShiResource/Img/Collection/Word26.png",
+    [88177]: "Lua/WuShiResource/Img/Collection/Word27.png",// Word27.png 是假的，用不到
+    [88178]: "Lua/WuShiResource/Img/Collection/Word28.png",// Word28.png 是假的，用不到
+    [88179]: "Lua/WuShiResource/Img/Collection/Word29.png",// Word29.png 是假的，用不到
+
+    [88031]: "Lua/WuShiResource/Img/Collection/Word31.png",
+    [88032]: "Lua/WuShiResource/Img/Collection/Word32.png",
+    [88033]: "Lua/WuShiResource/Img/Collection/Word33.png",
+    [88034]: "Lua/WuShiResource/Img/Collection/Word34.png",
+    [88035]: "Lua/WuShiResource/Img/Collection/Word35.png",
+    [88036]: "Lua/WuShiResource/Img/Collection/Word36.png",
+    [88037]: "Lua/WuShiResource/Img/Collection/Word37.png",
+    [88038]: "Lua/WuShiResource/Img/Collection/Word38.png",
+
+    [88041]: "Lua/WuShiResource/Img/Collection/Word41.png",
+    [88042]: "Lua/WuShiResource/Img/Collection/Word42.png",
+    [88043]: "Lua/WuShiResource/Img/Collection/Word43.png",
+    [88044]: "Lua/WuShiResource/Img/Collection/Word44.png",
+    [88045]: "Lua/WuShiResource/Img/Collection/Word45.png",
+    [88046]: "Lua/WuShiResource/Img/Collection/Word46.png",
+    [88047]: "Lua/WuShiResource/Img/Collection/Word47.png",
+    [88048]: "Lua/WuShiResource/Img/Collection/Word48.png",
+
+    [88051]: "Lua/WuShiResource/Img/Collection/Word51.png",
+    [88052]: "Lua/WuShiResource/Img/Collection/Word52.png",
+    [88053]: "Lua/WuShiResource/Img/Collection/Word53.png",
+    [88054]: "Lua/WuShiResource/Img/Collection/Word54.png",
+    [88055]: "Lua/WuShiResource/Img/Collection/Word55.png",
+    [88056]: "Lua/WuShiResource/Img/Collection/Word56.png",
+    [88057]: "Lua/WuShiResource/Img/Collection/Word57.png",
+    [88058]: "Lua/WuShiResource/Img/Collection/Word58.png",
+
+    [88099]: "Lua/WuShiResource/Img/Collection/Word49.png",
+}

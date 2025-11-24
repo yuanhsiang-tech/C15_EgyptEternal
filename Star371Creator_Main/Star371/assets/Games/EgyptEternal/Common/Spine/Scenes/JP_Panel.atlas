@@ -1,0 +1,76 @@
+
+JP_Panel.png
+size: 230,230
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FX/Add_Frame
+  rotate: true
+  xy: 82, 2
+  size: 20, 49
+  orig: 20, 49
+  offset: 0, 0
+  index: -1
+FX/Add_Panel_Light
+  rotate: true
+  xy: 184, 150
+  size: 39, 40
+  orig: 39, 40
+  offset: 0, 0
+  index: -1
+FX/BG_Line_Light01_000_000
+  rotate: true
+  xy: 82, 24
+  size: 97, 46
+  orig: 97, 46
+  offset: 0, 0
+  index: -1
+FX/FX_Sparkles_03
+  rotate: false
+  xy: 2, 123
+  size: 137, 105
+  orig: 137, 105
+  offset: 0, 0
+  index: -1
+FX/Frame_Glow
+  rotate: true
+  xy: 141, 127
+  size: 62, 41
+  orig: 62, 41
+  offset: 0, 0
+  index: -1
+FX/light
+  rotate: false
+  xy: 170, 74
+  size: 53, 51
+  orig: 53, 51
+  offset: 0, 0
+  index: -1
+TXT_GRAND
+  rotate: true
+  xy: 2, 11
+  size: 110, 38
+  orig: 110, 38
+  offset: 0, 0
+  index: -1
+TXT_MAJOR
+  rotate: true
+  xy: 42, 17
+  size: 104, 38
+  orig: 104, 38
+  offset: 0, 0
+  index: -1
+TXT_MINI
+  rotate: false
+  xy: 141, 191
+  size: 77, 37
+  orig: 77, 37
+  offset: 0, 0
+  index: -1
+TXT_MINOR
+  rotate: true
+  xy: 130, 24
+  size: 97, 38
+  orig: 97, 38
+  offset: 0, 0
+  index: -1

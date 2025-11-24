@@ -1,0 +1,146 @@
+
+FX_WinFrame.png
+size: 378,378
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Egypt_01
+  rotate: true
+  xy: 29, 5
+  size: 20, 13
+  orig: 20, 13
+  offset: 0, 0
+  index: -1
+Egypt_02
+  rotate: true
+  xy: 95, 5
+  size: 20, 11
+  orig: 20, 11
+  offset: 0, 0
+  index: -1
+Egypt_03
+  rotate: true
+  xy: 51, 5
+  size: 20, 13
+  orig: 20, 13
+  offset: 0, 0
+  index: -1
+Egypt_04
+  rotate: true
+  xy: 73, 5
+  size: 20, 13
+  orig: 20, 13
+  offset: 0, 0
+  index: -1
+Egypt_05
+  rotate: true
+  xy: 115, 17
+  size: 20, 11
+  orig: 20, 11
+  offset: 0, 0
+  index: -1
+Frame_01
+  rotate: false
+  xy: 4, 268
+  size: 105, 105
+  orig: 105, 105
+  offset: 0, 0
+  index: -1
+Frame_Glow_01
+  rotate: false
+  xy: 4, 152
+  size: 105, 105
+  orig: 105, 105
+  offset: 0, 0
+  index: -1
+Frame_Rainbow
+  rotate: true
+  xy: 4, 36
+  size: 105, 85
+  orig: 105, 85
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_00
+  rotate: true
+  xy: 98, 48
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_01
+  rotate: true
+  xy: 118, 280
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_02
+  rotate: true
+  xy: 118, 176
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_03
+  rotate: true
+  xy: 166, 72
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_04
+  rotate: false
+  xy: 186, 314
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_05
+  rotate: true
+  xy: 186, 210
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_06
+  rotate: false
+  xy: 234, 140
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_07
+  rotate: true
+  xy: 254, 210
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_08
+  rotate: true
+  xy: 234, 36
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Frame_Seq/Frame_Seq_09
+  rotate: true
+  xy: 302, 36
+  size: 93, 59
+  orig: 93, 59
+  offset: 0, 0
+  index: -1
+Particle-01
+  rotate: false
+  xy: 4, 7
+  size: 16, 18
+  orig: 16, 18
+  offset: 0, 0
+  index: -1
+Particle-04
+  rotate: true
+  xy: 135, 21
+  size: 16, 13
+  orig: 16, 13
+  offset: 0, 0
+  index: -1

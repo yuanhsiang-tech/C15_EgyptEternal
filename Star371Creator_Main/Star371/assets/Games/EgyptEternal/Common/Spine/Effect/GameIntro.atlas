@@ -1,0 +1,601 @@
+
+GameIntro.png
+size: 883,883
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BG/Circle_04
+  rotate: false
+  xy: 595, 216
+  size: 92, 92
+  orig: 102, 102
+  offset: 5, 5
+  index: -1
+BG/FX_FireSpark01
+  rotate: true
+  xy: 245, 211
+  size: 24, 36
+  orig: 26, 40
+  offset: 2, 3
+  index: -1
+BG/FX_L_MG_bg01
+  rotate: false
+  xy: 769, 172
+  size: 42, 85
+  orig: 45, 112
+  offset: 3, 27
+  index: -1
+BG/L_MG_bg01
+  rotate: false
+  xy: 549, 78
+  size: 41, 108
+  orig: 41, 108
+  offset: 0, 0
+  index: -1
+BG/S_BG1
+  rotate: true
+  xy: 215, 754
+  size: 128, 274
+  orig: 128, 274
+  offset: 0, 0
+  index: -1
+BG/Seq_StonePillarTorch_0001
+  rotate: false
+  xy: 532, 188
+  size: 60, 100
+  orig: 60, 100
+  offset: 0, 0
+  index: -1
+BG/Seq_StonePillarTorch_0005
+  rotate: false
+  xy: 808, 681
+  size: 60, 100
+  orig: 60, 100
+  offset: 0, 0
+  index: -1
+BG/Seq_StonePillarTorch_0009
+  rotate: false
+  xy: 808, 579
+  size: 60, 100
+  orig: 60, 100
+  offset: 0, 0
+  index: -1
+BG/Seq_StonePillarTorch_0013
+  rotate: true
+  xy: 594, 154
+  size: 60, 100
+  orig: 60, 100
+  offset: 0, 0
+  index: -1
+BG/smoke01
+  rotate: true
+  xy: 435, 186
+  size: 102, 95
+  orig: 102, 102
+  offset: 0, 5
+  index: -1
+Pharaoh/Circle_3_00000
+  rotate: false
+  xy: 592, 59
+  size: 93, 93
+  orig: 102, 102
+  offset: 4, 4
+  index: -1
+Pharaoh/Circle_55
+  rotate: false
+  xy: 694, 452
+  size: 102, 102
+  orig: 102, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/FX_01
+  rotate: false
+  xy: 783, 783
+  size: 99, 99
+  orig: 100, 100
+  offset: 1, 1
+  index: -1
+Pharaoh/FX_spark_004
+  rotate: false
+  xy: 780, 339
+  size: 93, 90
+  orig: 95, 90
+  offset: 2, 0
+  index: -1
+Pharaoh/Glow_9_00000
+  rotate: false
+  xy: 784, 88
+  size: 51, 51
+  orig: 51, 51
+  offset: 0, 0
+  index: -1
+Pharaoh/_bg
+  rotate: false
+  xy: 779, 12
+  size: 46, 37
+  orig: 46, 37
+  offset: 0, 0
+  index: -1
+Pharaoh/_bg_W
+  rotate: true
+  xy: 837, 83
+  size: 46, 37
+  orig: 46, 37
+  offset: 0, 0
+  index: -1
+Pharaoh/arm2_fore_r
+  rotate: false
+  xy: 218, 1
+  size: 48, 79
+  orig: 48, 79
+  offset: 0, 0
+  index: -1
+Pharaoh/arm2_hand_finger1
+  rotate: false
+  xy: 472, 598
+  size: 30, 32
+  orig: 32, 32
+  offset: 2, 0
+  index: -1
+Pharaoh/arm2_hand_finger2
+  rotate: false
+  xy: 371, 1
+  size: 32, 27
+  orig: 32, 27
+  offset: 0, 0
+  index: -1
+Pharaoh/arm2_hand_finger3
+  rotate: false
+  xy: 851, 312
+  size: 31, 25
+  orig: 31, 25
+  offset: 0, 0
+  index: -1
+Pharaoh/arm2_hand_r
+  rotate: false
+  xy: 737, 67
+  size: 45, 72
+  orig: 48, 72
+  offset: 0, 0
+  index: -1
+Pharaoh/arm2_r_upper
+  rotate: false
+  xy: 371, 30
+  size: 114, 50
+  orig: 120, 50
+  offset: 6, 0
+  index: -1
+Pharaoh/arm3_fore_r
+  rotate: true
+  xy: 813, 165
+  size: 92, 40
+  orig: 92, 40
+  offset: 0, 0
+  index: -1
+Pharaoh/arm3_r_upper
+  rotate: false
+  xy: 268, 9
+  size: 101, 71
+  orig: 119, 78
+  offset: 18, 0
+  index: -1
+Pharaoh/arm_l_bracelet
+  rotate: true
+  xy: 837, 131
+  size: 32, 45
+  orig: 32, 45
+  offset: 0, 0
+  index: -1
+Pharaoh/arm_l_fore
+  rotate: true
+  xy: 587, 20
+  size: 37, 87
+  orig: 37, 87
+  offset: 0, 0
+  index: -1
+Pharaoh/arm_l_upper
+  rotate: false
+  xy: 737, 354
+  size: 41, 96
+  orig: 49, 96
+  offset: 0, 0
+  index: -1
+Pharaoh/arm_r_bracelet
+  rotate: false
+  xy: 547, 21
+  size: 38, 55
+  orig: 38, 56
+  offset: 0, 1
+  index: -1
+Pharaoh/arm_r_fore
+  rotate: false
+  xy: 676, 1
+  size: 38, 56
+  orig: 38, 56
+  offset: 0, 0
+  index: -1
+Pharaoh/arm_r_upper
+  rotate: true
+  xy: 798, 496
+  size: 58, 84
+  orig: 58, 84
+  offset: 0, 0
+  index: -1
+Pharaoh/beetle1
+  rotate: false
+  xy: 798, 431
+  size: 80, 63
+  orig: 80, 63
+  offset: 0, 0
+  index: -1
+Pharaoh/body
+  rotate: false
+  xy: 452, 442
+  size: 88, 98
+  orig: 88, 98
+  offset: 0, 0
+  index: -1
+Pharaoh/body_cloth_l
+  rotate: false
+  xy: 684, 345
+  size: 51, 101
+  orig: 51, 101
+  offset: 0, 0
+  index: -1
+Pharaoh/body_cloth_r
+  rotate: true
+  xy: 367, 542
+  size: 88, 103
+  orig: 88, 103
+  offset: 0, 0
+  index: -1
+Pharaoh/chair
+  rotate: false
+  xy: 1, 234
+  size: 176, 198
+  orig: 176, 199
+  offset: 0, 0
+  index: -1
+Pharaoh/earring_l
+  rotate: false
+  xy: 808, 556
+  size: 10, 21
+  orig: 12, 22
+  offset: 1, 1
+  index: -1
+Pharaoh/eye_back
+  rotate: true
+  xy: 870, 742
+  size: 39, 12
+  orig: 39, 12
+  offset: 0, 0
+  index: -1
+Pharaoh/eye_close_l
+  rotate: false
+  xy: 267, 186
+  size: 14, 7
+  orig: 15, 8
+  offset: 1, 0
+  index: -1
+Pharaoh/eye_close_r
+  rotate: false
+  xy: 737, 345
+  size: 13, 7
+  orig: 13, 8
+  offset: 0, 0
+  index: -1
+Pharaoh/eye_r
+  rotate: false
+  xy: 689, 244
+  size: 5, 5
+  orig: 5, 5
+  offset: 0, 0
+  index: -1
+Pharaoh/flare
+  rotate: true
+  xy: 367, 632
+  size: 120, 135
+  orig: 120, 156
+  offset: 0, 12
+  index: -1
+Pharaoh/fx_glow1
+  rotate: false
+  xy: 491, 585
+  size: 11, 11
+  orig: 13, 13
+  offset: 1, 1
+  index: -1
+Pharaoh/fx_hand_light2
+  rotate: false
+  xy: 179, 237
+  size: 101, 43
+  orig: 104, 72
+  offset: 0, 0
+  index: -1
+Pharaoh/fx_hand_light3
+  rotate: false
+  xy: 716, 21
+  size: 61, 44
+  orig: 61, 70
+  offset: 0, 0
+  index: -1
+Pharaoh/fx_panel_back
+  rotate: true
+  xy: 491, 760
+  size: 122, 144
+  orig: 123, 154
+  offset: 0, 5
+  index: -1
+Pharaoh/fx_pharaoh_glow2
+  rotate: false
+  xy: 1, 86
+  size: 138, 146
+  orig: 168, 168
+  offset: 12, 9
+  index: -1
+Pharaoh/fx_pharaoh_glow3
+  rotate: false
+  xy: 1, 646
+  size: 212, 236
+  orig: 242, 250
+  offset: 15, 0
+  index: -1
+Pharaoh/fx_twinkle1
+  rotate: false
+  xy: 769, 141
+  size: 29, 29
+  orig: 51, 51
+  offset: 11, 11
+  index: -1
+Pharaoh/hand_r
+  rotate: false
+  xy: 784, 51
+  size: 51, 35
+  orig: 51, 35
+  offset: 0, 0
+  index: -1
+Pharaoh/hand_r_finger1
+  rotate: false
+  xy: 267, 195
+  size: 14, 14
+  orig: 14, 14
+  offset: 0, 0
+  index: -1
+Pharaoh/hand_r_finger2
+  rotate: false
+  xy: 491, 573
+  size: 11, 10
+  orig: 11, 10
+  offset: 0, 0
+  index: -1
+Pharaoh/hand_r_finger3
+  rotate: false
+  xy: 716, 1
+  size: 22, 18
+  orig: 22, 20
+  offset: 0, 0
+  index: -1
+Pharaoh/hand_r_finger4
+  rotate: true
+  xy: 245, 186
+  size: 23, 20
+  orig: 23, 22
+  offset: 0, 0
+  index: -1
+Pharaoh/hat
+  rotate: true
+  xy: 637, 764
+  size: 118, 144
+  orig: 118, 146
+  offset: 0, 0
+  index: -1
+Pharaoh/hat_deco1
+  rotate: false
+  xy: 405, 1
+  size: 14, 27
+  orig: 14, 27
+  offset: 0, 0
+  index: -1
+Pharaoh/hat_deco2
+  rotate: false
+  xy: 870, 719
+  size: 12, 21
+  orig: 12, 23
+  offset: 0, 0
+  index: -1
+Pharaoh/head
+  rotate: true
+  xy: 487, 24
+  size: 56, 58
+  orig: 56, 59
+  offset: 0, 0
+  index: -1
+Pharaoh/neck
+  rotate: true
+  xy: 595, 310
+  size: 136, 87
+  orig: 136, 87
+  offset: 0, 0
+  index: -1
+Pharaoh/new_hand_l_01
+  rotate: true
+  xy: 696, 141
+  size: 34, 71
+  orig: 34, 71
+  offset: 0, 0
+  index: -1
+Pharaoh/optical_flare
+  rotate: false
+  xy: 1, 6
+  size: 137, 78
+  orig: 160, 89
+  offset: 9, 7
+  index: -1
+Pharaoh/pyramid
+  rotate: true
+  xy: 689, 251
+  size: 92, 78
+  orig: 92, 78
+  offset: 0, 0
+  index: -1
+Pharaoh/pyramid_ray1
+  rotate: false
+  xy: 769, 259
+  size: 80, 78
+  orig: 82, 80
+  offset: 1, 1
+  index: -1
+Pharaoh/pyramid_ray2
+  rotate: false
+  xy: 140, 1
+  size: 76, 79
+  orig: 78, 80
+  offset: 1, 1
+  index: -1
+Pharaoh/ray01_00000
+  rotate: false
+  xy: 356, 442
+  size: 94, 98
+  orig: 102, 102
+  offset: 2, 1
+  index: -1
+Pharaoh/shockwave_blue
+  rotate: false
+  xy: 1, 434
+  size: 201, 210
+  orig: 203, 210
+  offset: 2, 0
+  index: -1
+Pharaoh/shoulder_l
+  rotate: false
+  xy: 687, 69
+  size: 48, 70
+  orig: 48, 70
+  offset: 0, 0
+  index: -1
+Pharaoh/shoulder_r
+  rotate: false
+  xy: 696, 177
+  size: 71, 72
+  orig: 71, 72
+  offset: 0, 0
+  index: -1
+Pharaoh/shoulder_r_b
+  rotate: false
+  xy: 472, 570
+  size: 17, 26
+  orig: 17, 26
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00000
+  rotate: false
+  xy: 215, 650
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00001
+  rotate: false
+  xy: 504, 656
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00002
+  rotate: false
+  xy: 656, 660
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00003
+  rotate: true
+  xy: 141, 82
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00004
+  rotate: true
+  xy: 179, 282
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00005
+  rotate: false
+  xy: 504, 552
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00006
+  rotate: false
+  xy: 656, 556
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00007
+  rotate: false
+  xy: 215, 546
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00008
+  rotate: false
+  xy: 204, 442
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00009
+  rotate: true
+  xy: 283, 290
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00010
+  rotate: true
+  xy: 387, 290
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00011
+  rotate: false
+  xy: 283, 186
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00012
+  rotate: false
+  xy: 245, 82
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00013
+  rotate: false
+  xy: 397, 82
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00014
+  rotate: true
+  xy: 491, 290
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1
+Pharaoh/wave_in_00015
+  rotate: false
+  xy: 542, 448
+  size: 150, 102
+  orig: 150, 102
+  offset: 0, 0
+  index: -1

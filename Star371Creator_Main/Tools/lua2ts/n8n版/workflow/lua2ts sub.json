@@ -1,0 +1,782 @@
+{
+  "name": "lua2ts sub",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "RootPath"
+            },
+            {
+              "name": "directory"
+            },
+            {
+              "name": "FileName"
+            },
+            {
+              "name": "model"
+            },
+            {
+              "name": "apiKey"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -160,
+        256
+      ],
+      "id": "1fcf53fc-e685-45b4-ab4d-f47a7823fbc7",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "content": "# 子工作流\n直接給AI轉換=>\n補上371指定轉換規範=>\n存入資料夾\n",
+        "height": 800,
+        "width": 288,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        -96
+      ],
+      "id": "6cf24b3b-8cfd-4187-89a1-cbfce6cb53e6",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4db21ece-6662-4c55-b030-4da93b3510ea",
+              "name": "url",
+              "value": "=https://generativelanguage.googleapis.com/v1beta/models/{{ $json.model }}:generateContent?key={{ $json.apiKey }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        80
+      ],
+      "id": "e62495bd-3472-4443-a8b9-63478d7d539d",
+      "name": "設定url"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "88167022-0bec-4188-86c3-c01970f97270",
+              "name": "=prompt",
+              "value": "={\n  \"system_instruction\": {\n    \"role\": \"user\",\n    \"parts\": [\n      { \"text\": \"你是一名謹慎的語法轉換員，你目前的工作是要將cocos 2dx lua程式轉為cocos creator 3.8.1 ts程式碼，未知的function一率先宣告，禁止刪除註解，禁止添加或刪除function\" }\n    ]\n  },\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        { \"text\": {{ JSON.stringify(`----BEGIN LUA----\\n${$json.lua_code}\\n----END LUA----`) }} }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"temperature\": 0.1,\n    \"maxOutputTokens\": 65536,\n    \"responseMimeType\": \"application/json\",\n    \"responseSchema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"encoding\": { \"type\": \"string\", \"enum\": [\"plain\"] },\n        \"output_text\": { \"type\": \"string\" },\n        \"file\": { \"type\": \"string\" }\n      },\n      \"required\": [\"encoding\", \"output_text\", \"file\"]\n    }\n  }\n}\n",
+              "type": "string"
+            },
+            {
+              "id": "2c04e9f1-b66a-4a07-88cd-b94492b05b56",
+              "name": "=url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        240
+      ],
+      "id": "fc799826-841e-4965-8545-bb801edc6979",
+      "name": "設定prompt"
+    },
+    {
+      "parameters": {
+        "content": "# 設定資料/第一次轉換",
+        "height": 800,
+        "width": 1536,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        64,
+        -96
+      ],
+      "id": "5ed59420-0b37-4502-b4ce-69ebebc527dc",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.inputpath }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        304,
+        256
+      ],
+      "id": "e31e4218-0f32-4f11-a7ea-08f439f733a2",
+      "name": "讀資料"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "88167022-0bec-4188-86c3-c01970f97270",
+              "name": "=prompt",
+              "value": "={\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        { \"text\": {{ JSON.stringify(`----BEGIN LUA----\\n${$json.afterstep}\\n----END LUA----`) }} }\n      ]\n    },\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        { \"text\": {{ JSON.stringify(`----BEGIN CODE----\\n${$json.output_text}\\n----END CODE----`) }} }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"temperature\": 0.1,\n    \"maxOutputTokens\": 65536,\n    \"responseMimeType\": \"application/json\",\n    \"responseSchema\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"encoding\": { \"type\": \"string\", \"enum\": [\"plain\"] },\n        \"output_text\": { \"type\": \"string\" },\n        \"file\": { \"type\": \"string\" }\n      },\n      \"required\": [\"encoding\", \"output_text\", \"file\"]\n    }\n  }\n}\n",
+              "type": "string"
+            },
+            {
+              "id": "2c04e9f1-b66a-4a07-88cd-b94492b05b56",
+              "name": "=url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1680,
+        240
+      ],
+      "id": "d1ee6bae-9667-4391-9cbd-885d32b08c0b",
+      "name": "設定第二次prompt"
+    },
+    {
+      "parameters": {
+        "content": "# 第二次轉換/儲存",
+        "height": 800,
+        "width": 1296,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        -96
+      ],
+      "id": "1464baa9-e074-4076-82b0-accde265f2b7",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "amount": 0
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2096,
+        576
+      ],
+      "id": "58403696-06ef-41ed-bb8c-12ecc22e6cae",
+      "name": "整理用4",
+      "webhookId": "26c68932-e489-474c-9630-39b46e003468"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "05454517-ba49-4c17-af34-f2b05033687e",
+              "name": "inputpath",
+              "value": "={{ $json.RootPath + \"/input\" + $json.directory + \"/\" + $json.FileName + \".lua\" }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        256
+      ],
+      "id": "852c39a0-2bfb-4677-b8b3-e3f8877a6377",
+      "name": "設定input路徑"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "05454517-ba49-4c17-af34-f2b05033687e",
+              "name": "rulepath",
+              "value": "={{ $json.RootPath + \"/rules\"  + \"/\" + \"afterstep*.md\" }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        416
+      ],
+      "id": "f9ba4b8d-3d45-436b-a8f3-22c88ec0c2d6",
+      "name": "設定rule路徑"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "05454517-ba49-4c17-af34-f2b05033687e",
+              "name": "outputpath",
+              "value": "={{ $json.RootPath + \"/output\" + $json.directory + \"/\" + $json.FileName + \".ts\" }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        576
+      ],
+      "id": "d7b60792-8366-4421-b38f-ca65b5c415ff",
+      "name": "設定output路徑"
+    },
+    {
+      "parameters": {
+        "amount": 0
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1280,
+        80
+      ],
+      "id": "08684466-e0c2-4d89-82b1-c4b2f310209c",
+      "name": "整理用1",
+      "webhookId": "f407038e-2eaf-4264-95b5-7496760d6598"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "destinationKey": "lua_code",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        496,
+        256
+      ],
+      "id": "1989df2f-09c3-4b69-addc-fe87864ef7de",
+      "name": "轉為文字"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        720,
+        240
+      ],
+      "id": "7ab8224c-6b20-46b5-9fc1-de7ccc41e0fc",
+      "name": "合併"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.prompt }}",
+        "options": {
+          "timeout": 3600000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1088,
+        240
+      ],
+      "id": "ef138e38-fa8e-4c8b-aa30-bd73baf474f4",
+      "name": "第一次請求",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.rulepath }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        1088,
+        416
+      ],
+      "id": "63a3f2a0-120c-4b05-ab4b-a626f5df534e",
+      "name": "讀規則"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "destinationKey": "afterstep",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        416
+      ],
+      "id": "ffc0ef86-eeac-48f0-8894-517f429761f9",
+      "name": "轉為文字1"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=\n {{ $json.candidates[0].content.parts[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1280,
+        240
+      ],
+      "id": "8a07c846-2706-4303-a245-459f5268fe34",
+      "name": "提取回應"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 3,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1488,
+        224
+      ],
+      "id": "47ed7492-4d13-417d-b060-40ec9e513e28",
+      "name": "合併資料"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.prompt }}",
+        "options": {
+          "timeout": 3600000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1888,
+        240
+      ],
+      "id": "f1d50ca6-3ff7-4770-8b2b-89550b6430ec",
+      "name": "第二次請求",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=\n {{ $json.candidates[0].content.parts[0].text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2096,
+        240
+      ],
+      "id": "ad8069d2-3a65-4692-b3bc-9d213dacc183",
+      "name": "提取回應1"
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "output_text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2304,
+        240
+      ],
+      "id": "4bb2285a-303d-4f9c-bb08-64ac31936a8a",
+      "name": "轉為檔案"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2512,
+        256
+      ],
+      "id": "85639ea6-40f1-46cd-8bfb-11bd303bdad8",
+      "name": "合併1"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $json.outputpath }}",
+        "dataPropertyName": "=data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        2720,
+        256
+      ],
+      "id": "ab1e3ebc-2cfe-49ad-9d99-ffb27a070f85",
+      "name": "儲存"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "model, apiKey",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        112,
+        80
+      ],
+      "id": "08c15603-cf61-432e-a3e0-19e9e13242da",
+      "name": "取出model/API"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "設定input路徑",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "設定rule路徑",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "設定output路徑",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "取出model/API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "設定url": {
+      "main": [
+        [
+          {
+            "node": "合併",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "整理用1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "設定prompt": {
+      "main": [
+        [
+          {
+            "node": "第一次請求",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "讀資料": {
+      "main": [
+        [
+          {
+            "node": "轉為文字",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "設定第二次prompt": {
+      "main": [
+        [
+          {
+            "node": "第二次請求",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "整理用4": {
+      "main": [
+        [
+          {
+            "node": "合併1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "設定input路徑": {
+      "main": [
+        [
+          {
+            "node": "讀資料",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "設定rule路徑": {
+      "main": [
+        [
+          {
+            "node": "讀規則",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "設定output路徑": {
+      "main": [
+        [
+          {
+            "node": "整理用4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "整理用1": {
+      "main": [
+        [
+          {
+            "node": "合併資料",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "轉為文字": {
+      "main": [
+        [
+          {
+            "node": "合併",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "合併": {
+      "main": [
+        [
+          {
+            "node": "設定prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "第一次請求": {
+      "main": [
+        [
+          {
+            "node": "提取回應",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "讀規則": {
+      "main": [
+        [
+          {
+            "node": "轉為文字1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "轉為文字1": {
+      "main": [
+        [
+          {
+            "node": "合併資料",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "提取回應": {
+      "main": [
+        [
+          {
+            "node": "合併資料",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "合併資料": {
+      "main": [
+        [
+          {
+            "node": "設定第二次prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "第二次請求": {
+      "main": [
+        [
+          {
+            "node": "提取回應1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "提取回應1": {
+      "main": [
+        [
+          {
+            "node": "轉為檔案",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "轉為檔案": {
+      "main": [
+        [
+          {
+            "node": "合併1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "合併1": {
+      "main": [
+        [
+          {
+            "node": "儲存",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "取出model/API": {
+      "main": [
+        [
+          {
+            "node": "設定url",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e529fd9b-ffe3-49b5-b502-f22762f33dec",
+  "meta": {
+    "instanceId": "ca689ddd63ebda94d4c625daf6d8c0c97a784e1df6ea351bac4e338509645929"
+  },
+  "id": "Sh2XMtn8vgt8YDKy",
+  "tags": []
+}

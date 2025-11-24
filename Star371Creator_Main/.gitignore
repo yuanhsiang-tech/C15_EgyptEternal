@@ -1,0 +1,82 @@
+
+# SVN directories
+.svn
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Package directories
+*.jar
+*.war
+*.ear
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+*.sublime-workspace
+
+# Python bytecodes
+__pycache__/
+*.py[cod]
+
+# Build directories
+bin/
+obj/
+out/
+
+# Microsoft Office temporary files
+~
+
+# Backup files
+*.bak
+
+# Other temporary files
+*.tmp
+*.temp
+
+# [Tracked] Proto compilers
+!/proto/tools/bin
+!/proto/tools/bin/*.exe
+
+
+#///////////////////////////
+# Cocos Creator 3D Project
+#///////////////////////////
+Star371/library/
+Star371/temp/
+Star371/local/
+Star371/build/
+Star371/profiles/
+Star371/native
+Star371/assets/Games/Frankenstein
+
+#//////////////////////////
+# VSCode
+#//////////////////////////
+Star371/.vscode/
+
+#//////////////////////////
+# WebStorm
+#//////////////////////////
+Star371/.idea/
+
+#//////////////////////////
+# build
+#//////////////////////////
+build/jsb-default/data
+build/jsb-default/frameworks/runtime-src/proj.android-studio
+build/jsb-default/frameworks/runtime-src/proj.ios_mac
+/Tools/csd2prefab/output

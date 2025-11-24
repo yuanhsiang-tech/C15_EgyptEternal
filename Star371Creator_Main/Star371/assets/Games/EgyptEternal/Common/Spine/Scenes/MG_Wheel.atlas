@@ -1,0 +1,251 @@
+
+MG_Wheel.png
+size: 614,614
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FX/Add_Particles
+  rotate: true
+  xy: 0, 170
+  size: 98, 78
+  orig: 98, 98
+  offset: 0, 12
+  index: -1
+FX/Block
+  rotate: false
+  xy: 0, 166
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+FX/Egypt_01
+  rotate: true
+  xy: 251, 101
+  size: 18, 12
+  orig: 18, 12
+  offset: 0, 0
+  index: -1
+FX/Egypt_02
+  rotate: false
+  xy: 195, 165
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+FX/Egypt_03
+  rotate: true
+  xy: 251, 82
+  size: 18, 12
+  orig: 18, 12
+  offset: 0, 0
+  index: -1
+FX/Egypt_04
+  rotate: false
+  xy: 264, 82
+  size: 18, 12
+  orig: 18, 12
+  offset: 0, 0
+  index: -1
+FX/Egypt_05
+  rotate: false
+  xy: 214, 165
+  size: 18, 10
+  orig: 18, 10
+  offset: 0, 0
+  index: -1
+FX/FX_Circle
+  rotate: true
+  xy: 545, 237
+  size: 83, 69
+  orig: 83, 83
+  offset: 0, 7
+  index: -1
+FX/FX_SPIN
+  rotate: false
+  xy: 145, 173
+  size: 49, 95
+  orig: 49, 96
+  offset: 0, 0
+  index: -1
+Wheel/FX_SPIN
+  rotate: false
+  xy: 145, 173
+  size: 49, 95
+  orig: 49, 96
+  offset: 0, 0
+  index: -1
+FX/GlowRing02_00
+  rotate: true
+  xy: 335, 16
+  size: 78, 73
+  orig: 78, 78
+  offset: 0, 2
+  index: -1
+FX/Portal_8
+  rotate: true
+  xy: 349, 321
+  size: 293, 263
+  orig: 293, 293
+  offset: 0, 16
+  index: -1
+Wheel/Portal_8
+  rotate: true
+  xy: 349, 321
+  size: 293, 263
+  orig: 293, 293
+  offset: 0, 16
+  index: -1
+FX/TX006b
+  rotate: false
+  xy: 409, 30
+  size: 65, 65
+  orig: 65, 65
+  offset: 0, 0
+  index: -1
+FX/circle_outerGlow
+  rotate: false
+  xy: 167, 35
+  size: 83, 83
+  orig: 83, 83
+  offset: 0, 0
+  index: -1
+FX/guangyun
+  rotate: false
+  xy: 264, 95
+  size: 83, 80
+  orig: 83, 83
+  offset: 0, 2
+  index: -1
+MG_Wheel/Add_Circle1
+  rotate: false
+  xy: 478, 105
+  size: 65, 59
+  orig: 65, 65
+  offset: 0, 3
+  index: -1
+MG_Wheel/Add_Noise_BG
+  rotate: false
+  xy: 412, 99
+  size: 65, 65
+  orig: 65, 65
+  offset: 0, 0
+  index: -1
+MG_Wheel/Arrow_C
+  rotate: true
+  xy: 475, 9
+  size: 50, 42
+  orig: 50, 42
+  offset: 0, 0
+  index: -1
+MG_Wheel/Arrow_T
+  rotate: false
+  xy: 478, 62
+  size: 50, 42
+  orig: 50, 42
+  offset: 0, 0
+  index: -1
+MG_Wheel/FX_Wheel
+  rotate: true
+  xy: 545, 119
+  size: 117, 68
+  orig: 117, 68
+  offset: 0, 0
+  index: -1
+MG_Wheel/LT01
+  rotate: false
+  xy: 167, 120
+  size: 49, 44
+  orig: 49, 44
+  offset: 0, 0
+  index: -1
+MG_Wheel/LT02
+  rotate: false
+  xy: 167, 2
+  size: 38, 32
+  orig: 38, 32
+  offset: 0, 0
+  index: -1
+MG_Wheel/LT03
+  rotate: true
+  xy: 206, 3
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: -1
+MG_Wheel/LT04
+  rotate: true
+  xy: 234, 16
+  size: 18, 16
+  orig: 18, 16
+  offset: 0, 0
+  index: -1
+MG_Wheel/Wheel
+  rotate: true
+  xy: 544, 60
+  size: 58, 63
+  orig: 167, 327
+  offset: 109, 136
+  index: -1
+Reel/Light_2
+  rotate: true
+  xy: 348, 96
+  size: 68, 63
+  orig: 68, 65
+  offset: 0, 2
+  index: -1
+Wheel/FX_Win
+  rotate: true
+  xy: 79, 170
+  size: 98, 65
+  orig: 98, 65
+  offset: 0, 0
+  index: -1
+Wheel/Lineing001
+  rotate: false
+  xy: 0, 2
+  size: 166, 162
+  orig: 166, 166
+  offset: 0, 4
+  index: -1
+Wheel/Pointer_FX1
+  rotate: false
+  xy: 0, 269
+  size: 348, 345
+  orig: 348, 345
+  offset: 0, 0
+  index: -1
+Wheel/Pointer_FX2
+  rotate: true
+  xy: 195, 176
+  size: 92, 150
+  orig: 92, 150
+  offset: 0, 0
+  index: -1
+Wheel/Portal_11
+  rotate: false
+  xy: 349, 165
+  size: 195, 155
+  orig: 195, 195
+  offset: 0, 20
+  index: -1
+Wheel/Smoke00
+  rotate: false
+  xy: 217, 120
+  size: 46, 44
+  orig: 46, 46
+  offset: 0, 2
+  index: -1
+Wheel/_PT_Shine06
+  rotate: true
+  xy: 518, 17
+  size: 42, 41
+  orig: 42, 42
+  offset: 0, 1
+  index: -1
+Wheel/circle_innerGlow_white
+  rotate: false
+  xy: 251, 1
+  size: 83, 80
+  orig: 83, 83
+  offset: 0, 1
+  index: -1

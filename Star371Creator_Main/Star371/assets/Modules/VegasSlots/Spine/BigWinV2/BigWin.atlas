@@ -1,0 +1,405 @@
+
+BigWin.png
+size: 1542,1542
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Amb
+  rotate: false
+  xy: 329, 671
+  size: 200, 401
+  orig: 200, 401
+  offset: 0, 0
+  index: -1
+BIG_Bg
+  rotate: false
+  xy: 1143, 839
+  size: 157, 237
+  orig: 157, 237
+  offset: 0, 0
+  index: -1
+BIG_Title
+  rotate: true
+  xy: 318, 42
+  size: 350, 193
+  orig: 350, 193
+  offset: 0, 0
+  index: -1
+BIG_Title_add
+  rotate: true
+  xy: 1271, 402
+  size: 189, 96
+  orig: 189, 96
+  offset: 0, 0
+  index: -1
+Bar_add
+  rotate: false
+  xy: 610, 1316
+  size: 395, 14
+  orig: 395, 14
+  offset: 0, 0
+  index: -1
+Coin/0001
+  rotate: false
+  xy: 940, 4
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+Coin/0002
+  rotate: false
+  xy: 1052, 251
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+Coin/0003
+  rotate: false
+  xy: 1162, 35
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+Coin/0004
+  rotate: false
+  xy: 1369, 228
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+Coin/0005
+  rotate: false
+  xy: 1446, 228
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+Coin/0006
+  rotate: false
+  xy: 1189, 132
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+Coin/0007
+  rotate: false
+  xy: 1266, 132
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+Coin/0008
+  rotate: false
+  xy: 1239, 55
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+Coin/0009
+  rotate: false
+  xy: 1316, 55
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+FX/BIG_BgSpark
+  rotate: false
+  xy: 531, 866
+  size: 304, 320
+  orig: 304, 320
+  offset: 0, 0
+  index: -1
+FX/EXP_HitSpark01
+  rotate: false
+  xy: 1370, 676
+  size: 170, 168
+  orig: 170, 168
+  offset: 0, 0
+  index: -1
+FX/FX_LtSun
+  rotate: false
+  xy: 1143, 1078
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+FX/FX_LtSun_Ray_2
+  rotate: true
+  xy: 819, 2
+  size: 77, 119
+  orig: 77, 119
+  offset: 0, 0
+  index: -1
+FX/Frame
+  rotate: false
+  xy: 1370, 560
+  size: 160, 114
+  orig: 160, 114
+  offset: 0, 0
+  index: -1
+FX/Frame_2
+  rotate: false
+  xy: 1369, 305
+  size: 160, 114
+  orig: 160, 114
+  offset: 0, 0
+  index: -1
+FX/Fx_Glow_2
+  rotate: false
+  xy: 1239, 209
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+FX/HUGE_BgSpark
+  rotate: false
+  xy: 531, 544
+  size: 304, 320
+  orig: 304, 320
+  offset: 0, 0
+  index: -1
+FX/Lightning_R_Big01
+  rotate: false
+  xy: 2, 8
+  size: 244, 57
+  orig: 244, 57
+  offset: 0, 0
+  index: -1
+FX/Lightning_R_Big02
+  rotate: true
+  xy: 1256, 593
+  size: 244, 55
+  orig: 244, 55
+  offset: 0, 0
+  index: -1
+FX/Lightning_R_Big03
+  rotate: true
+  xy: 1313, 600
+  size: 244, 55
+  orig: 244, 55
+  offset: 0, 0
+  index: -1
+FX/Lightning_R_Big04
+  rotate: true
+  xy: 1159, 321
+  size: 240, 54
+  orig: 240, 54
+  offset: 0, 0
+  index: -1
+FX/MEGA_BgSpark
+  rotate: false
+  xy: 513, 222
+  size: 304, 320
+  orig: 304, 320
+  offset: 0, 0
+  index: -1
+FX/SUPER_BgSpark
+  rotate: false
+  xy: 837, 866
+  size: 304, 320
+  orig: 304, 320
+  offset: 0, 0
+  index: -1
+FX/Spark_1
+  rotate: true
+  xy: 1406, 857
+  size: 228, 128
+  orig: 228, 128
+  offset: 0, 0
+  index: -1
+FX/ULTIMATE_BgSpark
+  rotate: false
+  xy: 837, 544
+  size: 304, 320
+  orig: 304, 320
+  offset: 0, 0
+  index: -1
+FX/eft_bol_01
+  rotate: false
+  xy: 1017, 39
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+FX/shouji11_001
+  rotate: true
+  xy: 1070, 112
+  size: 137, 117
+  orig: 137, 117
+  offset: 0, 0
+  index: -1
+FX/shouji11_002
+  rotate: false
+  xy: 1369, 421
+  size: 157, 137
+  orig: 157, 137
+  offset: 0, 0
+  index: -1
+HUGE_Bg
+  rotate: false
+  xy: 819, 248
+  size: 231, 294
+  orig: 231, 294
+  offset: 0, 0
+  index: -1
+HUGE_Title
+  rotate: false
+  xy: 1068, 1336
+  size: 427, 204
+  orig: 427, 204
+  offset: 0, 0
+  index: -1
+HUGE_Title_add
+  rotate: true
+  xy: 1302, 846
+  size: 230, 102
+  orig: 230, 102
+  offset: 0, 0
+  index: -1
+MEGA_Bg
+  rotate: true
+  xy: 819, 81
+  size: 165, 249
+  orig: 165, 249
+  offset: 0, 0
+  index: -1
+MEGA_Title
+  rotate: false
+  xy: 610, 1332
+  size: 456, 208
+  orig: 456, 208
+  offset: 0, 0
+  index: -1
+MEGA_Title_add
+  rotate: true
+  xy: 1401, 1087
+  size: 247, 104
+  orig: 247, 104
+  offset: 0, 0
+  index: -1
+Num_Bg
+  rotate: true
+  xy: 1215, 369
+  size: 192, 54
+  orig: 192, 54
+  offset: 0, 0
+  index: -1
+SUPER_Bg
+  rotate: false
+  xy: 2, 392
+  size: 313, 333
+  orig: 313, 333
+  offset: 0, 0
+  index: -1
+SUPER_Frame
+  rotate: true
+  xy: 513, 6
+  size: 214, 304
+  orig: 214, 304
+  offset: 0, 0
+  index: -1
+SUPER_Frame_add
+  rotate: false
+  xy: 317, 394
+  size: 194, 275
+  orig: 194, 275
+  offset: 0, 0
+  index: -1
+SUPER_Title
+  rotate: false
+  xy: 2, 1074
+  size: 506, 216
+  orig: 506, 216
+  offset: 0, 0
+  index: -1
+SUPER_Title_add
+  rotate: true
+  xy: 1143, 563
+  size: 274, 111
+  orig: 274, 111
+  offset: 0, 0
+  index: -1
+ULTIMATE_Amb
+  rotate: false
+  xy: 2, 67
+  size: 314, 323
+  orig: 314, 323
+  offset: 0, 0
+  index: -1
+ULTIMATE_Bg
+  rotate: false
+  xy: 2, 727
+  size: 325, 345
+  orig: 325, 345
+  offset: 0, 0
+  index: -1
+ULTIMATE_Title
+  rotate: false
+  xy: 2, 1292
+  size: 606, 248
+  orig: 606, 248
+  offset: 0, 0
+  index: -1
+ULTIMATE_Title_add
+  rotate: false
+  xy: 610, 1188
+  size: 328, 126
+  orig: 328, 126
+  offset: 0, 0
+  index: -1
+WIN_Bg_Bk
+  rotate: false
+  xy: 1162, 4
+  size: 30, 29
+  orig: 30, 29
+  offset: 0, 0
+  index: -1
+WIN_Bg_Ft
+  rotate: false
+  xy: 940, 1192
+  size: 141, 122
+  orig: 141, 122
+  offset: 0, 0
+  index: -1
+WIN_Bg_Reel
+  rotate: true
+  xy: 1070, 2
+  size: 108, 90
+  orig: 108, 90
+  offset: 0, 0
+  index: -1
+WIN_Title
+  rotate: true
+  xy: 1052, 328
+  size: 214, 105
+  orig: 214, 105
+  offset: 0, 0
+  index: -1
+WIN_Title_I
+  rotate: false
+  xy: 1497, 1456
+  size: 25, 84
+  orig: 25, 84
+  offset: 0, 0
+  index: -1
+WIN_Title_N
+  rotate: true
+  xy: 1271, 339
+  size: 61, 84
+  orig: 61, 84
+  offset: 0, 0
+  index: -1
+WIN_Title_W
+  rotate: false
+  xy: 510, 1206
+  size: 89, 84
+  orig: 89, 84
+  offset: 0, 0
+  index: -1
+black
+  rotate: false
+  xy: 248, 15
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1

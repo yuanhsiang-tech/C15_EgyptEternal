@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>CommonResource/Login/RegisterAccountBtn1Normal.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,857},{254,75}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{254,75}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountBtn1Selected.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,597},{258,80}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{258,80}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountBtn2Normal.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{347,964},{50,48}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{50,48}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountBtn2Selected.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{397,964},{50,48}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{50,48}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountBtn3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{488,597},{352,21}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{352,21}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountContractBg.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1},{594,494}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{594,494}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{107,597},{127,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{127,18}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText1_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{257,902},{167,21}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{167,21}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText1_1_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,934},{234,46}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{234,46}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{107,725},{110,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{110,18}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText2_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{281,597},{283,21}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{283,21}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{236,597},{126,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{126,18}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText3_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{257,597},{283,22}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{283,22}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{257,882},{223,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{223,18}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{107,837},{83,18}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{83,18}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText5_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,982},{344,22}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{344,22}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountText6.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{83,597},{256,22}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{256,22}</string>
+			</dict>
+			<key>CommonResource/Login/RegisterAccountTitle.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{237,934},{249,28}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{249,28}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>RegisterAccount_EN.png</string>
+			<key>realTextureFileName</key>
+			<string>RegisterAccount_EN.png</string>
+			<key>size</key>
+			<string>{512,1024}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>512</integer>
+			<key>height</key>
+			<integer>1024</integer>
+		</dict>
+	</dict>
+</plist>

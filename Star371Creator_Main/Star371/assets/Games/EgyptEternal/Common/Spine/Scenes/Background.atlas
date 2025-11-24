@@ -1,0 +1,104 @@
+
+Background.png
+size: 810,810
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Egypt_01
+  rotate: true
+  xy: 405, 405
+  size: 17, 11
+  orig: 17, 11
+  offset: 0, 0
+  index: -1
+Egypt_02
+  rotate: true
+  xy: 448, 280
+  size: 17, 10
+  orig: 17, 10
+  offset: 0, 0
+  index: -1
+Egypt_03
+  rotate: false
+  xy: 405, 392
+  size: 17, 11
+  orig: 17, 11
+  offset: 0, 0
+  index: -1
+Egypt_04
+  rotate: true
+  xy: 448, 299
+  size: 17, 11
+  orig: 17, 11
+  offset: 0, 0
+  index: -1
+Egypt_05
+  rotate: true
+  xy: 460, 280
+  size: 17, 10
+  orig: 17, 10
+  offset: 0, 0
+  index: -1
+FG
+  rotate: false
+  xy: 2, 424
+  size: 420, 384
+  orig: 420, 384
+  offset: 0, 0
+  index: -1
+Flare_01
+  rotate: false
+  xy: 635, 284
+  size: 42, 42
+  orig: 48, 48
+  offset: 3, 3
+  index: -1
+Flare_02
+  rotate: false
+  xy: 405, 318
+  size: 228, 68
+  orig: 228, 70
+  offset: 0, 1
+  index: -1
+Light
+  rotate: true
+  xy: 405, 274
+  size: 42, 41
+  orig: 46, 46
+  offset: 1, 2
+  index: -1
+MG
+  rotate: true
+  xy: 424, 388
+  size: 420, 384
+  orig: 420, 384
+  offset: 0, 0
+  index: -1
+Particle_01
+  rotate: true
+  xy: 232, 242
+  size: 180, 171
+  orig: 180, 180
+  offset: 0, 7
+  index: -1
+Particle_02
+  rotate: true
+  xy: 2, 189
+  size: 233, 228
+  orig: 240, 240
+  offset: 3, 1
+  index: -1
+Particle_03
+  rotate: false
+  xy: 461, 311
+  size: 5, 5
+  orig: 5, 5
+  offset: 0, 0
+  index: -1
+Smoke-03
+  rotate: true
+  xy: 635, 328
+  size: 58, 44
+  orig: 59, 53
+  offset: 0, 2
+  index: -1

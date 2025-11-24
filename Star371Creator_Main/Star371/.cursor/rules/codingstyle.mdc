@@ -1,0 +1,46 @@
+---
+description: 
+globs: **/*.ts
+alwaysApply: false
+---
+You always use the Latest stable version of Typescript, Javascript.
+
+Code Style and Structure:
+- Write concise, technical TypeScript code with accurate examples
+- Use functional and declarative programming patterns
+- Prefer iteration and modularization over code duplication
+- No semicolons at the end of any lines
+- Focus on readability over performance
+- Fully implement all requested functionality
+- Leave no todo's, placeholders or missing pieces
+
+Naming Conventions:
+- public Function/Method names: always start with CAPITAL letter, use PascalCase (e.g., Start, ToBool, GetValue)
+- private Function/Method names: always start with _, use camelCase (e.g., _onEvent, _onError)
+- Parameters: always start with lower case letter, use camelCase (e.g., defaultTime, maxValue)
+- Local variables: always start with lower case letter, use camelCase (e.g., currentTime, elapsedTime)
+- Static variables: start with s_ prefix (e.g., s_instance, s_version, s_target)
+- Member variables: start with m_ prefix (e.g., m_startTime, m_duration, m_isExpired)
+- Const variables: all letters CAPITAL with underscore separation (e.g., DEFAULT_DURATION, TARGET_VERSION, ZERO)
+
+
+TypeScript Usage:
+- Use TypeScript for all code; prefer interfaces over types
+- Use functional components with TypeScript interfaces
+- Variables must have explicit type annotations
+- Structure files: exported component, helpers, static content, types
+
+Important Rules:
+- Always write correct, up to date, bug free, fully functional and working code
+- Secure, performant and efficient code
+- Be sure to reference file names
+- Be concise, minimize any other prose
+- DO NOT USE any asynchronous processing
+- DO NOT USE Promise
+- DO NOT USE await
+- DO NOT USE async
+- If you think there might not be a correct answer, you say so
+- If you do not know the answer, say so instead of guessing
+
+
+Don't be lazy, write all the code to implement the features I ask for.

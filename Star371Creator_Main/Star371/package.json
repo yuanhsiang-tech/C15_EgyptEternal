@@ -1,0 +1,11 @@
+{
+  "name": "Star371",
+  "uuid": "65b374d2-31ac-46ed-aa23-d7d8ab4b9f70",
+  "creator": {
+    "version": "3.8.5"
+  },
+  "version": "3.8.5",
+  "devDependencies": {
+    "@bufbuild/protobuf": "2.9.0"
+  }
+}

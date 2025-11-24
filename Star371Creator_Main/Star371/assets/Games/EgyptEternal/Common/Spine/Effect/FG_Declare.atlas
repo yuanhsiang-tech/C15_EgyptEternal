@@ -1,0 +1,342 @@
+
+FG_Declare.png
+size: 954,954
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Add/Eye_Flash
+  rotate: false
+  xy: 138, 277
+  size: 35, 35
+  orig: 35, 35
+  offset: 0, 0
+  index: -1
+Add/refl00-1
+  rotate: false
+  xy: 591, 15
+  size: 70, 48
+  orig: 70, 70
+  offset: 0, 11
+  index: -1
+Coin/1f_star_6
+  rotate: false
+  xy: 789, 92
+  size: 90, 62
+  orig: 90, 90
+  offset: 0, 14
+  index: -1
+Coin/_SmallSpots_02
+  rotate: false
+  xy: 138, 47
+  size: 179, 179
+  orig: 179, 179
+  offset: 0, 0
+  index: -1
+Dissipate/Add_Particles
+  rotate: false
+  xy: 847, 448
+  size: 105, 97
+  orig: 105, 105
+  offset: 0, 8
+  index: -1
+Dissipate/Magic_FX00
+  rotate: true
+  xy: 834, 547
+  size: 105, 104
+  orig: 105, 104
+  offset: 0, 0
+  index: -1
+FG_Compliment/Add_Panel_Light
+  rotate: false
+  xy: 319, 37
+  size: 178, 177
+  orig: 178, 178
+  offset: 0, 0
+  index: -1
+FG_Compliment/Add_Panel_Light_111
+  rotate: false
+  xy: 537, 462
+  size: 153, 160
+  orig: 153, 160
+  offset: 0, 0
+  index: -1
+FG_Compliment/BG_DOOR
+  rotate: false
+  xy: 367, 589
+  size: 125, 257
+  orig: 791, 791
+  offset: 390, 278
+  index: -1
+FG_Compliment/BG_DOOR_Dark
+  rotate: false
+  xy: 850, 667
+  size: 15, 241
+  orig: 15, 241
+  offset: 0, 0
+  index: -1
+FG_Compliment/BG_WallC
+  rotate: false
+  xy: 2, 314
+  size: 173, 337
+  orig: 791, 791
+  offset: 389, 228
+  index: -1
+FG_Compliment/BG_WallS
+  rotate: false
+  xy: 177, 409
+  size: 173, 242
+  orig: 565, 565
+  offset: 392, 160
+  index: -1
+FG_Compliment/Beatle00_1
+  rotate: false
+  xy: 494, 668
+  size: 188, 208
+  orig: 188, 209
+  offset: 0, 1
+  index: -1
+FG_Compliment/Beatle00_2
+  rotate: false
+  xy: 2, 2
+  size: 55, 25
+  orig: 55, 25
+  offset: 0, 0
+  index: -1
+FG_Compliment/Beatle00_3
+  rotate: false
+  xy: 678, 228
+  size: 132, 110
+  orig: 132, 110
+  offset: 0, 0
+  index: -1
+FG_Compliment/Beatle00_4
+  rotate: false
+  xy: 689, 340
+  size: 136, 110
+  orig: 136, 110
+  offset: 0, 0
+  index: -1
+FG_Compliment/Comet07
+  rotate: true
+  xy: 779, 910
+  size: 42, 163
+  orig: 42, 163
+  offset: 0, 0
+  index: -1
+FG_Compliment/FX_Glow
+  rotate: false
+  xy: 827, 340
+  size: 71, 39
+  orig: 71, 39
+  offset: 0, 0
+  index: -1
+FG_Compliment/FX_LT03
+  rotate: false
+  xy: 697, 98
+  size: 90, 45
+  orig: 90, 45
+  offset: 0, 0
+  index: -1
+FG_Compliment/FX_Photosphere
+  rotate: false
+  xy: 499, 110
+  size: 104, 104
+  orig: 104, 104
+  offset: 0, 0
+  index: -1
+FG_Compliment/FX_Tail
+  rotate: true
+  xy: 494, 624
+  size: 42, 185
+  orig: 42, 185
+  offset: 0, 0
+  index: -1
+FG_Compliment/Frame
+  rotate: true
+  xy: 2, 29
+  size: 283, 134
+  orig: 283, 134
+  offset: 0, 0
+  index: -1
+FG_Compliment/FrameLT
+  rotate: true
+  xy: 537, 345
+  size: 115, 150
+  orig: 115, 150
+  offset: 0, 0
+  index: -1
+FG_Compliment/Frame_Bg
+  rotate: false
+  xy: 2, 848
+  size: 472, 104
+  orig: 472, 104
+  offset: 0, 0
+  index: -1
+FG_Compliment/Fx_CircleGlow
+  rotate: false
+  xy: 850, 40
+  size: 45, 45
+  orig: 45, 45
+  offset: 0, 0
+  index: -1
+FG_Compliment/Fx_fog
+  rotate: false
+  xy: 697, 18
+  size: 79, 78
+  orig: 79, 78
+  offset: 0, 0
+  index: -1
+FG_Compliment/Sand_03
+  rotate: true
+  xy: 476, 878
+  size: 74, 301
+  orig: 74, 301
+  offset: 0, 0
+  index: -1
+FG_Compliment/Sand_04
+  rotate: false
+  xy: 897, 44
+  size: 41, 41
+  orig: 41, 41
+  offset: 0, 0
+  index: -1
+FG_Compliment/Smoke_01
+  rotate: false
+  xy: 605, 126
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+FG_Compliment/Smoke_02
+  rotate: true
+  xy: 605, 65
+  size: 59, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+FG_Compliment/Symbol12Fx
+  rotate: false
+  xy: 692, 544
+  size: 140, 140
+  orig: 140, 140
+  offset: 0, 0
+  index: -1
+FG_Compliment/cannonef06
+  rotate: false
+  xy: 692, 452
+  size: 153, 90
+  orig: 153, 90
+  offset: 0, 0
+  index: -1
+FG_Compliment/lizi_01
+  rotate: false
+  xy: 697, 145
+  size: 90, 81
+  orig: 90, 90
+  offset: 0, 6
+  index: -1
+FG_Declare/00_Black
+  rotate: false
+  xy: 900, 344
+  size: 35, 35
+  orig: 35, 35
+  offset: 0, 0
+  index: -1
+FG_Declare/B
+  rotate: false
+  xy: 352, 397
+  size: 183, 190
+  orig: 183, 190
+  offset: 0, 0
+  index: -1
+FG_Declare/B_Fly
+  rotate: false
+  xy: 867, 654
+  size: 65, 125
+  orig: 65, 125
+  offset: 0, 0
+  index: -1
+FG_Declare/FX_roar
+  rotate: false
+  xy: 881, 87
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+FG_Declare/Frame
+  rotate: false
+  xy: 2, 653
+  size: 363, 193
+  orig: 363, 193
+  offset: 0, 0
+  index: -1
+FG_Declare/Frame_Wing
+  rotate: false
+  xy: 177, 228
+  size: 165, 179
+  orig: 165, 179
+  offset: 0, 0
+  index: -1
+FG_Declare/G
+  rotate: false
+  xy: 684, 686
+  size: 164, 190
+  orig: 164, 190
+  offset: 0, 0
+  index: -1
+FG_Declare/G_Fly
+  rotate: false
+  xy: 867, 781
+  size: 65, 127
+  orig: 65, 127
+  offset: 0, 0
+  index: -1
+FG_Declare/O
+  rotate: true
+  xy: 344, 216
+  size: 179, 190
+  orig: 179, 190
+  offset: 0, 0
+  index: -1
+FG_Declare/O_Fly
+  rotate: true
+  xy: 827, 381
+  size: 65, 125
+  orig: 65, 125
+  offset: 0, 0
+  index: -1
+FG_Declare/SmallSpots
+  rotate: false
+  xy: 499, 18
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Symbol_12/Symbol_12_05
+  rotate: false
+  xy: 536, 218
+  size: 140, 125
+  orig: 140, 140
+  offset: 0, 7
+  index: -1
+Symbol_12/Symbol_12_05_2
+  rotate: false
+  xy: 778, 32
+  size: 70, 58
+  orig: 70, 70
+  offset: 0, 6
+  index: -1
+Symbol_12/WingMove
+  rotate: false
+  xy: 812, 246
+  size: 140, 92
+  orig: 140, 140
+  offset: 0, 32
+  index: -1
+Symbol_12/WingMove_2
+  rotate: false
+  xy: 812, 156
+  size: 140, 88
+  orig: 140, 140
+  offset: 0, 34
+  index: -1

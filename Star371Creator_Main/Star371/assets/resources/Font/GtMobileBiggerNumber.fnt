@@ -1,0 +1,18 @@
+info face="·L³n¥¿¶ÂÅé" size=32 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=31 base=25 scaleW=256 scaleH=256 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="GtMobileBiggerNumber_0.png"
+chars count=14
+char id=44   x=0     y=0     width=28    height=77    xoffset=0     yoffset=0     xadvance=28    page=0  chnl=15
+char id=48   x=29    y=0     width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=49   x=89    y=0     width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=50   x=149   y=0     width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=51   x=0     y=78    width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=52   x=60    y=76    width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=53   x=120   y=76    width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=54   x=180   y=76    width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=55   x=0     y=154   width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=56   x=60    y=152   width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=57   x=120   y=152   width=59    height=75    xoffset=0     yoffset=0     xadvance=59    page=0  chnl=15
+char id=24163 x=209   y=0     width=38    height=41    xoffset=0     yoffset=25     xadvance=38    page=0  chnl=15
+char id=25138 x=180   y=152   width=38    height=41    xoffset=0     yoffset=25     xadvance=38    page=0  chnl=15
+char id=36938 x=180   y=194   width=38    height=41    xoffset=0     yoffset=25     xadvance=38    page=0  chnl=15

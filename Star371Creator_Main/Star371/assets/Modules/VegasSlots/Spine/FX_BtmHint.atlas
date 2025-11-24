@@ -1,0 +1,55 @@
+
+FX_BtmHint.png
+size: 305,305
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FX_FrameGlow
+  rotate: true
+  xy: 2, 29
+  size: 82, 84
+  orig: 82, 84
+  offset: 0, 0
+  index: -1
+FX_Glow
+  rotate: false
+  xy: 2, 209
+  size: 263, 94
+  orig: 269, 100
+  offset: 3, 3
+  index: -1
+FX_Glow2
+  rotate: false
+  xy: 2, 113
+  size: 263, 94
+  orig: 269, 100
+  offset: 3, 3
+  index: -1
+FX_Lt2
+  rotate: false
+  xy: 246, 63
+  size: 47, 48
+  orig: 63, 63
+  offset: 8, 7
+  index: -1
+FX_Lt3
+  rotate: true
+  xy: 267, 234
+  size: 69, 36
+  orig: 76, 41
+  offset: 2, 0
+  index: -1
+FX_Particle
+  rotate: true
+  xy: 88, 31
+  size: 80, 90
+  orig: 84, 93
+  offset: 2, 1
+  index: -1
+FX_Star
+  rotate: false
+  xy: 180, 47
+  size: 64, 64
+  orig: 68, 68
+  offset: 2, 2
+  index: -1

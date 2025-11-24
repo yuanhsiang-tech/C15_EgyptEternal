@@ -1,0 +1,477 @@
+{
+  "name": "lua2ts main",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -432,
+        336
+      ],
+      "id": "e00524f5-156b-49e3-9deb-12b867757ba8",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        912,
+        336
+      ],
+      "id": "a0f67360-ab84-47fb-9d08-b4af806672ee",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "content": "# 主工作流\n取出lua的位置=>\n在output建立對應資料夾=>\n所有檔案同時進行轉換",
+        "height": 512,
+        "width": 224,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -512,
+        112
+      ],
+      "id": "d4e84430-8152-4e4b-8b55-46ecb3af877b",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "fileSelector": "={{ $json.RootPath }}/input/**/*.lua",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        320,
+        192
+      ],
+      "id": "5b8a13fc-e403-4ced-af86-d94612f5fd04",
+      "name": "讀取二進制lua檔",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "content": "# TODO : 設定root\n**root結尾不用加/**\n**\\請轉為/**\n# TODO : 設定model/API\n**model限定gemini系列**",
+        "height": 512,
+        "width": 432,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -272,
+        112
+      ],
+      "id": "07da6094-210f-4b71-b04c-7e7a1d69ac76",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "78384a60-159c-4e10-8722-572987ddcfbc",
+              "name": "RootPath",
+              "value": "C:/AIO/AIOCreator/Star371Creator_Main/Tools/lua2ts/n8n版",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -144,
+        336
+      ],
+      "id": "7e1924df-3ba2-4a5a-b5a3-b93c1fdbe9ba",
+      "name": "設定root"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        704,
+        336
+      ],
+      "id": "70ca3659-dfcd-4911-aa8f-605942c8bf27",
+      "name": "合併root",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "command": "=node -e \"const fs=require('fs');const p=process.argv[1];if(!p||!p.trim()){process.exit(0)}try{fs.mkdirSync(p,{recursive:true})}catch(_){}\" \"{{ $json.RootPath + \"/output\" +$json.directory }}\""
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        1168,
+        224
+      ],
+      "id": "5c16aac0-e872-4566-9a40-6ab5e6fadd43",
+      "name": "建output資料夾",
+      "notesInFlow": true,
+      "notes": "避免後面存不進去"
+    },
+    {
+      "parameters": {
+        "content": "# 複製資料夾結構，開始轉換\n",
+        "height": 512,
+        "width": 1120,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        640,
+        112
+      ],
+      "id": "1b46033f-f6e5-482d-9f13-21437278c14d",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "Data, directory, FileName, RootPath",
+        "joinMode": "enrichInput2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1392,
+        336
+      ],
+      "id": "a668da00-a6e0-406c-9520-6c6ece8ee229",
+      "name": "等檔案複製完",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "content": "# 設定資料",
+        "height": 512,
+        "width": 448,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        176,
+        112
+      ],
+      "id": "00ada79a-7533-4803-8e87-cd157650bdb7",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "Sh2XMtn8vgt8YDKy",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/Sh2XMtn8vgt8YDKy",
+          "cachedResultName": "lua2ts sub"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "RootPath": "={{ $json.RootPath }}",
+            "FileName": "={{ $json.FileName }}",
+            "directory": "={{ $json.directory }}",
+            "model": "={{ $json.model }}",
+            "apiKey": "={{ $json.apiKey }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "RootPath",
+              "displayName": "RootPath",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "directory",
+              "displayName": "directory",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "FileName",
+              "displayName": "FileName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "model",
+              "displayName": "model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "apiKey",
+              "displayName": "apiKey",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "mode": "each",
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1600,
+        336
+      ],
+      "id": "420680d0-5691-4013-8b61-697dd1d2d9a3",
+      "name": "開始轉換"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"directory\": \"{{ $binary.data.directory.slice($binary.data.directory.indexOf( \"/input\" ) + 6) }}\",\n  \"FileName\": \"{{ $json.fileName.replace(\".lua\", \"\") }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        192
+      ],
+      "id": "a50b9d7c-70f5-4b32-9907-58b3ff6d36e7",
+      "name": "取出lua在資料夾中的位置、取出檔名",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e10a5018-bd4e-413c-9163-96a9b7a21f5d",
+              "name": "model",
+              "value": "gemini-2.5-pro",
+              "type": "string"
+            },
+            {
+              "id": "7dd8b20a-9601-48ec-ad1b-2688499ae70c",
+              "name": "apiKey",
+              "value": "AIzaSyAUKWJS-lq3FUOIA2ykMGPAw-QCTvC0KJw",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -144,
+        480
+      ],
+      "id": "be426438-b8ea-4371-84fc-ac3e47b7f0ae",
+      "name": "設定模型/API"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        320,
+        352
+      ],
+      "id": "6fd56549-769b-418b-b5b3-63edf419d1f4",
+      "name": "Merge"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "設定root",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "設定模型/API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "建output資料夾",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "等檔案複製完",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "讀取二進制lua檔": {
+      "main": [
+        [
+          {
+            "node": "取出lua在資料夾中的位置、取出檔名",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "設定root": {
+      "main": [
+        [
+          {
+            "node": "讀取二進制lua檔",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "合併root": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "等檔案複製完": {
+      "main": [
+        [
+          {
+            "node": "開始轉換",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "開始轉換": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "建output資料夾": {
+      "main": [
+        [
+          {
+            "node": "等檔案複製完",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "取出lua在資料夾中的位置、取出檔名": {
+      "main": [
+        [
+          {
+            "node": "合併root",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "合併root",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "設定模型/API": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "528cdd53-a06f-4784-8fdf-fa55ffd794bb",
+  "meta": {
+    "instanceId": "ca689ddd63ebda94d4c625daf6d8c0c97a784e1df6ea351bac4e338509645929"
+  },
+  "id": "FyXMxjCD2LQ9CNnA",
+  "tags": []
+}

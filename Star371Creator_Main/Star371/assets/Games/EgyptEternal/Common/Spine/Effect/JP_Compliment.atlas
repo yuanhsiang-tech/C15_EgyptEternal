@@ -1,0 +1,195 @@
+
+JP_Compliment.png
+size: 748,748
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BG_Light_02
+  rotate: false
+  xy: 511, 35
+  size: 232, 239
+  orig: 232, 239
+  offset: 0, 0
+  index: -1
+BG_Light_03
+  rotate: false
+  xy: 529, 276
+  size: 206, 204
+  orig: 206, 204
+  offset: 0, 0
+  index: -1
+Dust-01
+  rotate: true
+  xy: 666, 628
+  size: 118, 78
+  orig: 118, 78
+  offset: 0, 0
+  index: -1
+FRAME
+  rotate: false
+  xy: 2, 592
+  size: 662, 154
+  orig: 662, 154
+  offset: 0, 0
+  index: -1
+Flare_01
+  rotate: false
+  xy: 265, 67
+  size: 120, 20
+  orig: 120, 20
+  offset: 0, 0
+  index: -1
+Frame_Blur
+  rotate: false
+  xy: 416, 102
+  size: 69, 19
+  orig: 69, 19
+  offset: 0, 0
+  index: -1
+LightBall
+  rotate: false
+  xy: 387, 60
+  size: 27, 27
+  orig: 27, 27
+  offset: 0, 0
+  index: -1
+LightSeqs/LightSweep_00
+  rotate: true
+  xy: 265, 100
+  size: 15, 24
+  orig: 15, 24
+  offset: 0, 0
+  index: -1
+LightSeqs/LightSweep_01
+  rotate: true
+  xy: 483, 198
+  size: 34, 24
+  orig: 34, 24
+  offset: 0, 0
+  index: -1
+LightSeqs/LightSweep_02
+  rotate: true
+  xy: 503, 328
+  size: 46, 24
+  orig: 46, 24
+  offset: 0, 0
+  index: -1
+LightSeqs/LightSweep_03
+  rotate: true
+  xy: 503, 285
+  size: 41, 24
+  orig: 41, 24
+  offset: 0, 0
+  index: -1
+LightSeqs/LightSweep_04
+  rotate: true
+  xy: 664, 482
+  size: 41, 24
+  orig: 41, 24
+  offset: 0, 0
+  index: -1
+LightSeqs/LightSweep_05
+  rotate: true
+  xy: 483, 234
+  size: 39, 24
+  orig: 39, 24
+  offset: 0, 0
+  index: -1
+LightSeqs/LightSweep_06
+  rotate: true
+  xy: 710, 524
+  size: 33, 24
+  orig: 33, 24
+  offset: 0, 0
+  index: -1
+LightSeqs/LightSweep_07
+  rotate: true
+  xy: 483, 179
+  size: 17, 21
+  orig: 17, 21
+  offset: 0, 0
+  index: -1
+Panel_Blur
+  rotate: false
+  xy: 291, 89
+  size: 123, 32
+  orig: 123, 32
+  offset: 0, 0
+  index: -1
+Panel_MINI
+  rotate: false
+  xy: 2, 179
+  size: 479, 94
+  orig: 479, 94
+  offset: 0, 0
+  index: -1
+Panel_MINOR
+  rotate: false
+  xy: 2, 275
+  size: 499, 99
+  orig: 499, 99
+  offset: 0, 0
+  index: -1
+Panel__GRAND
+  rotate: false
+  xy: 2, 482
+  size: 553, 108
+  orig: 553, 108
+  offset: 0, 0
+  index: -1
+Panel__MAJOR
+  rotate: false
+  xy: 2, 376
+  size: 525, 104
+  orig: 525, 104
+  offset: 0, 0
+  index: -1
+Particle_01
+  rotate: false
+  xy: 557, 485
+  size: 105, 105
+  orig: 105, 105
+  offset: 0, 0
+  index: -1
+Shine_01
+  rotate: false
+  xy: 664, 525
+  size: 44, 32
+  orig: 44, 32
+  offset: 0, 0
+  index: -1
+Smoke-01
+  rotate: false
+  xy: 666, 559
+  size: 67, 67
+  orig: 67, 67
+  offset: 0, 0
+  index: -1
+TXT_GRAND
+  rotate: false
+  xy: 2, 117
+  size: 287, 60
+  orig: 287, 60
+  offset: 0, 0
+  index: -1
+TXT_MAJOR
+  rotate: false
+  xy: 2, 59
+  size: 261, 56
+  orig: 261, 56
+  offset: 0, 0
+  index: -1
+TXT_MINI
+  rotate: false
+  xy: 291, 123
+  size: 218, 54
+  orig: 218, 54
+  offset: 0, 0
+  index: -1
+TXT_MINOR
+  rotate: false
+  xy: 2, 2
+  size: 249, 55
+  orig: 249, 55
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,174 @@
+
+RandomWild.png
+size: 541,541
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Egypt_01
+  rotate: false
+  xy: 1, 10
+  size: 14, 9
+  orig: 14, 9
+  offset: 0, 0
+  index: -1
+Egypt_02
+  rotate: true
+  xy: 468, 393
+  size: 14, 8
+  orig: 14, 8
+  offset: 0, 0
+  index: -1
+Egypt_03
+  rotate: true
+  xy: 456, 283
+  size: 14, 9
+  orig: 14, 9
+  offset: 0, 0
+  index: -1
+Egypt_04
+  rotate: true
+  xy: 456, 299
+  size: 14, 10
+  orig: 14, 10
+  offset: 0, 0
+  index: -1
+Egypt_05
+  rotate: true
+  xy: 468, 377
+  size: 14, 8
+  orig: 14, 8
+  offset: 0, 0
+  index: -1
+FX/01_ringwave02
+  rotate: false
+  xy: 280, 281
+  size: 126, 126
+  orig: 126, 126
+  offset: 0, 0
+  index: -1
+FX/Door_Totem_01
+  rotate: false
+  xy: 1, 21
+  size: 276, 25
+  orig: 276, 25
+  offset: 0, 0
+  index: -1
+FX/FX_Circle_2
+  rotate: false
+  xy: 436, 215
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+FX/FakeRock
+  rotate: true
+  xy: 381, 30
+  size: 40, 80
+  orig: 40, 80
+  offset: 0, 0
+  index: -1
+FX/Fog
+  rotate: false
+  xy: 1, 48
+  size: 179, 217
+  orig: 179, 217
+  offset: 0, 0
+  index: -1
+FX/MagicCircle6
+  rotate: false
+  xy: 1, 267
+  size: 277, 273
+  orig: 277, 273
+  offset: 0, 0
+  index: -1
+FX/PizzaHot_Smoke_07
+  rotate: true
+  xy: 408, 281
+  size: 32, 46
+  orig: 32, 46
+  offset: 0, 0
+  index: -1
+FX/eft_bol_01
+  rotate: false
+  xy: 475, 137
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+FX/fx_shockwave_1
+  rotate: true
+  xy: 288, 132
+  size: 147, 146
+  orig: 147, 146
+  offset: 0, 0
+  index: -1
+FX/light_159
+  rotate: false
+  xy: 468, 298
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+FX/ref_02
+  rotate: true
+  xy: 436, 134
+  size: 23, 37
+  orig: 23, 37
+  offset: 0, 0
+  index: -1
+FX/sm1r
+  rotate: true
+  xy: 478, 372
+  size: 168, 57
+  orig: 168, 57
+  offset: 0, 0
+  index: -1
+FX/xingyun1
+  rotate: true
+  xy: 408, 315
+  size: 92, 58
+  orig: 92, 58
+  offset: 0, 0
+  index: -1
+FX/y1a
+  rotate: false
+  xy: 288, 72
+  size: 180, 58
+  orig: 180, 58
+  offset: 0, 0
+  index: -1
+FX/yun13
+  rotate: true
+  xy: 288, 31
+  size: 39, 91
+  orig: 39, 91
+  offset: 0, 0
+  index: -1
+FX/yun_w2
+  rotate: true
+  xy: 182, 54
+  size: 211, 104
+  orig: 211, 104
+  offset: 0, 0
+  index: -1
+Pharaoh/Eye_Symbol1
+  rotate: false
+  xy: 280, 409
+  size: 196, 131
+  orig: 196, 131
+  offset: 0, 0
+  index: -1
+Pharaoh/Eye_Symbol2
+  rotate: false
+  xy: 436, 159
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
+empty
+  rotate: false
+  xy: 280, 274
+  size: 5, 5
+  orig: 5, 5
+  offset: 0, 0
+  index: -1

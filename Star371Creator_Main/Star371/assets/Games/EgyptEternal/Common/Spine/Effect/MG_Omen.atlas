@@ -1,0 +1,97 @@
+
+MG_Omen.png
+size: 427,427
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Egypt_01
+  rotate: true
+  xy: 282, 402
+  size: 20, 13
+  orig: 20, 13
+  offset: 0, 0
+  index: -1
+Egypt_02
+  rotate: true
+  xy: 282, 309
+  size: 20, 11
+  orig: 20, 11
+  offset: 0, 0
+  index: -1
+Egypt_03
+  rotate: true
+  xy: 282, 371
+  size: 20, 13
+  orig: 20, 13
+  offset: 0, 0
+  index: -1
+Egypt_04
+  rotate: true
+  xy: 282, 340
+  size: 20, 13
+  orig: 20, 13
+  offset: 0, 0
+  index: -1
+Egypt_05
+  rotate: true
+  xy: 282, 278
+  size: 20, 11
+  orig: 20, 11
+  offset: 0, 0
+  index: -1
+EnergyBall_01
+  rotate: false
+  xy: 4, 5
+  size: 140, 140
+  orig: 140, 140
+  offset: 0, 0
+  index: -1
+Flare_01
+  rotate: false
+  xy: 164, 158
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+Flare_02
+  rotate: true
+  xy: 4, 156
+  size: 266, 82
+  orig: 266, 82
+  offset: 0, 0
+  index: -1
+Particle_01
+  rotate: false
+  xy: 310, 317
+  size: 105, 105
+  orig: 105, 105
+  offset: 0, 0
+  index: -1
+Pyramid
+  rotate: false
+  xy: 153, 10
+  size: 162, 136
+  orig: 162, 136
+  offset: 0, 0
+  index: -1
+Pyramid_Blur
+  rotate: true
+  xy: 95, 157
+  size: 71, 60
+  orig: 71, 60
+  offset: 0, 0
+  index: -1
+Pyramid_Blur_2
+  rotate: true
+  xy: 243, 164
+  size: 64, 58
+  orig: 64, 58
+  offset: 0, 0
+  index: -1
+Shockwave_01
+  rotate: false
+  xy: 95, 239
+  size: 178, 183
+  orig: 178, 183
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,134 @@
+{
+  "ver": "1.0.27",
+  "importer": "image",
+  "imported": true,
+  "uuid": "727c83b1-89a7-4c84-b922-e7d236281d2f",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "727c83b1-89a7-4c84-b922-e7d236281d2f@6c48a",
+      "displayName": "FlushFever_Heart_Light",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "clamp-to-edge",
+        "wrapModeT": "clamp-to-edge",
+        "imageUuidOrDatabaseUri": "727c83b1-89a7-4c84-b922-e7d236281d2f",
+        "isUuid": true,
+        "visible": false,
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9941": {
+      "importer": "sprite-frame",
+      "uuid": "727c83b1-89a7-4c84-b922-e7d236281d2f@f9941",
+      "displayName": "FlushFever_Heart_Light",
+      "id": "f9941",
+      "name": "spriteFrame",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0.5,
+        "trimX": 1,
+        "trimY": 1,
+        "width": 46,
+        "height": 43,
+        "rawWidth": 48,
+        "rawHeight": 46,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [
+            -23,
+            -21.5,
+            0,
+            23,
+            -21.5,
+            0,
+            -23,
+            21.5,
+            0,
+            23,
+            21.5,
+            0
+          ],
+          "indexes": [
+            0,
+            1,
+            2,
+            2,
+            1,
+            3
+          ],
+          "uv": [
+            1,
+            45,
+            47,
+            45,
+            1,
+            2,
+            47,
+            2
+          ],
+          "nuv": [
+            0.020833333333333332,
+            0.043478260869565216,
+            0.9791666666666666,
+            0.043478260869565216,
+            0.020833333333333332,
+            0.9782608695652174,
+            0.9791666666666666,
+            0.9782608695652174
+          ],
+          "minPos": [
+            -23,
+            -21.5,
+            0
+          ],
+          "maxPos": [
+            23,
+            21.5,
+            0
+          ]
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "727c83b1-89a7-4c84-b922-e7d236281d2f@6c48a",
+        "atlasUuid": ""
+      },
+      "ver": "1.0.12",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "hasAlpha": true,
+    "fixAlphaTransparencyArtifacts": false,
+    "redirect": "727c83b1-89a7-4c84-b922-e7d236281d2f@6c48a"
+  }
+}

@@ -1,0 +1,16 @@
+info face="Arial" size=105 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=105 base=26 scaleW=225 scaleH=320 pages=1 packed=0 alphaChnl=0 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="fnt_red_win.png"
+chars count=12
+char id=44   x=0     y=0     width=54    height=105   xoffset=-16   yoffset=7     xadvance=24    page=0  chnl=15
+char id=46   x=55    y=0     width=54    height=105   xoffset=-15   yoffset=0     xadvance=24    page=0  chnl=15
+char id=48   x=110   y=0     width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=49   x=165   y=0     width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=50   x=0     y=106   width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=51   x=55    y=106   width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=52   x=110   y=106   width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=53   x=165   y=106   width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=54   x=0     y=212   width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=55   x=55    y=212   width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=56   x=110   y=212   width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15
+char id=57   x=165   y=212   width=54    height=105   xoffset=0     yoffset=0     xadvance=54    page=0  chnl=15

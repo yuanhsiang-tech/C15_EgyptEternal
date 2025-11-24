@@ -1,0 +1,16 @@
+{
+    "button_ok": "确定",
+    "button_confirm": "确认",
+    "button_cancel": "取消",
+    "button_close": "关闭",
+    "transition_lobby_loading": "读取大厅资源...",
+    "network_unstable_refetch": "服务器数据已刷新，请稍后重新操作。",
+    "network_unstable_reconnect": "网络不稳定，寻找可用的网络中。",
+    "jp_unlock_tip": "等级{0}解锁",
+    "bankrupt_spin": "唉呀 目前的金币不够了...\\n前往商城获得更多金币以继续转动!",
+    "bankrupt_spin_btn": "前往",
+    "long_touch_autoplay": "长按开启自动玩",
+    "game_rules": "游戏说明",
+    "total_bet": "总押注",
+    "total_win": "总赢分"
+}

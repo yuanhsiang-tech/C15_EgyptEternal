@@ -1,0 +1,160 @@
+
+FX_NearWin.png
+size: 310,310
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Dust_01
+  rotate: false
+  xy: 155, 212
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+EgyptNumber_02
+  rotate: true
+  xy: 60, 179
+  size: 83, 49
+  orig: 83, 49
+  offset: 0, 0
+  index: -1
+Egypt_01
+  rotate: false
+  xy: 257, 34
+  size: 28, 18
+  orig: 28, 18
+  offset: 0, 0
+  index: -1
+Egypt_02
+  rotate: true
+  xy: 272, 109
+  size: 28, 16
+  orig: 28, 16
+  offset: 0, 0
+  index: -1
+Egypt_03
+  rotate: false
+  xy: 257, 5
+  size: 28, 18
+  orig: 28, 18
+  offset: 0, 0
+  index: -1
+Egypt_04
+  rotate: false
+  xy: 155, 121
+  size: 28, 19
+  orig: 28, 19
+  offset: 0, 0
+  index: -1
+Egypt_05
+  rotate: false
+  xy: 272, 82
+  size: 28, 16
+  orig: 28, 16
+  offset: 0, 0
+  index: -1
+Flare_02
+  rotate: false
+  xy: 4, 273
+  size: 222, 32
+  orig: 222, 32
+  offset: 0, 0
+  index: -1
+Flare_03
+  rotate: true
+  xy: 225, 63
+  size: 57, 38
+  orig: 57, 38
+  offset: 0, 0
+  index: -1
+Flare_04
+  rotate: false
+  xy: 116, 10
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+Flare_05
+  rotate: false
+  xy: 214, 182
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+Flare_06
+  rotate: false
+  xy: 235, 243
+  size: 62, 62
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+FrameBG_01
+  rotate: true
+  xy: 263, 148
+  size: 23, 42
+  orig: 23, 42
+  offset: 0, 0
+  index: -1
+Frame_01
+  rotate: false
+  xy: 60, 10
+  size: 46, 91
+  orig: 46, 91
+  offset: 0, 0
+  index: -1
+Frame_Glow_01
+  rotate: false
+  xy: 273, 190
+  size: 23, 42
+  orig: 23, 42
+  offset: 0, 0
+  index: -1
+LightBall_01
+  rotate: false
+  xy: 155, 151
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+LightString
+  rotate: false
+  xy: 118, 121
+  size: 28, 141
+  orig: 28, 141
+  offset: 0, 0
+  index: -1
+Particle-01
+  rotate: false
+  xy: 225, 33
+  size: 23, 19
+  orig: 23, 19
+  offset: 0, 0
+  index: -1
+Particle-03
+  rotate: true
+  xy: 60, 112
+  size: 56, 47
+  orig: 56, 47
+  offset: 0, 0
+  index: -1
+Speed_02
+  rotate: false
+  xy: 4, 109
+  size: 47, 153
+  orig: 47, 153
+  offset: 0, 0
+  index: -1
+Speed_03
+  rotate: false
+  xy: 4, 10
+  size: 42, 88
+  orig: 42, 88
+  offset: 0, 0
+  index: -1
+eft_bol_01
+  rotate: false
+  xy: 214, 131
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1

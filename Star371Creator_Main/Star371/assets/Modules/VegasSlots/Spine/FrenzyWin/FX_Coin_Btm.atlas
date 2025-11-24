@@ -1,0 +1,132 @@
+
+FX_Coin_Btm.png
+size: 479,479
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Coin
+  rotate: false
+  xy: 118, 14
+  size: 60, 38
+  orig: 60, 38
+  offset: 0, 0
+  index: -1
+Comp_01
+  rotate: true
+  xy: 421, 19
+  size: 55, 56
+  orig: 60, 60
+  offset: 3, 2
+  index: -1
+Comp_02
+  rotate: true
+  xy: 60, 6
+  size: 46, 56
+  orig: 60, 60
+  offset: 8, 2
+  index: -1
+Comp_03
+  rotate: false
+  xy: 445, 421
+  size: 32, 56
+  orig: 60, 60
+  offset: 15, 2
+  index: -1
+Comp_04
+  rotate: false
+  xy: 445, 248
+  size: 14, 56
+  orig: 60, 60
+  offset: 24, 2
+  index: -1
+Comp_05
+  rotate: false
+  xy: 445, 363
+  size: 32, 56
+  orig: 60, 60
+  offset: 13, 2
+  index: -1
+Comp_06
+  rotate: true
+  xy: 2, 5
+  size: 47, 56
+  orig: 60, 60
+  offset: 6, 2
+  index: -1
+Comp_07
+  rotate: true
+  xy: 361, 17
+  size: 55, 56
+  orig: 60, 60
+  offset: 2, 2
+  index: -1
+Comp_08
+  rotate: false
+  xy: 421, 76
+  size: 56, 56
+  orig: 60, 60
+  offset: 2, 2
+  index: -1
+FX/Block
+  rotate: false
+  xy: 445, 336
+  size: 30, 25
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+FX/FX_Rainbow
+  rotate: true
+  xy: 252, 244
+  size: 233, 191
+  orig: 302, 230
+  offset: 34, 19
+  index: -1
+FX/Fx_SmallSpots
+  rotate: true
+  xy: 2, 54
+  size: 188, 182
+  orig: 200, 200
+  offset: 6, 13
+  index: -1
+FX/Fx_SunLt
+  rotate: false
+  xy: 2, 281
+  size: 248, 196
+  orig: 266, 212
+  offset: 9, 9
+  index: -1
+FX/Star01
+  rotate: false
+  xy: 445, 306
+  size: 28, 28
+  orig: 41, 42
+  offset: 7, 7
+  index: -1
+FX/Star02
+  rotate: false
+  xy: 361, 134
+  size: 110, 108
+  orig: 117, 114
+  offset: 3, 4
+  index: -1
+FX/Starlet03
+  rotate: false
+  xy: 186, 216
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+FX/Starlet04
+  rotate: false
+  xy: 361, 74
+  size: 58, 58
+  orig: 58, 58
+  offset: 0, 0
+  index: -1
+FX/StartBtnShine02
+  rotate: true
+  xy: 186, 40
+  size: 174, 173
+  orig: 176, 175
+  offset: 1, 1
+  index: -1

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IGS_LIVE_NEWS_TITLE</key>
+	<string>News</string>
+	<key>IGS_LIVE_GAMES_TITLE</key>
+	<string>Games</string>
+	<key>IGS_LIVE_FEEDBACK_TITLE</key>
+	<string>Feedback</string>
+	<key>IGS_LIVE_SOCIAL_TITLE</key>
+	<string>Social</string>
+	<key>IGS_LIVE_EXIT_TITLE</key>
+	<string>Exit</string>
+	<key>STRING_INPUT_TEXT_ACCOUNT</key>
+	<string>Enter here</string>
+	<key>STRING_INPUT_TEXT_PASSWORD</key>
+	<string>Enter here</string>
+	<key>STRING_INPUT_TEXT_NICKNAME</key>
+	<string>Enter here</string>
+	<key>STRING_TITLE_REGISTER</key>
+	<string>Register</string>
+	<key>STRING_TITLE_CONTRACT</key>
+	<string>Terms of Service</string>
+	<key>STRING_TITLE_HELP</key>
+	<string>User Help</string>
+	<key>STRING_SYSTEM_INFO</key>
+	<string>System Info</string>
+	<key>STRING_WELCOME_JOIN_MEMBER</key>
+	<string>Welcome to Join gametower Member</string>
+	<key>STRING_USERNAME</key>
+	<string>Account</string>
+	<key>STRING_PASSWORD</key>
+	<string>Password</string>
+	<key>STRING_PASSWORD_CONFIRM</key>
+	<string>Confirm</string>
+	<key>STRING_I_AGREE</key>
+	<string>I Argee</string>
+	<key>STRING_REGISTER_USERNAME_PROMPT</key>
+	<string>Please use 2 to 14 characters.</string>
+	<key>STRING_REGISTER_PASSWORD_PROMPT</key>
+	<string>Capitalisation matters. Use 6 to 14 characters.</string>
+	<key>STRING_REGISTER_USERNAME_INVALID</key>
+	<string>Please enter a valid account.</string>
+	<key>STRING_REGISTER_USERNAME_CONTAINS_SPACE</key>
+	<string>Your account name may not contain space character.</string>
+	<key>STRING_REGISTER_PASSWORD_IS_TOO_SHORT</key>
+	<string>Please use 6 to 14 characters.</string>
+	<key>STRING_REGISTER_PASSWORD_NOT_MATCH</key>
+	<string>The passwords you enterd do not match. Please try again.</string>
+	<key>STRING_REGISTER_EMAIL_PROMPT</key>
+	<string>Please use a valid email address.</string>
+	<key>STRING_REGISTER_USER_AGREEMENT</key>
+	<string>You must agree to the User Agreement to continue.</string>
+	<key>STRING_REGISTER_SUCCESS</key>
+	<string>Congratulations!Your account is activated now.</string>
+	<key>STRING_TITLE_CREATE_NICKNAME</key>
+	<string>Please enter your nickname and constellation</string>
+	<key>STRING_ENTER_NICKNAME</key>
+	<string>Nickname</string>
+	<key>STRING_NICKNAME_LIMITATION</key>
+	<string>Use 2 to 14 characters</string>
+	<key>STRING_NO_NETWORK</key>
+	<string>No network connectioning, please check your network environment.</string>
+	<key>STRING_CHOOSE_IBABY</key>
+	<string>Constellation</string>
+	<key>STRING_IBABY_DESCRIPTION</key>
+	<string>Choose your constellation and tap OK</string>
+	<key>STRING_ZODIAC_ARI</key>
+	<string>Ari</string>
+	<key>STRING_ZODIAC_TAU</key>
+	<string>Tau</string>
+	<key>STRING_ZODIAC_GEM</key>
+	<string>Gem</string>
+	<key>STRING_ZODIAC_CNC</key>
+	<string>Cnc</string>
+	<key>STRING_ZODIAC_LEO</key>
+	<string>Leo</string>
+	<key>STRING_ZODIAC_VIR</key>
+	<string>Vir</string>
+	<key>STRING_ZODIAC_LIB</key>
+	<string>Lib</string>
+	<key>STRING_ZODIAC_SCO</key>
+	<string>Sco</string>
+	<key>STRING_ZODIAC_SGR</key>
+	<string>Sgr</string>
+	<key>STRING_ZODIAC_CAP</key>
+	<string>Cap</string>
+	<key>STRING_ZODIAC_AQR</key>
+	<string>Aqr</string>
+	<key>STRING_ZODIAC_PSC</key>
+	<string>Psc</string>
+	<key>STRING_ACCESS_DENY_DEFAULT</key>
+	<string>Unable to connect to login server. Please check your Internet connection.</string>
+	<key>STRING_ACCESS_DENY_USER_NAME_NOT_FOUND</key>
+	<string>Unregistered account. Please register an account to login.</string>
+	<key>STRING_ACCESS_DENY_DUPLICATE_LOGIN</key>
+	<string>This account has already been used. Please logout the other gametower game in order to login.</string>
+	<key>STRING_ACCESS_DENY_PASSWORD_INCORRECT</key>
+	<string>The account or password is error. Please try again. Password must be capitalized correctly.</string>
+	<key>STRING_ACCESS_DENY_INVALID_PROTOCOL_VERSION</key>
+	<string>It&apos;s not the latest version. Please try again. The system will automatically update.</string>
+	<key>STRING_ACCESS_DENY_ACCOUNT_BANNED</key>
+	<string>This account has been banned.</string>
+	<key>STRING_ACCESS_DENY_USER_NAME_IS_EMPTY</key>
+	<string>The account or password is error. Please try again. Password must be capitalized correctly.</string>
+	<key>STRING_ACCESS_DENY_L1_REJECT</key>
+	<string>The Server is busy now. Please try again later.</string>
+	<key>STRING_ACCESS_DENY_NO_BASE</key>
+	<string>The Server is currently under maintenance. Please try again later.</string>
+	<key>STRING_ACCESS_DENY_VERIFY_NUMBER_ERROR</key>
+	<string>Verify Code error, please try again.</string>
+	<key>STRING_USER_JOIN_GAME_DEFAULT</key>
+	<string>Fail to join game room due to unknow reason.</string>
+	<key>STRING_USER_JOIN_GAME_INVALID_THEME_NAME</key>
+	<string>Connection failed.The game room doesn&apos;r exist.</string>
+	<key>STRING_USER_JOIN_GAME_THEME_NOT_ACTIVE</key>
+	<string>The game room is not available to join now. Please try it later.</string>
+	<key>STRING_USER_JOIN_GAME_THEME_IS_FULL</key>
+	<string>This room has reached the maximum number. Please join other rooms or join this room later.</string>
+	<key>STRING_USER_JOIN_GAME_GAME_SERVER_TIMEOUT</key>
+	<string>Connection timeout</string>
+	<key>STRING_USER_JOIN_GAME_USER_IS_DUPLICATE</key>
+	<string>This account has already login. In case any problem, please contact:  service@gametower.com.tw</string>
+	<key>STRING_USER_JOIN_GAME_GAME_SERVER_IS_SHUTTINGDOWN</key>
+	<string>The room server is currently shuting down. Please try it later.</string>
+	<key>STRING_USER_JOIN_GAME_USER_IP_NOT_ALLOWED</key>
+	<string>The IP you using has been restricted.</string>
+	<key>STRING_USER_JOIN_GAME_MONEY_IS_BELOW_MINIMUM</key>
+	<string>Not enough coins to join this game room. Please chooose another game room to play or purchase more coins.</string>
+	<key>STRING_USER_JOIN_GAME_MONEY_IS_ABOVE_MAXIMUM</key>
+	<string>The coins you have has excced the limitation of this room, please choose another game room to play.</string>
+	<key>STRING_USER_JOIN_GAME_LEVEL_IS_BELOW_MINIMUM</key>
+	<string>Your level is not qualified for this game room. Please choose another game room to play.</string>
+	<key>STRING_USER_JOIN_GAME_VERSION_NOT_MATCHED</key>
+	<string>It&apos;s not the latest version. Please try again. The system will automatically update.</string>
+	<key>STRING_USER_JOIN_GAME_REPEATED_DISCONNECT</key>
+	<string>Your disconnection rate is too high for entering game.</string>
+	<key>STRING_LEAVE_GAME_DEFAULT</key>
+	<string>Server disconnected.</string>
+	<key>STRING_LEAVE_GAME_USER_REQUEST</key>
+	<string>Leaving the game room by player&apos;s request.</string>
+	<key>STRING_LEAVE_GAME_GAME_DISCONNECT</key>
+	<string>Server disconnected.</string>
+	<key>STRING_LEAVE_GAME_BASE_DISCONNECT</key>
+	<string>Disconnected from game server.</string>
+	<key>STRING_LEAVE_GAME_MASTER_KICK</key>
+	<string>You have been kick out the game by room server.</string>
+	<key>STRING_USER_CONNECT_FAILED_DEFAULT</key>
+	<string>Unable to connect to login server. Please check your Internet connection.</string>
+	<key>STRING_USER_DISCONNECT_DEFAULT</key>
+	<string>Disconnected with gametower lobby.</string>
+	<key>STRING_GAME_VERSION</key>
+	<string>Version:</string>
+	<key>STRING_MAINTENANCE_TIME</key>
+	<string>Fortnightly Maintenance:Wed,9:00~12:00(GMT+8)</string>
+	<key>STRING_FACEBOOK_UNAVAILABLE</key>
+	<string>Disconnected with Facebook server, please login again.</string>
+	<key>STRING_VERIFY_SERVER_UNAVAILABLE</key>
+	<string>Fail to connect verify code server.</string>
+	<key>STRING_VERIFY_CODE_INCORRECT</key>
+	<string>Verify code error, please try again.</string>
+	<key>STRING_VERIFY_CODE_IS_EMPTY</key>
+	<string>Verify code can not be empty, please insert it.</string>
+	<key>STRING_VERIFY_SERVER_DISCONNECTED</key>
+	<string>Disconnected with verify code server, pleae type again.</string>
+	<key>STRING_USERNAME_IS_TOO_LONG</key>
+	<string>Account overlength.</string>
+	<key>STRING_PASSWORD_IS_TOO_LONG</key>
+	<string>Password overlength.</string>
+	<key>STRING_USERNAME_IS_EMPTY</key>
+	<string>Account can not be empty.</string>
+	<key>STRING_PASSWORD_IS_EMPTY</key>
+	<string>Password can not be empty.</string>
+	<key>STRING_USERNAME_OR_PASSWORD_IS_EMPTY</key>
+	<string>Account or Password can not be empty.</string>
+	<key>STRING_ATTAIN_ICOINS</key>
+	<string>%d iCoins received.</string>
+	<key>STRING_ATTAIN_DIAMONDS</key>
+	<string>You got  %d Diamonds. </string>
+	<key>STRING_APP_STORE_ICOIN_DESC</key>
+	<string>%s iCoins</string>
+	<key>STRING_ICOINS</key>
+	<string>iCoins</string>
+	<key>STRING_APP_STORE_PURCHASE_DENIED</key>
+	<string>Purchase denied by App Store.</string>
+	<key>STRING_APP_STORE_TRANSACTION_IN_PROGRESS</key>
+	<string>Transaction in progress, please wait...</string>
+	<key>STRING_APP_STORE_SERVICE_UNAVAILABLE</key>
+	<string>Purchase service is unavailable, please try again later.</string>
+	<key>STRING_APP_STORE_PURCHASE_LIMIT</key>
+	<string>You have reach your purchase limit this week.</string>
+	<key>STRING_APP_STORE_SYSTEM_ERROR</key>
+	<string>An unexpected system error occurred, please try again later.</string>
+	<key>STRING_APP_STORE_BANKRUPTCY</key>
+	<string>Not enough iCoins to bet, you may purchase more iCoins to play.</string>
+	<key>STRING_APP_STORE_CONNECT_FAIED</key>
+	<string>Cannot connect to iTunes Store.</string>
+	<key>STRING_DAILY_REWARD</key>
+	<string>Daily reward: %s iCoins</string>
+	<key>STRING_JOIN_REWARD</key>
+	<string>Join reward: %s iCoins</string>
+	<key>MAIL_INPUT_RECEIVER</key>
+	<string>Please enter nickname</string>
+	<key>MAIL_INPUT_TITLE</key>
+	<string>1 to 20 characters</string>
+	<key>MAIL_INPUT_CONTENT</key>
+	<string>1 to 200 characters</string>
+	<key>MAIL_MSG_BOX_FULL</key>
+	<string>Recipient&apos;s mail box is full</string>
+	<key>MAIL_MSG_CONTENT_TOO_LONG</key>
+	<string>Mail must be 1 to 200 characters long</string>
+	<key>MAIL_MSG_DELETE_ALL_SUCCESS</key>
+	<string>Mail deleted successful!</string>
+	<key>MAIL_MSG_DELETE_FAIL</key>
+	<string>Mail deleted failed!</string>
+	<key>MAIL_MSG_DELETE_SUCCESS</key>
+	<string>Mail deleted successful!</string>
+	<key>MAIL_MSG_DELETING</key>
+	<string>Processing......</string>
+	<key>MAIL_MSG_NAME_EMPTY</key>
+	<string>Recipient&apos;s nickname is required</string>
+	<key>MAIL_MSG_NAME_TOO_LONG</key>
+	<string>Recipient&apos;s nickname must be 1 to 20 characters long</string>
+	<key>MAIL_MSG_NOT_CHOOSE_MAIL</key>
+	<string>Please select mail to delete</string>
+	<key>MAIL_MSG_READ_FAIL</key>
+	<string>Mail opened failed!</string>
+	<key>MAIL_MSG_READING</key>
+	<string>Processing......</string>
+	<key>MAIL_MSG_SEND_FAIL</key>
+	<string>Mail sent failed!</string>
+	<key>MAIL_MSG_SEND_SUCCESS</key>
+	<string>Mail sent successful!</string>
+	<key>MAIL_MSG_SEND_TOO_FAST</key>
+	<string>System is busy, please try again later!</string>
+	<key>MAIL_MSG_SENDING</key>
+	<string>Processing......</string>
+	<key>MAIL_MSG_SERVER_BUSY</key>
+	<string>System is busy, please try again later!</string>
+	<key>MAIL_MSG_TITLE_EMPTY</key>
+	<string>Mail subject is required</string>
+	<key>MAIL_MSG_TITLE_TOO_LONG</key>
+	<string>Subject must be 1 to 20 characters long</string>
+	<key>MAIL_MSG_WANT_DELETE</key>
+	<string>Delete this mail?</string>
+	<key>MAIL_MSG_WANT_DELETE_ALL</key>
+	<string>Delete %d selected mails?</string>
+	<key>STRING_GAME_EXIT</key>
+	<string>Are you sure you want to leave game?</string>
+	<key>STRING_GAME_LOGOUT</key>
+	<string>Are you sure you want to log out?</string>
+	<key>STRING_SERVER_MAINTAIN_TITLE</key>
+	<string>SystemInfo</string>
+	<key>STRING_SERVER_MAINTAIN_CONTENT</key>
+	<string>Fortnightly Maintenance:Wed,9:00~12:00(GMT+8)</string>
+	<key>STRING_SERVER_MAINTAIN_CONTENT_WARNING</key>
+	<string>The Server is currently under maintenance.</string>
+	<key>STRING_LOADING_TIME_OUT</key>
+	<string>Network connection timeout, please check your network environment.</string>
+	<key>NEWS_MSG_CONTEST_NOT_STARTED</key>
+	<string>The competition has not start yet.</string>
+	<key>STRING_POKERSLOT_START</key>
+	<string>Hold the SLOT\n%d Coins</string>
+	<key>STRING_POKERSLOT_TIMEOUT</key>
+	<string>Unable to use the Slot machine. Please wait.</string>
+	<key>STRING_POKERSLOT_GOT_MONEY</key>
+	<string>You get\n%d Coins</string>
+	<key>STRING_POKERSLOT_NO_MONEY</key>
+	<string>Play SLOT at least %d Coins.</string>
+	<key>STRING_POKERSLOT_BANKRUPTCY</key>
+	<string>Play SLOT at least %d Coins, you may purchase more iCoins to play.</string>
+	<key>STRING_POKERSLOT_SERVICE_STOP</key>
+	<string>Slot machine maintenance!</string>
+	<key>STRING_POKERSLOT_SERVICE_ERROR</key>
+	<string>Fail to connect Slot machine. ( %d )</string>
+	<key>STRING_COMMON_BUY</key>
+	<string>BuyCoin</string>
+	<key>STRING_COMMON_REFILL_WHEEL</key>
+	<string>MerryGo</string>
+</dict>
+</plist>

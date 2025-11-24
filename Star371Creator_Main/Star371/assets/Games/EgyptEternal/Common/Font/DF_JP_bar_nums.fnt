@@ -1,0 +1,15 @@
+info face="Segoe UI Semibold" size=32 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=1,1 outline=0
+common lineHeight=32 base=26 scaleW=64 scaleH=128 pages=1 packed=1 alphaChnl=0 redChnl=4 greenChnl=4 blueChnl=4
+page id=0 file="DF_JP_bar_nums.png"
+chars count=11
+char id=44   x=51    y=0     width=7     height=21    xoffset=0     yoffset=0     xadvance=7     page=0  chnl=15
+char id=48   x=0     y=0     width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=49   x=17    y=0     width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=50   x=34    y=0     width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=51   x=0     y=22    width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=52   x=17    y=22    width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=53   x=34    y=22    width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=54   x=0     y=44    width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=55   x=17    y=44    width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=56   x=34    y=44    width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15
+char id=57   x=0     y=66    width=16    height=21    xoffset=0     yoffset=0     xadvance=16    page=0  chnl=15

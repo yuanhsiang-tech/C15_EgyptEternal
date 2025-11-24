@@ -1,0 +1,118 @@
+
+ScatterPanel.png
+size: 368,368
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FX/Add_Particles
+  rotate: false
+  xy: 1, 125
+  size: 143, 113
+  orig: 143, 143
+  offset: 0, 18
+  index: -1
+FX/Ring01_1
+  rotate: true
+  xy: 146, 124
+  size: 114, 102
+  orig: 114, 114
+  offset: 0, 5
+  index: -1
+FX/baidi
+  rotate: false
+  xy: 222, 111
+  size: 11, 11
+  orig: 11, 11
+  offset: 0, 0
+  index: -1
+FX/guangyun
+  rotate: false
+  xy: 1, 1
+  size: 122, 122
+  orig: 122, 122
+  offset: 0, 0
+  index: -1
+FX_ExtraBet_Active/FX_WeaponDrop_02
+  rotate: false
+  xy: 250, 107
+  size: 43, 184
+  orig: 56, 184
+  offset: 7, 0
+  index: -1
+ScatterPanel/B_Box
+  rotate: false
+  xy: 209, 260
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+ScatterPanel/G_Box
+  rotate: false
+  xy: 298, 336
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+ScatterPanel/R_Box
+  rotate: false
+  xy: 298, 303
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+ScatterPanel/SP_Arrow01
+  rotate: false
+  xy: 331, 340
+  size: 31, 27
+  orig: 31, 27
+  offset: 0, 0
+  index: -1
+ScatterPanel/ScatterPanel
+  rotate: false
+  xy: 1, 293
+  size: 295, 74
+  orig: 295, 74
+  offset: 0, 0
+  index: -1
+ScatterPanel/ScatterPanel_LT
+  rotate: false
+  xy: 1, 240
+  size: 206, 51
+  orig: 206, 51
+  offset: 0, 0
+  index: -1
+ScatterPanel/TXT_1
+  rotate: true
+  xy: 161, 5
+  size: 21, 34
+  orig: 21, 34
+  offset: 0, 0
+  index: -1
+ScatterPanel/TXT_2
+  rotate: true
+  xy: 125, 3
+  size: 23, 34
+  orig: 23, 34
+  offset: 0, 0
+  index: -1
+ScatterPanel/TXT_3
+  rotate: false
+  xy: 331, 303
+  size: 22, 35
+  orig: 22, 35
+  offset: 0, 0
+  index: -1
+add/Add_Circle1
+  rotate: false
+  xy: 222, 20
+  size: 95, 85
+  orig: 95, 95
+  offset: 0, 5
+  index: -1
+add/Add_Noise_BG
+  rotate: false
+  xy: 125, 28
+  size: 95, 94
+  orig: 95, 95
+  offset: 0, 1
+  index: -1

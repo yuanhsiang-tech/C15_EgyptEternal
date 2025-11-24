@@ -1,0 +1,9 @@
+# NotFoundList - Missing Resource Files
+# Generated during CSD to Prefab conversion
+# Total missing files: 4
+# Format: Type: path/to/file
+
+Image: Lua/LuaResource/Button/Btn_Buy_Play_B.png
+Image: Lua/LuaResource/Button/Btn_GroupingPrize.png
+Image: Lua/LuaResource/Button/SPPayBtn1.png
+Image: Lua/LuaResource/Profile/IMG_FRAME_0.png

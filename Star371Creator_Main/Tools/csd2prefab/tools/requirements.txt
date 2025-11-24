@@ -1,0 +1,4 @@
+# Requirements for doit.py executable build
+xmltodict==0.13.0
+Pillow==10.0.1
+PyInstaller==6.1.0

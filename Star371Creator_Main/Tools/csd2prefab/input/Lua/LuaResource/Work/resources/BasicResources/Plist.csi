@@ -1,0 +1,30 @@
+<PlistInfoProjectFile>
+  <PropertyGroup Name="Plist" Type="Plist" ID="fccf298c-1df1-4bf8-a3e5-d55c7d8dc746" Version="3.10.0.0" />
+  <Content ExportType="Png" SortAlgorithm="MaxRects" PicturePadding="2" AllowRotation="False" AllowAnySize="False" AllowTrim="False" ctype="PlistInfoData">
+    <ImageFiles>
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/Button_Disable.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/Button_Normal.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/Button_Press.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/CheckBox_Disable.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/CheckBox_Normal.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/CheckBox_Press.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/CheckBoxNode_Disable.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/CheckBoxNode_Normal.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/ImageFile.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/Slider_Back.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/Slider_PressBar.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/SliderNode_Disable.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/SliderNode_Normal.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/SliderNode_Press.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/sort-down.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/BasicResources/Sprite.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/max.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/min.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/restore.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/close.png" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/white.jpg" />
+      <FilePathData Path="Lua/LuaResource/Work/resources/d_SystemBtn_Bg.png" />
+    </ImageFiles>
+    <MaxSize Width="256" Height="256" />
+  </Content>
+</PlistInfoProjectFile>

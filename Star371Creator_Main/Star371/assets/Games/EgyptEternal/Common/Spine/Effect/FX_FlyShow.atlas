@@ -1,0 +1,160 @@
+
+FX_FlyShow.png
+size: 507,507
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Add_Frame_Light
+  rotate: false
+  xy: 269, 106
+  size: 49, 33
+  orig: 49, 33
+  offset: 0, 0
+  index: -1
+Add_Particles
+  rotate: false
+  xy: 398, 290
+  size: 98, 98
+  orig: 98, 98
+  offset: 0, 0
+  index: -1
+BG_W_Light01_000_239
+  rotate: true
+  xy: 269, 141
+  size: 71, 74
+  orig: 71, 74
+  offset: 0, 0
+  index: -1
+FX/18ca1bd8182fe8654d845723bd243a23
+  rotate: false
+  xy: 169, 214
+  size: 174, 112
+  orig: 174, 112
+  offset: 0, 0
+  index: -1
+FX/FX_Sparkles_03
+  rotate: true
+  xy: 398, 390
+  size: 116, 88
+  orig: 116, 88
+  offset: 0, 0
+  index: -1
+FX/Light_02
+  rotate: false
+  xy: 345, 182
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+FX/eft_bol_01
+  rotate: false
+  xy: 135, 132
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+FX/ref_02
+  rotate: true
+  xy: 86, 129
+  size: 29, 47
+  orig: 29, 47
+  offset: 0, 0
+  index: -1
+FX_Lt3
+  rotate: false
+  xy: 345, 139
+  size: 41, 41
+  orig: 41, 41
+  offset: 0, 0
+  index: -1
+FX_Star
+  rotate: false
+  xy: 344, 98
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+Light_04
+  rotate: false
+  xy: 1, 75
+  size: 83, 83
+  orig: 83, 83
+  offset: 0, 0
+  index: -1
+Light_07
+  rotate: false
+  xy: 86, 29
+  size: 83, 83
+  orig: 83, 83
+  offset: 0, 0
+  index: -1
+MultiBar/Add_Particles
+  rotate: false
+  xy: 169, 114
+  size: 98, 98
+  orig: 98, 98
+  offset: 0, 0
+  index: -1
+MultiBar/Add_Particles0
+  rotate: false
+  xy: 388, 68
+  size: 98, 98
+  orig: 98, 98
+  offset: 0, 0
+  index: -1
+MultiBar/newin_c01
+  rotate: false
+  xy: 345, 226
+  size: 46, 100
+  orig: 46, 100
+  offset: 0, 0
+  index: -1
+Particles_Into_Ball_01
+  rotate: true
+  xy: 393, 168
+  size: 120, 113
+  orig: 120, 113
+  offset: 0, 0
+  index: -1
+Scarab_MoveLT
+  rotate: false
+  xy: 1, 328
+  size: 395, 178
+  orig: 395, 178
+  offset: 0, 0
+  index: -1
+Spiral_06
+  rotate: false
+  xy: 1, 160
+  size: 166, 166
+  orig: 166, 166
+  offset: 0, 0
+  index: -1
+Symbol_Glow
+  rotate: true
+  xy: 320, 109
+  size: 30, 22
+  orig: 30, 22
+  offset: 0, 0
+  index: -1
+empty
+  rotate: false
+  xy: 488, 499
+  size: 7, 7
+  orig: 7, 7
+  offset: 0, 0
+  index: -1
+smoke01
+  rotate: false
+  xy: 171, 29
+  size: 83, 83
+  orig: 83, 83
+  offset: 0, 0
+  index: -1
+sphere_radialBlur
+  rotate: false
+  xy: 256, 21
+  size: 83, 83
+  orig: 83, 83
+  offset: 0, 0
+  index: -1

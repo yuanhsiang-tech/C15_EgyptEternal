@@ -1,0 +1,139 @@
+
+FG_HintBar.png
+size: 396,396
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+FG_HintBar/Beetle_B_Body
+  rotate: true
+  xy: 293, 163
+  size: 57, 68
+  orig: 57, 68
+  offset: 0, 0
+  index: -1
+FG_HintBar/Beetle_G_Body
+  rotate: true
+  xy: 223, 162
+  size: 58, 68
+  orig: 58, 68
+  offset: 0, 0
+  index: -1
+FG_HintBar/Beetle_Y_Body
+  rotate: true
+  xy: 296, 104
+  size: 57, 67
+  orig: 57, 67
+  offset: 0, 0
+  index: -1
+FG_HintBar/Bg_LT_B
+  rotate: true
+  xy: 1, 153
+  size: 110, 109
+  orig: 110, 109
+  offset: 0, 0
+  index: -1
+FG_HintBar/Bg_LT_B1
+  rotate: true
+  xy: 133, 302
+  size: 93, 81
+  orig: 93, 81
+  offset: 0, 0
+  index: -1
+FG_HintBar/Bg_LT_G
+  rotate: true
+  xy: 1, 41
+  size: 110, 109
+  orig: 110, 109
+  offset: 0, 0
+  index: -1
+FG_HintBar/Bg_LT_G1
+  rotate: true
+  xy: 216, 302
+  size: 93, 81
+  orig: 93, 81
+  offset: 0, 0
+  index: -1
+FG_HintBar/Bg_LT_Y
+  rotate: true
+  xy: 112, 153
+  size: 110, 109
+  orig: 110, 109
+  offset: 0, 0
+  index: -1
+FG_HintBar/Bg_LT_Y1
+  rotate: true
+  xy: 212, 58
+  size: 93, 82
+  orig: 93, 82
+  offset: 0, 0
+  index: -1
+FG_HintBar/Symbol_12_B03
+  rotate: true
+  xy: 49, 5
+  size: 34, 46
+  orig: 34, 46
+  offset: 0, 0
+  index: -1
+FG_HintBar/Symbol_12_G03
+  rotate: false
+  xy: 183, 5
+  size: 41, 46
+  orig: 41, 46
+  offset: 0, 0
+  index: -1
+FG_HintBar/Symbol_12_Y03
+  rotate: true
+  xy: 1, 1
+  size: 38, 46
+  orig: 38, 46
+  offset: 0, 0
+  index: -1
+FX/01_Aladdin01_0
+  rotate: false
+  xy: 303, 245
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+FX/01_shine_M
+  rotate: false
+  xy: 97, 3
+  size: 36, 36
+  orig: 36, 36
+  offset: 0, 0
+  index: -1
+FX/Add_Particles
+  rotate: false
+  xy: 112, 53
+  size: 98, 98
+  orig: 98, 98
+  offset: 0, 0
+  index: -1
+FX/GlowRing02_00
+  rotate: false
+  xy: 223, 222
+  size: 78, 78
+  orig: 78, 78
+  offset: 0, 0
+  index: -1
+FX/Ring01_1
+  rotate: false
+  xy: 299, 317
+  size: 78, 78
+  orig: 78, 78
+  offset: 0, 0
+  index: -1
+FX/Star_20
+  rotate: false
+  xy: 135, 5
+  size: 46, 46
+  orig: 46, 46
+  offset: 0, 0
+  index: -1
+FX/Symbol12Fx
+  rotate: false
+  xy: 1, 265
+  size: 130, 130
+  orig: 130, 130
+  offset: 0, 0
+  index: -1
