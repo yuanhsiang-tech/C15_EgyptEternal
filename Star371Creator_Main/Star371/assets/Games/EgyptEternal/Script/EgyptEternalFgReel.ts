@@ -13,6 +13,7 @@ import { UITransform } from "cc";
 import { NodeUtils } from "db://assets/Stark/FuncUtils/NodeUtils";
 import { NumberUtils } from "db://assets/Stark/FuncUtils/NumberUtils";
 import { EgyptEternalBind } from "./EgyptEternalBind";
+import Touchable from "db://assets/Stark/Interactive/Touchable";
 
 
 
@@ -111,7 +112,7 @@ class SkinAttribute {
 }
 
 @ccclass
-export default class EgyptEternalMgFgReel extends CommonSpinnerControl {
+export default class EgyptEternalFgReel extends CommonSpinnerControl {
    /**Symbol靜態圖 */
    @property({ type: SpriteFrame })
    protected m_symbolSpriteFrames: SpriteFrame[] = [];
@@ -122,6 +123,8 @@ export default class EgyptEternalMgFgReel extends CommonSpinnerControl {
 
    protected m_effectView: EgyptEternalEffectView = null;
    protected m_gameBar: GameBar = null;
+   /**MG、FG盤面點擊 */
+   private m_spinButtonPlate: Touchable = null;
    private m_isTurbo: boolean = false;
 
    /**記錄輪帶節點上的Sprite Component */
@@ -146,9 +149,14 @@ export default class EgyptEternalMgFgReel extends CommonSpinnerControl {
    private m_protectCount: number[] = [0, 0, 0, 0, 0];
    private m_isProtecting: boolean[] = [false, false, false, false, false];
    //=========================================================================================================
+   onLoad() {
+      this.m_spinButtonPlate = this.node.getChildByName("mgPlateTouch").getComponent(Touchable);
+   }
+   //=========================================================================================================
    public GameInit(gamebar: GameBar, effectView: EgyptEternalEffectView) {
       this.m_effectView = effectView;
       this.m_gameBar = gamebar;
+
 
       for (let t = 0; t < this.TotalTracks; t++) {
          this.m_symbolSpriteComp[t] = [];
@@ -171,6 +179,9 @@ export default class EgyptEternalMgFgReel extends CommonSpinnerControl {
       this.On(CommonSpinner.EVENT.TRACK_JUST_STOPPED, this.ReelStop, this);
       this.On(CommonSpinner.EVENT.TRACK_REACH_BOTTOM, this.ReelReachBottom, this);
 
+   }
+   public get SpinButtonPlate(): Touchable {
+      return this.m_spinButtonPlate;
    }
 
    onDestroy() {
@@ -334,6 +345,9 @@ export default class EgyptEternalMgFgReel extends CommonSpinnerControl {
       node.addComponent(UIOpacity);
       node.addComponent(UITransform);
 
+      //增加Sprite組件
+      let spriteComp = node.addComponent(Sprite);
+
       //當傳進來的data是PlateData結構時，代表是真實盤面資料，symbolId就以真實資料為主
       //當是一般number類型時，代表他是從CreateRandomData()按照權重隨機產出來的
       let symbolId = 0;
@@ -351,7 +365,11 @@ export default class EgyptEternalMgFgReel extends CommonSpinnerControl {
          type = EgyptEternalProtocol.JpType.MAX;
       }
 
+      spriteComp.spriteFrame = this.m_symbolSpriteFrames[symbolId];
+
+      this.m_symbolSpriteComp[trackIdx][symbolIdx] = spriteComp;
       this.m_symbolids[trackIdx][symbolIdx] = symbolId;
+
 
       return node;
    }

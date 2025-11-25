@@ -13,6 +13,7 @@ import { StateManager } from "db://assets/Stark/Utility/StateManager/StateManage
 import { EnvConfig } from "db://assets/Script/Define/ConfigDefine";
 import { Device } from "db://assets/Script/Device/Device";
 import { EgyptEternalBind } from "./EgyptEternalBind";
+import { EgyptEternalMGWheel } from "./EgyptEternalMGWheel";
 
 
 let MAIN_STATE = Enum({
@@ -31,6 +32,7 @@ export default class EgyptEternalMain extends GameMock.SlotGameBaseMock {
    private m_bind: EgyptEternalBind = null;
 
    private m_gameView: EgyptEternalGameView = null;
+   private m_mgWheel: EgyptEternalMGWheel = null;
 
 
    private m_state: StateManager = null;
@@ -53,6 +55,7 @@ export default class EgyptEternalMain extends GameMock.SlotGameBaseMock {
    public InitBind() {
       this.m_bind.InitBind(this);
       this.m_gameView = this.m_bind.GameView;
+      this.m_mgWheel = this.m_bind.MGWheel;
    }
 
    //=========================================================================================================
@@ -90,6 +93,7 @@ export default class EgyptEternalMain extends GameMock.SlotGameBaseMock {
                this.m_state.NextState(MAIN_STATE.RES_CHECK);
             }
             this.m_gameView.MainProcess(dt);
+            this.m_mgWheel.MainProcess(dt);
             break;
          }
 

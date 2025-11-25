@@ -4,7 +4,11 @@ import GameBar from "../../../Script/Game/Platform/GameBar/GameBar";
 import { EgyptEternalModel } from './EgyptEternalModel';
 import EgyptEternalGameView from './EgyptEternalGameView';
 import EgyptEternalEffectView from './EgyptEternalEffectView';
-import EgyptEternalMgFgReel from './EgyptEternalMgFgReel';
+import EgyptEternalMgReel from './EgyptEternalMgReel';
+import EgyptEternalFgReel from './EgyptEternalFgReel';
+import { EgyptEternalJpPanel } from './EgyptEternalJpPanel';
+import { EgyptEternalMGWheel } from './EgyptEternalMGWheel';
+import { EgyptEternalHintBar } from './EgyptEternalHintBar';
 const { ccclass, property } = _decorator;
 
 @ccclass('EgyptEternalBind')
@@ -15,8 +19,14 @@ export class EgyptEternalBind extends Component {
     public InitBind(gameMain: EgyptEternalMain) {
         this.m_gameMain = gameMain;
         this.m_gameView?.InitBind(this);
-        this.m_mgFgReel?.InitBind(this);
+        this.m_mgReel?.InitBind(this);
+        this.m_fgReel?.InitBind(this);
         this.m_effectView?.InitBind(this);
+        this.m_mgJpPanel?.InitBind(this);
+        this.m_fgJpPanel?.InitBind(this);
+        this.m_mgWheel?.InitBind(this);
+        this.m_hintBar?.InitBind(this);
+
     }
 
     private m_gameMain: EgyptEternalMain = null;
@@ -51,11 +61,46 @@ export class EgyptEternalBind extends Component {
         return this.m_effectView;
     }
 
-    @property({ type: EgyptEternalMgFgReel, tooltip: "MG盤面" })
-    private m_mgFgReel: EgyptEternalMgFgReel = null;
+    @property({ type: EgyptEternalMgReel, tooltip: "MG盤面" })
+    private m_mgReel: EgyptEternalMgReel = null;
 
-    get MgFgReel(): EgyptEternalMgFgReel {
-        return this.m_mgFgReel;
+    get MGReel(): EgyptEternalMgReel {
+        return this.m_mgReel;
+    }
+
+    @property({ type: EgyptEternalFgReel, tooltip: "FG盤面" })
+    private m_fgReel: EgyptEternalFgReel = null;
+
+    get FGReel(): EgyptEternalFgReel {
+        return this.m_fgReel;
+    }
+
+    @property({ type: EgyptEternalJpPanel, tooltip: "MG JP Panel" })
+    private m_mgJpPanel: EgyptEternalJpPanel = null;
+
+    get MGJpPanel(): EgyptEternalJpPanel {
+        return this.m_mgJpPanel;
+    }
+
+    @property({ type: EgyptEternalJpPanel, tooltip: "FG盤面" })
+    private m_fgJpPanel: EgyptEternalJpPanel = null;
+
+    get FGJpPanel(): EgyptEternalJpPanel {
+        return this.m_fgJpPanel;
+    }
+
+    @property({ type: EgyptEternalMGWheel, tooltip: "MG 轉輪" })
+    private m_mgWheel: EgyptEternalMGWheel = null;
+
+    get MGWheel(): EgyptEternalMGWheel {
+        return this.m_mgWheel;
+    }
+
+    @property({ type: EgyptEternalHintBar, tooltip: "轉輪提示" })
+    private m_hintBar: EgyptEternalHintBar = null;
+
+    get HintBar(): EgyptEternalHintBar {
+        return this.m_hintBar;
     }
 }
 

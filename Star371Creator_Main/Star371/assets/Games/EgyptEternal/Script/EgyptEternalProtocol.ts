@@ -98,19 +98,24 @@ export namespace EgyptEternalProtocol {
    };
 
    export enum Symbol {
-      TEN = 0, // J
-      J = 1, // J
-      Q = 2, // Q
-      K = 3, // K
-      A = 4, // A
-      SCEPTER = 5, // 權杖
-      ANKH = 6, // 生命之符
-      WEDJAT = 7, // 荷魯斯之眼
-      SPHINX = 8, // 獅身人面
-      CHEST = 9, // 寶箱
+      CHEST = 0, // 寶箱
+      SPHINX = 1, // 獅身人面
+      WEDJAT = 2, // 荷魯斯之眼
+      ANKH = 3, // 生命之符
+      SCEPTER = 4, // 生命權杖
+      A = 5, // A
+      K = 6, // K
+      Q = 7, // Q
+      J = 8, // J
+      TEN = 9, // J
       WILD = 10, // Wild
       SCATTER = 11, // (Scatter)
       JP = 12, // (JP)
+      NORMAL_SYMBOL_MAX_ID = 12, // (MaxID)
+      JP_GRAND = 13,    // Grand 
+      JP_MAJOR = 14,    // Major
+      JP_MINOR = 15,    // Minor 
+      JP_MINI = 16    // Mini 
    };
 
    @CarriarDecorator.ClassName("CoinValue")

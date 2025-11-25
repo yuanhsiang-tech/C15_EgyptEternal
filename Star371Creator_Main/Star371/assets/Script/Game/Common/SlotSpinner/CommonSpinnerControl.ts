@@ -494,7 +494,6 @@ export default abstract class CommonSpinnerControl extends Component {
         */
     public Init(initData?: any[][], ...args: any[]) {
         this.InitPrepare();
-
         for (let trackIndex = 0; trackIndex < this.TotalTracks; trackIndex++) {
             // [Symbol 節點生成]
             for (let nodeIndex = 0; nodeIndex < this.m_totalSockets[trackIndex]; nodeIndex++) {
@@ -525,6 +524,7 @@ export default abstract class CommonSpinnerControl extends Component {
             this.m_trackState[trackIndex].Transit(CommonSpinner.TRACK_STATE.IDLE);
             this.m_trackTimer[trackIndex].Clear();
         }
+        console.log("m_symbolNodes:", this.m_symbolNodes);
 
         // 清掉除錯用文字並更新
         this.ClearDebugText();
@@ -1922,7 +1922,7 @@ export default abstract class CommonSpinnerControl extends Component {
         // 全部 Symbol 抵達底部
         if (this.m_movingFlag[trackIndex] === 0) {
             this.RefreshSymbolIndexMap(trackIndex);
-            
+
             this.Dispatch(CommonSpinner.EVENT.TRACK_REACH_BOTTOM, trackIndex, this.m_trackStatus[trackIndex].ReboundTime);
             this.m_trackState[trackIndex].Transit(CommonSpinner.TRACK_STATE.REBOUND);
         }

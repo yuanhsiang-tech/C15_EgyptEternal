@@ -12,7 +12,7 @@ import { GameCommonCommand } from "../../../Script/Game/Common/GameCommonCommand
 import JpUnlockTip from "../../../Script/Game/Component/JpUnlockTip";
 import EgyptEternalDefine from "./EgyptEternalDefine";
 import { EffectData, EgyptEternalProtocol, PhaseType, PlateData } from "./EgyptEternalProtocol";
-import EgyptEternalMgFgReel, { FASTER_SPIN_SETTING, TURBO_SPIN_SETTING } from "./EgyptEternalMgFgReel";
+import EgyptEternalMgReel, { FASTER_SPIN_SETTING, TURBO_SPIN_SETTING } from "./EgyptEternalMgReel";
 import { bezier } from "cc";
 import { Director } from "cc";
 import Touchable, { TouchableEvent } from "db://assets/Stark/Interactive/Touchable";
@@ -26,6 +26,7 @@ import { RollingNumberLabel } from "db://assets/Stark/RollingNumber/RollingNumbe
 import { RollingEvent } from "db://assets/Stark/RollingNumber/RollingNumber";
 import { Persist } from "db://assets/Script/Persist/Persist";
 import { EgyptEternalBind } from "./EgyptEternalBind";
+import EgyptEternalFgReel from "./EgyptEternalFgReel";
 
 const { ccclass, property } = _decorator;
 
@@ -109,8 +110,6 @@ export class ReelStopSoundAttribute {
 @ccclass
 export default class EgyptEternalEffectView extends Component {
    //#region scene property
-   /**Bg節點 */
-   @property({ type: Node, tooltip: "Bg節點" }) private m_nodeBg: Node = null;
    /**各symbol prefab */
    @property({ type: [Prefab], tooltip: "symbol prefab" }) private m_symblPrefab: Prefab[] = [];
 
@@ -443,8 +442,10 @@ export default class EgyptEternalEffectView extends Component {
    /**JP開放最低bet */
    private m_jpMinLimitBet: number[] = [];
 
-   /**MG、FG盤面點擊 */
-   private m_spinButtonPlate: Touchable = null;
+   /**MG盤面點擊 */
+   private m_mgSpinButtonPlate: Touchable = null;
+   /**FG盤面點擊 */
+   private m_fgSpinButtonPlate: Touchable = null;
 
    /**Symbol特效節點位置 */
    private m_symbolFx: Node = null;
@@ -486,8 +487,10 @@ export default class EgyptEternalEffectView extends Component {
    /**Jp鎖頭 */
    private m_jpFront: sp.Skeleton[] = [];
 
-   /**MG、FG盤面 */
-   private m_mgFgReel: EgyptEternalMgFgReel = null;
+   /**MG盤面 */
+   private m_mgReel: EgyptEternalMgReel = null;
+   /**FG盤面 */
+   private m_fgReel: EgyptEternalFgReel = null;
 
    /**MG、FG科學怪人角色 */
    private m_mgFgFrank: sp.Skeleton = null;
@@ -504,9 +507,6 @@ export default class EgyptEternalEffectView extends Component {
    /**記錄進場動畫 TrackEntry */
    private m_introTrackEntry: sp.spine.TrackEntry = null;
 
-
-   /**背景Spine */
-   private m_background: sp.Skeleton = null;
 
    /**盤面Spine */
    private m_reelSpine: sp.Skeleton = null;
@@ -570,8 +570,7 @@ export default class EgyptEternalEffectView extends Component {
 
       this.InitParentNode();
 
-      //背景設定
-      this.SetBackground("MG");
+
    }
 
    /**初始化一堆節點 */
@@ -580,17 +579,16 @@ export default class EgyptEternalEffectView extends Component {
       this.m_gameIntro = this.node.getChildByName("S_GameIntro").getComponent(sp.Skeleton);
       this.m_introSkip = this.node.getChildByName("Button_Skip");
 
-      //背景Spine
-      this.m_background = this.m_nodeBg.getChildByName("S_Bg").getComponent(sp.Skeleton);
-
-      //盤面點擊
-      this.m_spinButtonPlate = this.m_nodeBg.getChildByName("Node_MG_FG_Reel").getChildByName("mgFgPlateTouch").getComponent(Touchable);
 
 
    }
 
    public InitBind(bind: EgyptEternalBind) {
       this.m_bind = bind;
+      this.m_mgReel = bind.MGReel;
+      this.m_fgReel = bind.FGReel;
+      //盤面點擊
+      this.m_mgSpinButtonPlate = this.m_bind.MGReel.SpinButtonPlate;
    }
 
 
@@ -618,7 +616,7 @@ export default class EgyptEternalEffectView extends Component {
       this.m_megaTouch?.node && this.m_megaTouch?.node.off(TouchableEvent.Clicked, this.ForceUnlockMega, this);
       this.m_grandTouch?.node && this.m_grandTouch?.node.off(TouchableEvent.Clicked, this.ForceUnlockGrand, this);
 
-      this.m_spinButtonPlate?.node && this.m_spinButtonPlate?.node.off(TouchableEvent.Clicked, this.OnReelPanelTouchEvent, this);
+      this.m_mgSpinButtonPlate?.node && this.m_mgSpinButtonPlate?.node.off(TouchableEvent.Clicked, this.OnReelPanelTouchEvent, this);
    }
    //#region StateManager
    public MainProcess(dt: number) {
@@ -827,7 +825,7 @@ export default class EgyptEternalEffectView extends Component {
    public MgShowEnter(isReconnecting: boolean = false): void {
       this.TurnOnReelTxt();
 
-      this.m_spinButtonPlate.node.active = true;
+      this.m_mgSpinButtonPlate.node.active = true;
 
       GamesChief.SlotGame.GameAudio.PlaySceneBGM(EgyptEternalDefine.AudioFilePath.MG_BGM);
    }
@@ -1016,7 +1014,7 @@ export default class EgyptEternalEffectView extends Component {
 
    /**Free Game 進場表演 */
    public FgShowEnter(isAutoplay: boolean, isSkip: boolean): void {
-      this.m_spinButtonPlate.node.active = true;
+      this.m_mgSpinButtonPlate.node.active = true;
 
       this.m_isAutoplay = isAutoplay;
       this.m_isShowEnd = false;
@@ -1150,7 +1148,7 @@ export default class EgyptEternalEffectView extends Component {
          }
       }
 
-      if ((this.m_isTurbo || this.m_mgFgReel.IsHardStop) && !this.m_isNearWining) {
+      if ((this.m_isTurbo || this.m_mgReel.IsHardStop) && !this.m_isNearWining) {
          if (!this.m_playSoundOnce) {
             this.m_playSoundOnce = true;
             let playSound: boolean[] = [false, false]
@@ -1215,7 +1213,7 @@ export default class EgyptEternalEffectView extends Component {
 
 
                //計算起點與終點
-               let startPos: Vec3 = this.TransformSymbolPosition(this.m_mgFgReel.GetSymbolNode(i, j));
+               let startPos: Vec3 = this.TransformSymbolPosition(this.m_mgReel.GetSymbolNode(i, j));
                let endNode: Node = null;
                //終點位置
                let endPosBiasX: number = 0;
@@ -1526,7 +1524,7 @@ export default class EgyptEternalEffectView extends Component {
       isEnterFg: boolean,
       symbolActive: boolean = false,
    ) {
-      let symbolNode = this.m_mgFgReel.GetSymbolNode(track, socket)
+      let symbolNode = this.m_mgReel.GetSymbolNode(track, socket)
 
       if (!isValid(symbolNode) || !symbolNode.active) {
          return;
@@ -1618,10 +1616,10 @@ export default class EgyptEternalEffectView extends Component {
                effect.getCurrent(0).trackTime = idleTime;
             })
 
-            let reboundDist: number = this.m_mgFgReel.IsHardStop ? FASTER_SPIN_SETTING.hardReboundDist : FASTER_SPIN_SETTING.reboundDist;
-            let reboundTime: number = this.m_mgFgReel.IsHardStop ? FASTER_SPIN_SETTING.hardReboundTime : FASTER_SPIN_SETTING.reboundTime;
+            let reboundDist: number = this.m_mgReel.IsHardStop ? FASTER_SPIN_SETTING.hardReboundDist : FASTER_SPIN_SETTING.reboundDist;
+            let reboundTime: number = this.m_mgReel.IsHardStop ? FASTER_SPIN_SETTING.hardReboundTime : FASTER_SPIN_SETTING.reboundTime;
             if (this.m_isTurbo) {
-               if (this.m_mgFgReel.IsHardStop) {
+               if (this.m_mgReel.IsHardStop) {
                   reboundDist = TURBO_SPIN_SETTING.hardReboundDist;
                   reboundTime = TURBO_SPIN_SETTING.hardReboundTime;
                }
@@ -2200,9 +2198,9 @@ export default class EgyptEternalEffectView extends Component {
                   this.ShowAndClickButton(() => {
                      //轉換背景,設定局數,播宣告End動畫
                      this.ShowFgReelTxt();
-                     this.m_mgFgReel.SetProtectSymbol();
-                     this.m_mgFgReel.ChangeOutsideSymbol();
-                     this.m_mgFgReel.ForceSetData(this.m_mgFgReel.FgInitPlate());
+                     this.m_mgReel.SetProtectSymbol();
+                     this.m_mgReel.ChangeOutsideSymbol();
+                     this.m_mgReel.ForceSetData(this.m_mgReel.FgInitPlate());
                      this.ChangeBackGround();
                      this.SetFgSpinnedLabel(0);
                      this.SetFgTotalFreeLabel(EgyptEternalDefine.FG_BASE_ROUND);
@@ -2306,9 +2304,9 @@ export default class EgyptEternalEffectView extends Component {
             this.scheduleOnce(() => {
                this.TurnOnReelTxt();
                this.ClearAllEffect();
-               this.m_mgFgReel.SetProtectSymbol();
-               this.m_mgFgReel.ChangeOutsideSymbol();
-               this.m_mgFgReel.ForceSetData(this.m_mgPlate);
+               this.m_mgReel.SetProtectSymbol();
+               this.m_mgReel.ChangeOutsideSymbol();
+               this.m_mgReel.ForceSetData(this.m_mgPlate);
             }, 0.5)
 
 
@@ -2426,9 +2424,9 @@ export default class EgyptEternalEffectView extends Component {
          // this.m_introSoundKey = GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.INTRO);//進場音效
          this.m_introTrackEntry = this.m_gameIntro.setAnimation(0, "GameIntro", false);
          //TODO Ide
-         if (this.m_mgFgReel) {
-            this.m_mgFgReel.Hide();
-            this.m_mgFgReel.SetReelOpacity(0);
+         if (this.m_mgReel) {
+            this.m_mgReel.Hide();
+            this.m_mgReel.SetReelOpacity(0);
          }
 
 
@@ -2439,8 +2437,10 @@ export default class EgyptEternalEffectView extends Component {
             this.m_introSkip.active = false;
 
             this.scheduleOnce(() => {
+               this.m_mgReel.Show();
+               this.m_mgReel.SetReelOpacity(255, true);
                this.m_gameBar.node.active = true;
-               this.m_spinButtonPlate.node.active = true;
+               this.m_mgSpinButtonPlate.node.active = true;
                OpeningCb();
                OpenPlateFormEvent();
             }, 0.5)
@@ -2468,12 +2468,6 @@ export default class EgyptEternalEffectView extends Component {
       this.m_introTrackEntry.trackTime = 4;
 
       GamesChief.SlotGame.GameAudio.SetCurrentTime(this.m_introSoundKey, 4);
-   }
-
-   /**設定背景Skin */
-   private SetBackground(skinName: string) {
-      this.m_background.setSkin(skinName);
-      this.m_background.setAnimation(0, "Loop", true);
    }
 
    /*每轉Spin時的Reel特效 */
@@ -2841,7 +2835,7 @@ export default class EgyptEternalEffectView extends Component {
       let mgReelTXT01 = data.getChildByName("MG_Reel_TXT");
 
       let setMG = () => {
-         this.SetBackground("MG");
+         this.m_bind.GameView.SetBackground("MG");
          this.m_mgFgFrank.node.active = true;
          this.m_mgFgFrank.setSkin("MG");
          this.m_phaseSpine[PhaseType.GREEN].node.active = true;
@@ -2852,7 +2846,7 @@ export default class EgyptEternalEffectView extends Component {
       }
 
       let setFG = () => {
-         this.SetBackground("FG");
+         this.m_bind.GameView.SetBackground("FG");
          this.m_mgFgFrank.node.active = true;
          this.m_mgFgFrank.setSkin("FG")
          this.m_phaseSpine[PhaseType.GREEN].node.active = true;

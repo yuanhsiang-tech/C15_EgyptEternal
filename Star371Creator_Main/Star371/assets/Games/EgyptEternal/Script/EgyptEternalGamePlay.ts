@@ -2,7 +2,7 @@ import EgyptEternalMain from "./EgyptEternalMain";
 import { _decorator, log, v3 } from 'cc';
 import { EventDefine } from "../../../Script/Define/EventDefine";
 import { GameCommonCommand } from "../../../Script/Game/Common/GameCommonCommand";
-import EgyptEternalMgFgReel from "./EgyptEternalMgFgReel";
+import EgyptEternalMgReel from "./EgyptEternalMgReel";
 import { EffectData, FRANKENSTEIN_G2U_PROTOCOL, FRANKENSTEIN_U2G_PROTOCOL, EgyptEternalProtocol, PhaseType, PlateData } from "./EgyptEternalProtocol";
 
 import EgyptEternalDefine from "./EgyptEternalDefine";
@@ -12,6 +12,7 @@ import { EventDispatcher } from "db://assets/Stark/Utility/EventDispatcher";
 import { CarriarParser } from "db://assets/Script/Net/Command/Command";
 import * as FKP from './frankenstein_pb';
 import { EgyptEternalBind } from "./EgyptEternalBind";
+import EgyptEternalFgReel from "./EgyptEternalFgReel";
 
 //=======================小記錄=========================================================
 
@@ -100,7 +101,7 @@ export class MainGamePlay implements GamePlay {
    m_gameMain: EgyptEternalMain;
    IsFeatureGame: boolean;
    AutoplayTime = 0;
-   m_mgFgReel: EgyptEternalMgFgReel;
+   m_mgReel: EgyptEternalMgReel;
    m_spinAck: EgyptEternalProtocol.SpinAck = null;
    m_effectView: EgyptEternalEffectView;
    m_freeplay: FreePlay;
@@ -116,7 +117,7 @@ export class MainGamePlay implements GamePlay {
    constructor(bind: EgyptEternalBind) {
       this.m_bind = bind;
       this.m_gameMain = bind.GameMain;
-      this.m_mgFgReel = bind.MgFgReel;
+      this.m_mgReel = bind.MGReel;
       this.m_effectView = bind.EffectView;
       this.IsFeatureGame = false;
    }
@@ -159,7 +160,7 @@ export class MainGamePlay implements GamePlay {
    ShowEnter(isAutoplay: boolean, isSkip: boolean): void {
       log("進入mainGame");
       this.m_effectView.MgShowEnter();
-      this.m_mgFgReel.node.active = true;
+      this.m_mgReel.node.active = true;
    }
 
    IsShowEnterEnd(): boolean {
@@ -181,7 +182,7 @@ export class MainGamePlay implements GamePlay {
       this.m_effectView.MgResetParameter();
 
       //轉輪啟動
-      this.m_mgFgReel.SpinReel(isFastMode, null, isTurbo);
+      this.m_mgReel.SpinReel(isFastMode, null, isTurbo);
 
       //表演動畫
       this.m_effectView.ReelSpinAni();
@@ -202,12 +203,12 @@ export class MainGamePlay implements GamePlay {
    }
 
    IsStopHard(): void {
-      this.m_mgFgReel.StopHard();
+      this.m_mgReel.StopHard();
    }
 
 
    IsPlateStop() {
-      return this.m_mgFgReel.IsPlateStopped;
+      return this.m_mgReel.IsPlateStopped;
    }
 
    StartAward(isTurbo?: boolean): void {
@@ -253,7 +254,7 @@ export class FreePlay implements GamePlay {
    m_gameMain: EgyptEternalMain;
    IsFeatureGame: boolean;
    AutoplayTime = 0;
-   m_mgFgReel: EgyptEternalMgFgReel;
+   m_fgReel: EgyptEternalFgReel;
    m_spinAck: EgyptEternalProtocol.SpinAck = null;
    m_effectView: EgyptEternalEffectView;
    m_progress: number = 0;
@@ -268,7 +269,7 @@ export class FreePlay implements GamePlay {
    constructor(bind: EgyptEternalBind) {
       this.m_bind = bind;
       this.m_gameMain = bind.GameMain;
-      this.m_mgFgReel = bind.MgFgReel;
+      this.m_fgReel = bind.FGReel;
       this.m_effectView = bind.EffectView;
       this.IsFeatureGame = false;
    }
@@ -397,7 +398,7 @@ export class FreePlay implements GamePlay {
                this.m_effectView.RemainFreeRound = this.m_spinAck.plateData.remainFreeRound;
             }
 
-            this.m_mgFgReel.SetFinalData(newPlateData, finalNearWin);
+            this.m_mgReel.SetFinalData(newPlateData, finalNearWin);
             EventDispatcher.Shared.Dispatch(EventDefine.Game.SPIN_WILL_FINISH, isEnterFeatureGame);
          }
          else {
@@ -426,7 +427,7 @@ export class FreePlay implements GamePlay {
 
             this.m_effectView.ReelStopSound = reelStopSound.slice();
 
-            this.m_mgFgReel.SetFinalData(newPlateData);
+            this.m_mgReel.SetFinalData(newPlateData);
 
             //判斷Bet是否正確
             if (this.m_spinAck.ackType === GameCommonCommand.SPIN_ACK_TYPE.TIME_STAMP_INVALID) {
@@ -471,7 +472,7 @@ export class FreePlay implements GamePlay {
       this.m_effectView.FgResetParameter();
 
       //轉輪啟動
-      this.m_mgFgReel.SpinReel(isFastMode, null, isTurbo);
+      this.m_mgReel.SpinReel(isFastMode, null, isTurbo);
 
       //表演動畫
       this.m_effectView.FgSpinned = this.m_effectView.FgSpinned + 1;
@@ -483,7 +484,7 @@ export class FreePlay implements GamePlay {
    }
 
    IsStopHard(): void {
-      this.m_mgFgReel.StopHard();
+      this.m_mgReel.StopHard();
    }
 
    IsSpinAckReceive(): boolean {
@@ -491,7 +492,7 @@ export class FreePlay implements GamePlay {
    }
 
    IsPlateStop() {
-      return this.m_mgFgReel.IsPlateStopped;
+      return this.m_mgReel.IsPlateStopped;
    }
 
 

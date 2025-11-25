@@ -1,4 +1,4 @@
-import { _decorator, log, Component, Vec3, isValid } from 'cc';
+import { _decorator, log, Component, Vec3, isValid, sp } from 'cc';
 import GameBar from "../../../Script/Game/Platform/GameBar/GameBar";
 import { GameBarDefine } from "../../../Script/Game/Platform/GameBar/GameBarDefine";
 import { GameCommonCommand } from "../../../Script/Game/Common/GameCommonCommand";
@@ -8,7 +8,7 @@ import { FreePlay, GamePlay, GamePlayType, MainGamePlay } from './EgyptEternalGa
 
 import { EffectData, FRANKENSTEIN_G2U_PROTOCOL, EgyptEternalProtocol, PlateData } from './EgyptEternalProtocol';
 import EgyptEternalDefine from './EgyptEternalDefine';
-import EgyptEternalMgFgReel from './EgyptEternalMgFgReel';
+import EgyptEternalMgReel from './EgyptEternalMgReel';
 import EgyptEternalEffectView from './EgyptEternalEffectView';
 import { TimedBool } from 'db://assets/Stark/Utility/TimedBool';
 import { StateManager } from 'db://assets/Stark/Utility/StateManager/StateManager';
@@ -17,6 +17,7 @@ import { EventDispatcher } from 'db://assets/Stark/Utility/EventDispatcher';
 import * as FKP from './frankenstein_pb';
 import { EgyptEternalBind } from './EgyptEternalBind';
 import { EgyptEternalModel } from './EgyptEternalModel';
+import EgyptEternalFgReel from './EgyptEternalFgReel';
 
 const STATE = {
    INIT: 0,
@@ -32,7 +33,8 @@ const { ccclass, property } = _decorator;
 
 @ccclass
 export default class EgyptEternalGameView extends Component {
-   private m_slotReel: EgyptEternalMgFgReel = null;
+   private m_slotMgReel: EgyptEternalMgReel = null;
+   private m_slotFgReel: EgyptEternalFgReel = null;
 
    private m_effectView: EgyptEternalEffectView = null;
 
@@ -107,6 +109,11 @@ export default class EgyptEternalGameView extends Component {
    /**是否正在播放開場動畫 */
    private m_isOpening: boolean = false;
 
+   /**背景Spine */
+   private m_background: sp.Skeleton = null;
+
+
+
    //=========================================================================================================
    onLoad() {
       this.m_state = new StateManager(STATE.INIT);
@@ -137,19 +144,29 @@ export default class EgyptEternalGameView extends Component {
 
       //TODO Ide
       this.m_nextGameplay = this.m_mainGameplay;
-
+      //背景設定
+      this.SetBackground("MG");
       //GamesChief.SlotGame.GameBar.ApplyWinEffectSettingList( EgyptEternalDefine.MG_FG_WIN_EFFECT_SETTING );
    }
 
    /**初始化找一堆節點 */
    private InitParentNode() {
-      this.m_slotReel = NodeUtils.GetUI(this.node, "Bg").getChildByName("Plate").getComponent(EgyptEternalMgFgReel);
-      console.log("InitParentNode:", NodeUtils.GetUI(this.node, "Effect"), NodeUtils.GetUI(this.node, "Effect").getComponent(EgyptEternalEffectView));
-      this.m_effectView = NodeUtils.GetUI(this.node, "Effect").getComponent(EgyptEternalEffectView);
+      // this.m_slotMgReel = NodeUtils.GetUI(this.node, "Bg").getChildByName("Plate").getComponent(EgyptEternalMgReel);
+      // this.m_effectView = NodeUtils.GetUI(this.node, "Effect").getComponent(EgyptEternalEffectView);
+      //背景Spine
+      this.m_background = this.node.getChildByName("S_Bg").getComponent(sp.Skeleton);
    }
    public InitBind(bind: EgyptEternalBind) {
       this.m_bind = bind;
       this.m_model = bind.Model;
+      this.m_slotMgReel = bind.MGReel;
+      this.m_effectView = bind.EffectView;
+
+   }
+   /**設定背景Skin */
+   public SetBackground(skinName: string) {
+      this.m_background.setSkin(skinName);
+      this.m_background.setAnimation(0, "Loop", true);
    }
    //=========================================================================================================
    public MainProcess(dt: number) {
@@ -550,8 +567,8 @@ export default class EgyptEternalGameView extends Component {
       EventDispatcher.Shared.Dispatch(EventDefine.Game.GAME_START);
       //TODO Ide
       //MG、FG輪帶初始化
-      this.m_slotReel.GameInit(this.m_gameBar, this.m_effectView);
-      this.m_slotReel.Init(null);
+      this.m_slotMgReel.GameInit(this.m_gameBar, this.m_effectView);
+      this.m_slotMgReel.Init(null);
    }
    //=========================================================================================================
    /**判斷音效資源是否載入完成 */
@@ -601,8 +618,8 @@ export default class EgyptEternalGameView extends Component {
       // this.m_gameBar.ApplyWinEffectSettingList(EgyptEternalDefine.WIN_EFFECT_SETTING);
 
       //MG、FG輪帶初始化
-      this.m_slotReel.GameInit(this.m_gameBar, this.m_effectView);
-      this.m_slotReel.Init(null);
+      this.m_slotMgReel.GameInit(this.m_gameBar, this.m_effectView);
+      this.m_slotMgReel.Init(null);
 
 
       //設定JP數值
@@ -731,7 +748,7 @@ export default class EgyptEternalGameView extends Component {
 
       this.m_effectView.IsFirstReelHasFrank = isFirstReelHasFrank;
 
-      this.m_slotReel.ForceSetData(newPlateData);
+      this.m_slotMgReel.ForceSetData(newPlateData);
       return newPlateData;
    }
 
@@ -758,7 +775,7 @@ export default class EgyptEternalGameView extends Component {
 
       this.m_effectView.IsFirstReelHasFrank = isFirstReelHasFrank;
 
-      this.m_slotReel.ForceSetData(newPlateData);
+      this.m_slotMgReel.ForceSetData(newPlateData);
       return newPlateData;
    }
 
