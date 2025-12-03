@@ -1,20 +1,16 @@
 import EgyptEternalMain from "./EgyptEternalMain";
 import EgyptEternalGameView from "./EgyptEternalGameView";
 import { _decorator, Vec3, log, instantiate, Node, tween, Component, sp, Prefab, isValid, v3, Label, Tween, ParticleSystem2D, Font, } from 'cc';
-import { UITransform } from "cc";
-import { UIOpacity } from "cc";
-import { director } from "cc";
+import { UITransform, Animation, UIOpacity, director, bezier, Director } from "cc";
 import GameBar, { BetLockChangeInfo, BetLockStatus } from "../../../Script/Game/Platform/GameBar/GameBar";
 import JpRolling from "../../../Script/Game/Component/JpRolling";
 import { EventDefine } from "../../../Script/Define/EventDefine";
 import ProclaimButton from '../../../Script/Game/Component/ProclaimButton';
 import { GameCommonCommand } from "../../../Script/Game/Common/GameCommonCommand";
 import JpUnlockTip from "../../../Script/Game/Component/JpUnlockTip";
-import EgyptEternalDefine from "./EgyptEternalDefine";
+import EgyptEternalDefine, { FeatureType, JpType } from "./EgyptEternalDefine";
 import { EffectData, EgyptEternalProtocol, PhaseType, PlateData } from "./EgyptEternalProtocol";
 import EgyptEternalMgReel, { FASTER_SPIN_SETTING, TURBO_SPIN_SETTING } from "./EgyptEternalMgReel";
-import { bezier } from "cc";
-import { Director } from "cc";
 import Touchable, { TouchableEvent } from "db://assets/Stark/Interactive/Touchable";
 import { StateManager } from "db://assets/Stark/Utility/StateManager/StateManager";
 import { TimedBool } from "db://assets/Stark/Utility/TimedBool";
@@ -89,6 +85,43 @@ export const STOP_SOUND_PRIORITY = {
    COIN_IN_RANGE: 4,
 }
 
+enum FeatureTypeValue {
+   Only_W = 1,
+   Only_M = 2,
+   WM = 3,
+   Only_R = 4,
+   WR = 5,
+   MR = 6,
+   WMR = 7,
+}
+
+enum FgComplimentTxt {
+   FREE_SPIN_TXT = 1,
+   FREE_GAME_TYPE_TXT = 2,
+   MULTIPLIER_TYPE_TXT = 3,
+   RANDOM_WILD_TYPE_TXT = 4,
+   TOTAL_WIN_NUM = 5,
+   RESPIN_NUM = 6,
+   TOTAL = 7
+}
+
+enum EffectState {
+   IDLE = 1,
+
+   SHOW_SYMBOL_EFFECT = 2,    // MainGame中獎表演
+
+   FREE_GAME_ENTER = 3, //進入FG
+   FREE_GAME_COMPLIMENT = 4,
+
+   SHOW_FG_EFFECT = 5, //FreeGame中獎表演
+   SHOW_FG_WILD_EFFECT = 6, //FreeGame Wild表演
+   SHOW_JP_COMPLIMENT = 7,
+
+   MAIN_GAME_ENTER = 8,
+
+   SHOW_JP_EFFECT = 9, //MainGame中獎表演
+   SHOW_FG_FEATURE = 10, //FreeGame前置表演
+}
 const LEVELUP_NEED_COUNT: number[] = [5, 4, 3] // 2x2 -> 3x3 需要蒐集五個雷電球,..以此類推
 const LEVELUP_TOTAL_NEED_COUNT: number[] = [5, 9, 12];
 const THUNDER_BALL_LEVEL_POS: Vec3[][] = [ //雷電球進度每個等級的位置
@@ -110,20 +143,64 @@ export class ReelStopSoundAttribute {
 @ccclass
 export default class EgyptEternalEffectView extends Component {
    //#region scene property
+   /**大獎預告 */
+   @property({ type: sp.Skeleton, tooltip: "大獎預告" })
+   private m_omenSpine: sp.Skeleton = null;
+
+   /**FG進場表演 */
+   @property({ type: Node, tooltip: "FG進場表演" })
+   private m_fgDeclareNode: Node = null;
+
+   /**FG進場表演 */
+   @property({ type: sp.Skeleton, tooltip: "FG進場表演" })
+   private m_fgDeclareSpine: sp.Skeleton = null;
+
+   /**FG結算宣告表演 */
+   @property({ type: Node, tooltip: "FG結算宣告表演" })
+   private m_fgComplimentNode: Node = null;
+   /**FG結算宣告表演 */
+   @property({ type: sp.Skeleton, tooltip: "FG結算宣告表演" })
+   private m_fgComplimentSpine: sp.Skeleton = null;
+
+   /**JP結算宣告表演 */
+   @property({ type: Node, tooltip: "JP結算宣告表演" })
+   private m_jpComplimentNode: Node = null;
+   /**JP結算宣告表演 */
+   @property({ type: sp.Skeleton, tooltip: "JP結算宣告表演" })
+   private m_jpComplimentSpine: sp.Skeleton = null;
+
    /**各symbol prefab */
-   @property({ type: [Prefab], tooltip: "symbol prefab" }) private m_symblPrefab: Prefab[] = [];
+   @property({ type: [Prefab], tooltip: "symbol prefab" })
+   private m_symblPrefab: Prefab[] = [];
 
    /**線獎特效框 */
-   @property({ type: [sp.Skeleton], tooltip: "線獎特效框" }) private m_winFrame: sp.Skeleton[] = [];
+   @property({ type: [sp.Skeleton], tooltip: "線獎特效框" })
+   private m_winFrame: sp.Skeleton[] = [];
+
+   /**金幣特效 */
+   @property({ type: Prefab, tooltip: "金幣特效" })
+   private m_fxGoldPrefab: Prefab = null;
+   /**鑽石特效 */
+   @property({ type: Prefab, tooltip: "鑽石特效" })
+   private m_fxDiamandPrefab: Prefab = null;
 
 
    /**蒐集特效 */
-   @property({ type: [Prefab], tooltip: "蒐集特效" }) private m_flyEffect: Prefab[] = [];
+   @property({ type: [Prefab], tooltip: "蒐集特效" })
+   private m_flyEffect: Prefab[] = [];
 
    /**高分Font */
-   @property({ type: Font, tooltip: "高分Font" }) private m_highValueFont: Font = null;
+   @property({ type: Font, tooltip: "高分Font" })
+   private m_highValueFont: Font = null;
    /**普通Font */
-   @property({ type: Font, tooltip: "普通Font" }) private m_normalValueFont: Font = null;
+   @property({ type: Font, tooltip: "普通Font" })
+   private m_normalValueFont: Font = null;
+
+   /** 特色類別 */
+   private m_featureTypeValue: number = 0;
+   private m_featureTypeUsing: boolean[] = [false, false, false];
+   private m_fgDeclareBoneFollow = false;
+   private m_FgComplimentTxt = {};
 
 
    //#region getter, setter
@@ -453,9 +530,6 @@ export default class EgyptEternalEffectView extends Component {
    /**跑分是否結束 */
    private m_runscoreShowEnd: boolean = false;
 
-   /**FG開場宣告Node */
-   private m_fgDeclareNode: Node = null;
-
    /**FG加轉數宣告Node */
    private m_addSpinNode: Node = null;
 
@@ -464,9 +538,6 @@ export default class EgyptEternalEffectView extends Component {
 
    /**FG總局數Label */
    private m_totalFreeLabel: Label = null;
-
-   /**FG結算宣告節點 */
-   private m_fgComplimentNode: Node = null;
 
    /**Scatter NearWin節點 */
    private m_scatterNearWinFx: Node[] = [];
@@ -539,8 +610,6 @@ export default class EgyptEternalEffectView extends Component {
    /**記錄需要被蒐集的雷電球資訊 */
    private m_waitCollectThunderBall: EffectData[] = [];
 
-   /**JP結算宣告節點 */
-   private m_jpComplimentNode: Node = null;
 
    /**MG預兆 */
    private m_mgOmen: sp.Skeleton = null;
@@ -579,6 +648,13 @@ export default class EgyptEternalEffectView extends Component {
       this.m_gameIntro = this.node.getChildByName("S_GameIntro").getComponent(sp.Skeleton);
       this.m_introSkip = this.node.getChildByName("Button_Skip");
 
+      this.m_FgComplimentTxt[FgComplimentTxt.FREE_SPIN_TXT] = this.m_fgComplimentNode.getChildByName("HP_TXT1");
+      this.m_FgComplimentTxt[FgComplimentTxt.FREE_GAME_TYPE_TXT] = this.m_fgComplimentNode.getChildByName("HP_TXT2");
+      this.m_FgComplimentTxt[FgComplimentTxt.MULTIPLIER_TYPE_TXT] = this.m_fgComplimentNode.getChildByName("HP_TXT3");
+      this.m_FgComplimentTxt[FgComplimentTxt.RANDOM_WILD_TYPE_TXT] = this.m_fgComplimentNode.getChildByName("HP_TXT4");
+      this.m_FgComplimentTxt[FgComplimentTxt.TOTAL_WIN_NUM] = this.m_fgComplimentNode.getChildByName("HP_Num1");
+      this.m_FgComplimentTxt[FgComplimentTxt.RESPIN_NUM] = this.m_fgComplimentNode.getChildByName("HP_Num2");
+      this.m_FgComplimentTxt[FgComplimentTxt.TOTAL] = this.m_fgComplimentNode.getChildByName("HP_Num3");
 
 
    }
@@ -598,9 +674,10 @@ export default class EgyptEternalEffectView extends Component {
    }
 
    protected onEnable(): void {
+      //TODO Ide
       EventDispatcher.Shared.On(EventDefine.Game.BAR_BET_VALUE_CHANGED, this.OnBetChange, this);
-      EventDispatcher.Shared.On(EventDefine.Game.BET_UP_STATUS_CHANGED, this.UpdateJpLockDisplay, this);
-      EventDispatcher.Shared.On(EventDefine.Game.BET_INFO_UPDATE_APPLY, this.OnGameBarBetInfoUpdate, this);
+      // EventDispatcher.Shared.On(EventDefine.Game.BET_UP_STATUS_CHANGED, this.UpdateJpLockDisplay, this);
+      // EventDispatcher.Shared.On(EventDefine.Game.BET_INFO_UPDATE_APPLY, this.OnGameBarBetInfoUpdate, this);
 
 
    }
@@ -609,8 +686,9 @@ export default class EgyptEternalEffectView extends Component {
       this.m_phaseTouch?.[PhaseType.GREEN]?.node && this.m_phaseTouch[PhaseType.GREEN]?.node.off(TouchableEvent.Clicked, this.GreenPhaseTouchEvent, this);
 
       EventDispatcher.Shared.Off(EventDefine.Game.BAR_BET_VALUE_CHANGED, this.OnBetChange, this);
-      EventDispatcher.Shared.Off(EventDefine.Game.BET_UP_STATUS_CHANGED, this.UpdateJpLockDisplay, this);
-      EventDispatcher.Shared.Off(EventDefine.Game.BET_INFO_UPDATE_APPLY, this.OnGameBarBetInfoUpdate, this);
+      //TODO Ide
+      // EventDispatcher.Shared.Off(EventDefine.Game.BET_UP_STATUS_CHANGED, this.UpdateJpLockDisplay, this);
+      // EventDispatcher.Shared.Off(EventDefine.Game.BET_INFO_UPDATE_APPLY, this.OnGameBarBetInfoUpdate, this);
 
       this.m_majorTouch?.node && this.m_majorTouch?.node.off(TouchableEvent.Clicked, this.ForceUnlockMajor, this);
       this.m_megaTouch?.node && this.m_megaTouch?.node.off(TouchableEvent.Clicked, this.ForceUnlockMega, this);
@@ -666,20 +744,20 @@ export default class EgyptEternalEffectView extends Component {
                log("EFFECTVIEW : STATE.MG_SHOW_SYMBOL_LINE_EFFECT")
 
                //表示該局有贏分
-               if (this.m_spinAck.plateData.plateWin.gt(0)) {
-                  this.FiveLine();
-                  this.ShowSymbolLine();
+               // if (this.m_spinAck.plateData.plateWin.gt(0)) {
+               //    this.FiveLine();
+               //    this.ShowSymbolLine();
 
-                  this.ShowRunScore(
-                     false,
-                     () => {
-                        this.m_runscoreShowEnd = true;
-                     }
-                  );
-               }
-               else {
-                  this.m_runscoreShowEnd = true;
-               }
+               //    this.ShowRunScore(
+               //       false,
+               //       () => {
+               //          this.m_runscoreShowEnd = true;
+               //       }
+               //    );
+               // }
+               // else {
+               this.m_runscoreShowEnd = true;
+               // }
             }
             else {
                if (this.m_runscoreShowEnd) {
@@ -712,15 +790,15 @@ export default class EgyptEternalEffectView extends Component {
                this.m_isInFg = true;
                this.ShowSymbolLineControl(false);
 
-               this.ShowFgStart(() => {
-                  if (this.m_isSkipShowEnter) {
-                     this.m_isSkipShowEnter = false;
-                     this.m_state.NextState(STATE.IDLE);
-                  }
-                  else {
-                     this.m_state.NextState(STATE.IDLE);
-                  }
-               })
+               // this.ShowFgStart(() => {
+               //    if (this.m_isSkipShowEnter) {
+               //       this.m_isSkipShowEnter = false;
+               //       this.m_state.NextState(STATE.IDLE);
+               //    }
+               //    else {
+               //       this.m_state.NextState(STATE.IDLE);
+               //    }
+               // })
             }
             break;
          }
@@ -784,15 +862,15 @@ export default class EgyptEternalEffectView extends Component {
             if (this.m_state.IsEntering) {
                log("EFFECTVIEW : STATE.FG_SHOW_ADD_SPINS")
 
-               this.ShowPhaseWin(() => {
-                  this.ShowFrankWin(() => {
-                     this.ShowAddSpins(() => {
-                        this.scheduleOnce(() => {
-                           this.m_state.NextState(STATE.IDLE);
-                        }, 0.5)
-                     })
-                  })
-               })
+               // this.ShowPhaseWin(() => {
+               //    this.ShowFrankWin(() => {
+               //       this.ShowAddSpins(() => {
+               //          this.scheduleOnce(() => {
+               //             this.m_state.NextState(STATE.IDLE);
+               //          }, 0.5)
+               //       })
+               //    })
+               // })
             }
             break;
          }
@@ -810,6 +888,424 @@ export default class EgyptEternalEffectView extends Component {
             }
             break;
          }
+      }
+   }
+
+
+   /**Main Game 蒐集表演 */
+   public ShowOmen() {
+      this.m_omenSpine.node.active = true;
+      this.m_omenSpine.setAnimation(0, "Start", false);
+      GamesChief.SlotGame.GameAudio.PlaySceneBGM(EgyptEternalDefine.AudioFilePath.MG_OMEN);
+      this.m_omenSpine.setCompleteListener(() => {
+         this.m_omenSpine.setCompleteListener(null);
+         this.m_omenSpine.clearTracks();
+         this.m_omenSpine.setToSetupPose();
+         this.m_omenSpine.node.active = false;
+      })
+   }
+   /**
+    * FG進場表演
+    */
+   public ShowEnterDeclare() {
+      let txtNode = this.m_fgDeclareNode.getChildByName("Txt");
+      txtNode.active = true;
+      GamesChief.SlotGame.GameAudio.PlaySceneBGM(EgyptEternalDefine.AudioFilePath.FG_IN);
+      this.m_fgDeclareNode.active = true;
+      this.m_fgDeclareBoneFollow = true;
+      // this.m_fgTotalWin = 0;
+
+      // ===== 取得 MG 資料 ===== TODO Ide Fake
+      // const wheelInfoList = this.GetMgSpinAck().fgWheelInfoList;
+      const wheelInfoList = [
+         { type: 1 },
+         { type: 2 },
+      ];
+
+      this.m_featureTypeValue = 0;
+      this.m_featureTypeUsing = [false, false, false];
+
+      // 位元運算
+      for (let i = 0; i < wheelInfoList.length; i++) {
+         const t = wheelInfoList[i].type;
+         this.m_featureTypeValue |= (1 << t);
+         this.m_featureTypeUsing[t] = true;
+      }
+
+      // ===== Spine Reset =====
+      this.m_fgDeclareSpine.clearTracks();
+      this.m_fgDeclareSpine.setToSetupPose();
+      this.m_fgDeclareSpine.setBonesToSetupPose();
+      this.m_fgDeclareSpine.setSlotsToSetupPose();
+
+      this.m_fgDeclareSpine.setAnimation(0, "Start", false);
+      this.m_fgDeclareSpine.addAnimation(0, "Loop", false);
+      this.m_fgDeclareSpine.addAnimation(0, "End", false);
+
+      // ----- Feature 類型組合 -----
+      switch (this.m_featureTypeValue) {
+         case FeatureTypeValue.Only_M:
+            this.m_fgDeclareSpine.setAnimation(1, "Track1_O", false);
+            break;
+         case FeatureTypeValue.Only_R:
+            this.m_fgDeclareSpine.setAnimation(1, "Track1_G", false);
+            break;
+         case FeatureTypeValue.Only_W:
+            this.m_fgDeclareSpine.setAnimation(1, "Track1_P", false);
+            break;
+         case FeatureTypeValue.WM:
+            this.m_fgDeclareSpine.setAnimation(1, "Track1_OP", false);
+            break;
+         case FeatureTypeValue.MR:
+            this.m_fgDeclareSpine.setAnimation(1, "Track1_GO", false);
+            break;
+         case FeatureTypeValue.WR:
+            this.m_fgDeclareSpine.setAnimation(1, "Track1_GP", false);
+            break;
+         case FeatureTypeValue.WMR:
+            this.m_fgDeclareSpine.setAnimation(1, "Track1_GOP", false);
+            break;
+      }
+
+
+
+      // ===== Spine Animation Complete Listener =====
+      this.m_fgDeclareSpine.setCompleteListener((entry: sp.spine.TrackEntry) => {
+         const aniName = entry.animation ? entry.animation.name : "";
+
+         if (aniName === "End") {
+
+            this.m_fgDeclareNode.active = false;
+            this.m_fgDeclareBoneFollow = false;
+
+            this.m_fgDeclareSpine.clearTracks();
+            this.m_fgDeclareSpine.setToSetupPose();
+
+            this.m_fgDeclareSpine.setCompleteListener(null);
+            this.m_fgDeclareSpine.setEventListener(null);
+
+            this.m_state.Transit(EffectState.SHOW_FG_FEATURE);
+         }
+         else if (aniName === "Loop") {
+            // this.EnterFreeGameInit();
+            // this.OnEnterHandler(false);
+         }
+         else if (
+            aniName === "Track1_O" ||
+            aniName === "Track1_G" ||
+            aniName === "Track1_P" ||
+            aniName === "Track1_OP" ||
+            aniName === "Track1_GO" ||
+            aniName === "Track1_GP" ||
+            aniName === "Track1_GOP"
+         ) {
+            this.m_fgDeclareNode.active = true;
+         }
+         // else if (aniName === "All 0%") {
+         //    txtNode.getComponent(UIOpacity).opacity = 0;
+         // } 
+         else if (aniName === "All 100%") {
+
+         }
+
+      });
+
+      // ===== Spine Custom Events =====
+      this.m_fgDeclareSpine.setEventListener((entry, event) => {
+         if (!event || !event.data) return;
+
+         const name = event.data.name;
+
+         if (name === "All 0%") {
+            txtNode.active = false;
+         }
+         else if (name === "All 100%") {
+            txtNode.active = true;
+         }
+      });
+   }
+
+   /**
+    * FG結算宣告表演
+    */
+   public ShowCompliment() {
+      //TODO 
+      // STOP_MUSIC()
+      // GamesChief.SlotGame.GameAudio.StopSceneBGM;
+      // this.m_fgComplimentBoneFollow = true;
+      this.m_fgComplimentNode.active = true;
+
+      console.log("[PG][ShowCompliment] FG結算宣告表演");
+
+      let totalNumNode = NodeUtils.GetUI(this.m_fgComplimentNode, "HP_Num1");
+      let totalNum: RollingNumberLabel = totalNumNode.getComponent(RollingNumberLabel);
+      totalNum.MaxCount = 10;
+      totalNum.KMBTBool = true;
+
+      let respinNumNode = NodeUtils.GetUI(this.m_fgComplimentNode, "HP_Num3");
+      let respinNum: Label = respinNumNode.getComponent(Label);
+
+
+      // 顯示所有文字
+      for (let idx = 1; idx <= FgComplimentTxt.TOTAL; idx++) {
+         this.m_FgComplimentTxt[idx].active = true;
+      }
+
+      //TODO Ide
+      this.FgTotalWin = new BigNumber(54321);
+      respinNum.string = "10";
+      const wheelInfoList = [
+         { type: 1 },
+         { type: 2 },
+      ];
+
+      this.m_featureTypeValue = 0;
+      this.m_featureTypeUsing = [false, false, false];
+
+      // 位元運算
+      for (let i = 0; i < wheelInfoList.length; i++) {
+         const t = wheelInfoList[i].type;
+         this.m_featureTypeValue |= (1 << t);
+         this.m_featureTypeUsing[t] = true;
+      }
+
+      // this.m_timedBool.Start(15);
+      // this.m_fgComplimentNodeRollingTxt.SetNumberImmediately(0);
+
+      // ---------------------- Spine COMPLETE ----------------------
+      this.m_fgComplimentSpine.setCompleteListener((trackEntry: sp.spine.TrackEntry) => {
+         const animationName = trackEntry.animation ? trackEntry.animation.name : "";
+
+         if (animationName === "End") {
+            // this.m_fgComplimentBoneFollow = false;
+
+            // scaleTo(0.1, 0)
+            tween(this.m_FgComplimentTxt[FgComplimentTxt.TOTAL_WIN_NUM])
+               .to(0.1, { scale: 0 })
+               .call(() => {
+                  this.m_fgComplimentNode.active = false;
+                  // this.m_fgComplimentNodeRollingTxt.node.active = false;
+                  this.m_FgComplimentTxt[FgComplimentTxt.TOTAL_WIN_NUM].active = false;
+                  this.m_fgComplimentNode.active = false;
+
+                  // const spinAck = EgyptSlot.GamePlayMgr.GetFgSpinAck();
+
+                  // EgyptSlot.GameView.ShowWinEffect(
+                  //    this.m_fgTotalWin,
+                  //    spinAck.convertInfo,
+                  //    spinAck.wordCollectionInfo,
+                  //    () => {
+                  //       this.OnWinOdds50(this.m_fgTotalWin);
+                  //       this.m_timedBool.Start(0.5);
+                  //    },
+                  //    true
+                  // );
+
+                  // const isBigWin = (this.m_fgTotalWin / this.m_gameBar.BetValue >= 10;
+                  // if (!isBigWin) {
+                  //    this.PlaySound(EgyptSlot.Audio.SYMBOL_AWARD);
+                  // }
+
+                  // this.m_fgTotalWin = 0;
+               })
+               .start();
+
+            // unregister
+            this.m_fgComplimentSpine.setCompleteListener(null);
+            this.m_fgComplimentSpine.setEventListener(null);
+         }
+      });
+
+      // ---------------------- Spine EVENT ----------------------
+      this.m_fgComplimentSpine.setEventListener((entry: sp.spine.TrackEntry, event: sp.spine.Event) => {
+         const name = event.data ? event.data.name : "";
+
+         if (name === "Start") {
+
+            const txtNode = this.m_FgComplimentTxt[FgComplimentTxt.TOTAL_WIN_NUM];
+            txtNode.scale = 1;
+            txtNode.active = true;
+
+            totalNum.RollNumber(0, this.m_fgTotalWin);
+
+            // FadeIn 0.3
+            const ui = txtNode.getComponent(UIOpacity);
+            if (ui) {
+               tween(ui).to(0.3, { opacity: 255 }).start();
+            }
+
+         } else if (name === "All 0%") {
+
+            for (let idx = 1; idx <= FgComplimentTxt.TOTAL; idx++) {
+               this.m_FgComplimentTxt[idx].active = false;
+            }
+            // this.ShowLeaveDeclare(false);
+
+         } else if (name === "End") {
+
+            // if (!EgyptSlot.GameView.IsReplaying() && !EgyptSlot.GameView.IsUsingGameCard()) {
+            totalNum.RollNumberTo(this.m_fgTotalWin, false);
+            // }
+         }
+      });
+
+      // Spine 播放動畫 Start → Loop → End
+      this.m_fgComplimentSpine.setAnimation(0, "Start", false);
+      this.m_fgComplimentSpine.addAnimation(0, "Loop", false);
+      this.m_fgComplimentSpine.addAnimation(0, "End", false);
+
+      // 延遲 0.1 然後顯示
+      tween(this.m_fgComplimentNode)
+         .delay(0.1)
+         .call(() => {
+            this.m_fgComplimentNode.active = true;
+         })
+         .start();
+
+      // this.m_HintBar.FadeOut();
+
+      // 播放特定 Track
+      switch (this.m_featureTypeValue) {
+         case FeatureTypeValue.Only_M:
+            this.m_fgComplimentSpine.setAnimation(1, "Track1_O", false);
+            break;
+         case FeatureTypeValue.Only_R:
+            this.m_fgComplimentSpine.setAnimation(1, "Track1_G", false);
+            break;
+         case FeatureTypeValue.Only_W:
+            this.m_fgComplimentSpine.setAnimation(1, "Track1_P", false);
+            break;
+         case FeatureTypeValue.WM:
+            this.m_fgComplimentSpine.setAnimation(1, "Track1_OP", false);
+            break;
+         case FeatureTypeValue.MR:
+            this.m_fgComplimentSpine.setAnimation(1, "Track1_GO", false);
+            break;
+         case FeatureTypeValue.WR:
+            this.m_fgComplimentSpine.setAnimation(1, "Track1_GP", false);
+            break;
+         case FeatureTypeValue.WMR:
+            this.m_fgComplimentSpine.setAnimation(1, "Track1_GOP", false);
+            break;
+      }
+
+      GamesChief.SlotGame.GameAudio.PlaySceneBGM(EgyptEternalDefine.AudioFilePath.FG_END);
+   }
+
+   /**
+    * JP結算宣告表演
+    */
+   public ShowJPCompliment(jpType: number, endFn) {
+
+      // UI 初始狀態
+      this.m_jpComplimentNode.active = true;
+
+      //TODO Ide
+      // const win = this.GetMgSpinAck().jpWin;
+      const win = 54321;
+      console.log("[PG][ShowCompliment] JP結算宣告表演 win:", win);
+
+      let fxNumNode = NodeUtils.GetUI(this.m_jpComplimentNode, "Fx");
+
+
+      let totalNumNode = NodeUtils.GetUI(this.m_jpComplimentNode, "HP_Num");
+      let totalNum: RollingNumberLabel = totalNumNode.getComponent(RollingNumberLabel);
+      totalNum.MaxCount = 10;
+      totalNum.KMBTBool = true;
+
+      // 動畫 FX
+      let fxGoldNode: Node = instantiate(this.m_fxGoldPrefab);
+      fxNumNode.addChild(fxGoldNode);
+      let act = fxGoldNode.getComponent(Animation);
+
+      // 設定 JP 類型 Skin
+      const skinMap = {
+         [JpType.GRAND]: "Grand",
+         [JpType.MAJOR]: "Major",
+         [JpType.MINOR]: "Minor",
+         [JpType.MINI]: "Mini",
+      };
+
+      this.m_jpComplimentSpine.setSkin(skinMap[jpType]);
+      // this.m_jpComplimentSpine.setToSetupPose();
+
+
+
+
+
+      // 背景淡入
+      // this.m_jpComplimentNode.bg.opacity = 0;
+      // tween(this.m_jpComplimentNode)
+      //    .to(0.3, { opacity: 200 })
+      //    .start();
+
+      totalNum.RollNumber(0, win);
+      // this.m_jpComplimentBoneFollow = true;
+
+      // -------------------- 完成事件 --------------------
+      this.m_jpComplimentSpine.setCompleteListener((trackEntry) => {
+
+         const anim = trackEntry.animation?.name;
+         if (!anim) return;
+
+         if (anim === "Loop") {
+
+            // 延遲後切換到 End
+            tween(this.node)
+               .delay(2)
+               .call(() => {
+                  this.m_jpComplimentSpine.setAnimation(0, "End", false);
+
+                  // tween(this.m_jpComplimentNode)
+                  //    .delay(0.5)
+                  //    .to(0.3, { opacity: 0 })
+                  //    .start();
+               })
+               .start();
+
+         } else if (anim === "End") {
+
+            // this.m_jpComplimentBoneFollow = false;
+            // fxNode.removeFromParent();
+
+            // EgyptSlot.GameView.SetBottomBarWinValue(win);
+
+            this.m_jpComplimentNode.active = false;
+
+            // EgyptSlot.JPView.GrandFakeValue();
+
+            tween(this.node)
+               .delay(1)
+               .call(() => endFn && endFn())
+               .start();
+         }
+      });
+
+      // -------------------- Spine 事件 event --------------------
+      this.m_jpComplimentSpine.setEventListener((trackEntry, event) => {
+
+         const eventName = event.data.name;
+
+         // 播放金幣 FX
+         if (eventName === "CoinStart") {
+            act.gotoFrameAndPlay(740, false);
+         }
+
+         // 數值跳到最終
+         if (eventName === "Hit") {
+            totalNum.RollNumberTo(win, false);
+            // this.m_jpComplimentRollingTxt.SetNumberImmediately(win);
+         }
+      });
+
+      // -------------------- 播放動畫 --------------------
+      this.m_jpComplimentSpine.setAnimation(0, "Start", false);
+      this.m_jpComplimentSpine.addAnimation(0, "Loop", true);
+   }
+
+   private OnWinOdds50(win: number) {
+      if (win / this.m_gameBar.BetValue >= 50) {
+         // EgyptSlot.GameView.HitUnOpen(2);
       }
    }
 
@@ -1132,22 +1628,20 @@ export default class EgyptEternalEffectView extends Component {
          let symbolId: number = this.MgFgPlate[reelIndex][j].symbolId;
          let type: number = this.MgFgPlate[reelIndex][j].jpType;
 
-         if (symbolId == EgyptEternalProtocol.Symbol.SCATTER) {
-            //輪帶提示轉出電球動畫
-            this.ShowReelHintAni(symbolId);
+         // if (symbolId == EgyptEternalProtocol.Symbol.SCATTER) {
 
-            this.CreateSymbolEffectAndPlayForMainGamePanel(
-               symbolId,
-               reelIndex,
-               j,
-               this.MgFgPlate[reelIndex][j].coinValue,
-               this.MgFgPlate[reelIndex][j].jpType,
-               false,
-               false
-            );
-         }
+         //    this.CreateSymbolEffectAndPlayForMainGamePanel(
+         //       symbolId,
+         //       reelIndex,
+         //       j,
+         //       this.MgFgPlate[reelIndex][j].coinValue,
+         //       this.MgFgPlate[reelIndex][j].jpType,
+         //       false,
+         //       false
+         //    );
+         // }
       }
-
+      /**
       if ((this.m_isTurbo || this.m_mgReel.IsHardStop) && !this.m_isNearWining) {
          if (!this.m_playSoundOnce) {
             this.m_playSoundOnce = true;
@@ -1179,6 +1673,7 @@ export default class EgyptEternalEffectView extends Component {
             GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.REEL_STOP);
          }
       }
+       */
    }
 
    /**表演蒐集特效 */
@@ -1683,31 +2178,31 @@ export default class EgyptEternalEffectView extends Component {
 
    /**停止NearWin特效 */
    public StopNearWin(column: number) {
-      let nearWinFx = this.m_isFirstReelHasFrank ? this.m_bonusNearWinFx : this.m_scatterNearWinFx;
+      // let nearWinFx = this.m_isFirstReelHasFrank ? this.m_bonusNearWinFx : this.m_scatterNearWinFx;
 
-      if (!nearWinFx[column].active) {
-         return;
-      }
+      // if (!nearWinFx[column].active) {
+      //    return;
+      // }
 
-      //停止NearWin特效
-      nearWinFx[column].getComponent(sp.Skeleton).setAnimation(0, "End", false);
-      nearWinFx[column].getComponent(sp.Skeleton).setCompleteListener(() => {
-         nearWinFx[column].getComponent(sp.Skeleton).setCompleteListener(null);
-         nearWinFx[column].getComponent(sp.Skeleton).clearTracks();
-         nearWinFx[column].getComponent(sp.Skeleton).setToSetupPose();
-         nearWinFx[column].active = false;
-      })
+      // //停止NearWin特效
+      // nearWinFx[column].getComponent(sp.Skeleton).setAnimation(0, "End", false);
+      // nearWinFx[column].getComponent(sp.Skeleton).setCompleteListener(() => {
+      //    nearWinFx[column].getComponent(sp.Skeleton).setCompleteListener(null);
+      //    nearWinFx[column].getComponent(sp.Skeleton).clearTracks();
+      //    nearWinFx[column].getComponent(sp.Skeleton).setToSetupPose();
+      //    nearWinFx[column].active = false;
+      // })
 
-      //停止音效
-      if (this.m_nearWinSoundId[column] != null) {
-         GamesChief.SlotGame.GameAudio.Stop(this.m_nearWinSoundId[column]);
-         this.m_nearWinSoundId[column] = null;
-      }
+      // //停止音效
+      // if (this.m_nearWinSoundId[column] != null) {
+      //    GamesChief.SlotGame.GameAudio.Stop(this.m_nearWinSoundId[column]);
+      //    this.m_nearWinSoundId[column] = null;
+      // }
 
-      if (this.m_nearWinSoundId[column] != null) {
-         GamesChief.SlotGame.GameAudio.Stop(this.m_nearWinSoundId[column]);
-         this.m_nearWinSoundId[column] = null;
-      }
+      // if (this.m_nearWinSoundId[column] != null) {
+      //    GamesChief.SlotGame.GameAudio.Stop(this.m_nearWinSoundId[column]);
+      //    this.m_nearWinSoundId[column] = null;
+      // }
    }
 
 
@@ -2032,12 +2527,12 @@ export default class EgyptEternalEffectView extends Component {
 
    /**儲存JP相關訊息 */
    private SaveJpInfo(jpType: EgyptEternalProtocol.JpType, jpList: BigNumber = null, bet: number = null) {
-      if (jpList != null) {
-         this.m_jpLabel[jpType].UpdateJPMoney(jpList);
-      }
-      if (bet != null) {
-         this.m_jpLabel[jpType].UpdateBet(bet, false);
-      }
+      // if (jpList != null) {
+      //    this.m_jpLabel[jpType].UpdateJPMoney(jpList);
+      // }
+      // if (bet != null) {
+      //    this.m_jpLabel[jpType].UpdateBet(bet, false);
+      // }
    }
 
 
@@ -2157,65 +2652,6 @@ export default class EgyptEternalEffectView extends Component {
       this.m_playSoundOnce = false;
    }
 
-   /**
-     * 表演MG進FG的宣告
-     * @param gotoNextState 跳下一個階段
-     */
-   private ShowFgStart(gotoNextState: Function) {
-      //斷線重連 不顯示宣告
-      if (this.m_isSkipShowEnter) {
-         this.ShowFgReelTxt();
-         //停止JP跑分
-         this.SetFakeJpValue();
-
-         //設定地霸
-         this.m_gameBar.SetDeviationEnable(true);
-
-         GamesChief.SlotGame.GameAudio.PlaySceneBGM(EgyptEternalDefine.AudioFilePath.FG, 1, true);
-
-         this.ChangeBackGround();
-         this.SetFgSpinnedLabel(this.m_fgSpinned);
-         this.SetFgTotalFreeLabel(this.m_totalFreeRound);
-         this.m_reelSpine.setSkin("FG");
-
-         gotoNextState();
-         return;
-      }
-
-      tween(this.node)
-         .delay(0.5)
-         .call(() => {
-            this.SetMgToFeatureAction();
-         })
-         .call(() => {
-            //Phase線圈表演
-            this.ShowPhaseWin(() => {
-               //表演角色Win動畫
-               this.ShowFrankWin(() => {
-                  //表演宣告 + 按鈕
-                  GamesChief.SlotGame.GameAudio.StopSceneBGM();
-                  this.ShowFgDeclare();
-                  this.ShowAndClickButton(() => {
-                     //轉換背景,設定局數,播宣告End動畫
-                     this.ShowFgReelTxt();
-                     this.m_mgReel.SetProtectSymbol();
-                     this.m_mgReel.ChangeOutsideSymbol();
-                     this.m_mgReel.ForceSetData(this.m_mgReel.FgInitPlate());
-                     this.ChangeBackGround();
-                     this.SetFgSpinnedLabel(0);
-                     this.SetFgTotalFreeLabel(EgyptEternalDefine.FG_BASE_ROUND);
-                     this.m_reelSpine.setSkin("FG");
-                     this.ShowFgEnd(() => {
-                        gotoNextState();
-                        GamesChief.SlotGame.GameAudio.PlaySceneBGM(EgyptEternalDefine.AudioFilePath.FG, 1, true)
-                     })
-                  })
-               })
-            })
-         })
-         .start()
-   }
-
    /**FG加轉數表演 */
    private ShowAddSpins(gotoNextState: Function) {
       GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.RING);
@@ -2261,128 +2697,7 @@ export default class EgyptEternalEffectView extends Component {
 
    private ShowFgLeave(gotoNextState: Function) {
       //先隱藏FG宣告+按鈕
-      let fgEndComplimentSke: sp.Skeleton = this.m_fgComplimentNode.getChildByName("Spine").getComponent(sp.Skeleton);
-      let clickBtn = GamesChief.SlotGame.ProclaimButton;
-      let skipNode: Node = NodeUtils.GetUI(this.m_fgComplimentNode, "Skip");
-      let isSkip: boolean = true;
-      this.m_fgComplimentNode.active = false;
-      clickBtn.node.getComponent(UIOpacity).opacity = 0;
-      skipNode.active = true;
 
-
-      //暫停背景音樂、播放宣告音效
-      let endDeclareSound: number = 0;
-      GamesChief.SlotGame.GameAudio.StopSceneBGM();
-      endDeclareSound = GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.FG_COMPLIMENT_START);
-
-      //結算宣告開始
-      this.m_fgComplimentNode.active = true;
-
-      fgEndComplimentSke.clearTracks();
-      fgEndComplimentSke.setToSetupPose();
-      let startEntry: sp.spine.TrackEntry = fgEndComplimentSke.setAnimation(0, "Start", false);
-      fgEndComplimentSke.addAnimation(0, "Loop", true);
-
-      this.ButtonAnimation(clickBtn.node, true, 0.4);
-      //FG結算按鈕callback
-      let ClickButtonCb = () => {
-         if (isSkip) {
-            GamesChief.SlotGame.GameAudio.SetCurrentTime(endDeclareSound, 4);
-            startEntry.trackTime = 4;
-         }
-
-         totalNum.RollNumberTo(this.m_fgTotalWin, false);
-         this.ButtonAnimation(clickBtn.node, false, 0.2);
-
-         this.scheduleOnce(() => {
-            this.scheduleOnce(() => {
-               GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.FG_COMPLIMENT_END);
-            }, 0.2)
-
-            let endEntry = fgEndComplimentSke.setAnimation(0, "End", false);
-
-            this.scheduleOnce(() => {
-               this.TurnOnReelTxt();
-               this.ClearAllEffect();
-               this.m_mgReel.SetProtectSymbol();
-               this.m_mgReel.ChangeOutsideSymbol();
-               this.m_mgReel.ForceSetData(this.m_mgPlate);
-            }, 0.5)
-
-
-            this.ResetFgAni();
-
-            fgEndComplimentSke.setTrackCompleteListener(endEntry, () => {
-               fgEndComplimentSke.setTrackCompleteListener(endEntry, null);
-
-               //加錢
-               EventDispatcher.Shared.Dispatch(EventDefine.Game.LEAVE_FREE_GAME);
-               this.m_slotMain.FeatureGameEnd
-                  (
-                     this.m_gameBar.BetValue,
-                     this.m_fgTotalWin,
-                     () => {
-                        EventDispatcher.Shared.Dispatch(EventDefine.Game.CURRENCY_UPDATE_BY_REWARD, this.m_fgTotalWin);
-
-                        this.ResetFgParameter();
-
-                        gotoNextState();
-                     },
-                     false
-                  )
-               this.m_fgComplimentNode.active = false;
-            })
-         }, 1)
-      }
-
-      //設定按鈕狀態
-      let SetButtonState = () => {
-         this.ButtonAnimation(clickBtn.node, false, 0.2);
-      }
-
-      //FG跑分              
-      let totalNumNode = NodeUtils.GetUI(this.m_fgComplimentNode, "WinMoney");
-      let totalNum: RollingNumberLabel = totalNumNode.getComponent(RollingNumberLabel)
-      totalNum.MaxCount = 10;
-      totalNum.KMBTBool = true;
-      totalNum.RollNumber(0, this.m_fgTotalWin)
-
-      //先設定好按鈕點擊callback
-      this.ClickCollectButton(clickBtn, ClickButtonCb);
-
-      //FG跑分跳過               
-      // skipNode.once(TouchableEvent.Clicked, () => {
-      //    skipNode.active = false;
-
-      //    //按鈕反饋動畫+按鈕消失
-      //    SetButtonState();
-
-      //    GamesChief.SlotGame.ProclaimButton.node.emit(TouchableEvent.Clicked)
-      // }, this);
-
-
-      //分數滾動結束時觸發
-      totalNum.node.once(RollingEvent.RollingFinish, () => {
-         isSkip = false;
-         skipNode.active = false;
-      }, this)
-   }
-
-   /**輪帶提示轉出電球動畫 */
-   private ShowReelHintAni(symbolId: number) {
-      let type: number = PhaseType.PURPLE;
-
-      //線圈Hint動畫
-      this.m_phaseSpine[type].setAnimation(1, "Track1_Hint", false);
-
-
-      //輪帶Hint動畫
-      this.m_fxReelSpine[type].node.active = true;
-      this.m_fxReelSpine[type].setAnimation(0, "Hint", false);
-      this.m_fxReelSpine[type].setCompleteListener(() => {
-         this.m_fxReelSpine[type].setCompleteListener(null);
-         this.m_fxReelSpine[type].node.active = false;
-      })
    }
 
    /**
@@ -2423,11 +2738,8 @@ export default class EgyptEternalEffectView extends Component {
 
          // this.m_introSoundKey = GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.INTRO);//進場音效
          this.m_introTrackEntry = this.m_gameIntro.setAnimation(0, "GameIntro", false);
-         //TODO Ide
-         if (this.m_mgReel) {
-            this.m_mgReel.Hide();
-            this.m_mgReel.SetReelOpacity(0);
-         }
+         this.m_mgReel.Hide();
+         this.m_mgReel.SetReelOpacity(0);
 
 
          //TODO Ide
@@ -2472,10 +2784,10 @@ export default class EgyptEternalEffectView extends Component {
 
    /*每轉Spin時的Reel特效 */
    public ReelSpinAni() {
-      this.m_isInFg ? this.m_reelSpine.setSkin("FG") : this.m_reelSpine.setSkin("MG");
-      GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.REEL_SPIN_THUNDER);
-      this.m_reelSpine.setAnimation(0, "Spin", false);
-      this.m_reelSpine.addAnimation(0, "Idle", true);
+      // this.m_isInFg ? this.m_reelSpine.setSkin("FG") : this.m_reelSpine.setSkin("MG");
+      GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.WHEEL_ROTATE);
+      // this.m_reelSpine.setAnimation(0, "Spin", false);
+      // this.m_reelSpine.addAnimation(0, "Idle", true);
    }
 
 
@@ -2707,30 +3019,6 @@ export default class EgyptEternalEffectView extends Component {
       }
    }
 
-   private ShowFgDeclare(cb?: Function) {
-      let startBtn = GamesChief.SlotGame.ProclaimButton;
-      startBtn.getComponent(UIOpacity).opacity = 0;
-
-      let fgDeclareSke: sp.Skeleton = NodeUtils.GetUI(this.m_fgDeclareNode, "Spine").getComponent(sp.Skeleton);
-      this.m_fgDeclareNode.active = true;
-
-      this.m_declareSoundKey = GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.FG_DECLARE);
-      fgDeclareSke.clearTracks();
-      fgDeclareSke.setToSetupPose();
-      fgDeclareSke.setAnimation(0, "Start", false);
-      fgDeclareSke.addAnimation(0, "Loop", true);
-      fgDeclareSke.setCompleteListener(() => {
-         fgDeclareSke.setCompleteListener(null);
-         startBtn.node.setPosition(v3(0, -100, 0));
-         this.ButtonAnimation(startBtn.node, true, 0.5)
-         if (isValid(cb, true)) {
-            cb();
-         }
-      })
-
-
-   }
-
    private ShowAndClickButton(cb?: Function) {
       let startBtn = GamesChief.SlotGame.ProclaimButton;
 
@@ -2747,22 +3035,6 @@ export default class EgyptEternalEffectView extends Component {
          }
 
       }, this.m_isAutoplay)
-   }
-
-   private ShowFgEnd(cb?: Function) {
-      GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.FG_DECLARE_END);
-
-      let fgDeclareSke: sp.Skeleton = NodeUtils.GetUI(this.m_fgDeclareNode, "Spine").getComponent(sp.Skeleton);
-      fgDeclareSke.setAnimation(0, "End", false);
-      fgDeclareSke.setCompleteListener(() => {
-         fgDeclareSke.setCompleteListener(null);
-
-         if (isValid(cb, true)) {
-            cb();
-         }
-
-         this.m_fgDeclareNode.active = false;
-      })
    }
 
    private ShowReelTxt() {
@@ -2863,61 +3135,6 @@ export default class EgyptEternalEffectView extends Component {
          setMG();
       }
    }
-
-
-   /**設定線圈等級 */
-   public SetPhaseLevel(phase: number[]) {
-      this.m_phase = phase.slice();
-      this.m_prePhase = phase.slice();
-   }
-
-   /**設定線圈等級狀態 */
-   public SetPhaseState() {
-      let purpleSke: sp.Skeleton = this.m_phaseSpine[PhaseType.PURPLE];
-      let greenSke: sp.Skeleton = this.m_phaseSpine[PhaseType.GREEN];
-      let purplePhase = this.m_phase[PhaseType.PURPLE];
-      let greenPhase = this.m_phase[PhaseType.GREEN];
-
-      if (purplePhase == 0) {
-         purpleSke.setAnimation(0, "Idle", true);
-      }
-      else {
-         purpleSke.setAnimation(0, "Level" + purplePhase + "_Loop", true);
-      }
-
-      if (greenPhase == 0) {
-         greenSke.setAnimation(0, "Idle", true);
-      }
-      else {
-         greenSke.setAnimation(0, "Level" + greenPhase + "_Loop", true);
-      }
-   }
-
-   /**FG結束重置動畫 */
-   private ResetFgAni() {
-      this.JpRun();
-
-      //重置轉數
-      this.SetFgTotalFreeLabel(6);
-      this.SetFgSpinnedLabel(0);
-
-      //重置盤面動畫
-      this.m_isInFg ? this.m_reelSpine.setSkin("FG") : this.m_reelSpine.setSkin("MG");
-      this.m_reelSpine.setAnimation(0, "Idle", true);
-
-      //重置蒐集面板
-      this.ChangeBackGround();
-
-      this.m_gameBar.SetDeviationEnable(false);
-   }
-
-   /**FG結束重置參數 */
-   private ResetFgParameter() {
-      this.m_totalFreeRound = 0;
-      this.m_fgSpinned = 0;
-      this.m_fgTotalWin = new BigNumber(0);
-   }
-
    /**播放MG預兆 */
    public ShowMGOmen(cb?: Function) {
       GamesChief.SlotGame.GameAudio.Play(EgyptEternalDefine.AudioFilePath.OMEN);

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component, Node, sp } from 'cc';
 import { EgyptEternalBind } from './EgyptEternalBind';
 const { ccclass, property } = _decorator;
 
@@ -42,10 +42,22 @@ export class EgyptEternalMGWheel extends Component {
     @property({ type: Node, tooltip: "轉輪盤面" })
     private m_wheelNode: Node = null;
 
+    @property({ type: sp.Skeleton })
+    private m_wheelSpine: sp.Skeleton = null;
+
     /** 累計時間 */
     private m_wheelTime: number = 0;
     /** 狀態 */
     private m_wheelState: WheelState = WheelState.IDLE;
+    private m_scatterCount: number = 0;
+    private m_wheelTargetAngle: number = 0.0;
+    private m_wheelIncreaseSpeed: number = 0.0;
+    private m_wheelSpeed: number = 0.0;
+    private m_wheelOffset: number = 0;
+    private m_wheelInfo: object = {};
+
+    private m_winfn: Function = null;
+    private m_rotationEndfn: Function = null;
 
     private m_bind: EgyptEternalBind = null;
 
@@ -54,6 +66,44 @@ export class EgyptEternalMGWheel extends Component {
         this.m_bind = bind;
         this.m_wheelTime = 0;
         this.m_wheelState = WheelState.IDLE;
+    }
+
+    public WheelStartRotate(prizeinfoList: any[] | null, winfn?: Function, endfn?: Function) {
+        if (prizeinfoList && prizeinfoList.length > 0) {
+
+            this.m_scatterCount = prizeinfoList.length + 2;
+
+            // 計算目標 index
+            let targetIdx = prizeinfoList[0].index + 1;
+            if (prizeinfoList.length === 3) {
+                targetIdx = prizeinfoList[1].index + 1;
+            }
+
+            // Spine 動畫切換
+            this.m_wheelSpine.setAnimation(0, "Spin_Start", false);
+            this.m_wheelSpine.addAnimation(0, "Spin_Loop", true, 0);
+
+            // 初始化輪盤狀態
+            this.m_wheelTime = 0;
+            this.m_wheelState = WheelState.ROLL;
+
+            // 目標角度：原本是 targetAngle - random(5, 20)
+            this.m_wheelTargetAngle = this.m_wheelInfo[targetIdx].targetAngle - (5 + Math.random() * 15);
+
+            this.m_wheelIncreaseSpeed = WheelSetting.HighSpeed - this.m_wheelSpeed;
+
+            // offset: random(2, 25)
+            this.m_wheelOffset = 2 + Math.random() * 23;
+
+            // 保存 callback
+            this.m_winfn = winfn;
+            this.m_rotationEndfn = endfn;
+
+        } else {
+            // 進入低速狀態
+            this.m_wheelState = WheelState.LOW_SPEED;
+            this.m_wheelSpeed = WheelSetting.LowSpeed;
+        }
     }
 
     //=========================================================================================================

@@ -14,6 +14,13 @@ import { EnvConfig } from "db://assets/Script/Define/ConfigDefine";
 import { Device } from "db://assets/Script/Device/Device";
 import { EgyptEternalBind } from "./EgyptEternalBind";
 import { EgyptEternalMGWheel } from "./EgyptEternalMGWheel";
+import { EventDispatcher } from '../../../Stark/Utility/EventDispatcher';
+import { EventDefine } from '../../../Script/Define/EventDefine';
+import { GameApp } from '../../../Script/App/GameApp';
+import { GameId } from '../../../Script/Define/GameDefine';
+import { ServiceConfig, ServiceType } from "../../../Script/Define/ServiceDefine";
+import { ServiceMap } from "../../../Script/Define/ServiceMapDefine";
+
 
 
 let MAIN_STATE = Enum({
@@ -49,7 +56,24 @@ export default class EgyptEternalMain extends GameMock.SlotGameBaseMock {
       //    this.node.setPosition(0, 75, 0);
       //    this.node.setScale(0.78, 0.78, 1);
       // }
+      //TODO Ide
+      // const config: ServiceConfig = ServiceMap.get(ServiceType.APPLIFE);
+      // config?.TestByUrl("192.168.213.65:1011", false);
+      // GamesChief.SlotGame.OnEnterGame(GameId.EGYPT_ETERNAL, 0);
+      // let connection = GameApp.Shared.Connection;
+      // connection.OnGameJoinCommand({
+      //    connType: 1,
+      //    gameId: GameId.EGYPT_ETERNAL,
+      //    result: 0,
+      //    themeId: GameId.EGYPT_ETERNAL + "0101",
+      //    themeName: "",
+      //    themeType: 1,
+      //    uri: "http://192.168.213.65:1011"
+      // });
       this.m_state = new StateManager(MAIN_STATE.JOIN);
+   }
+   protected start(): void {
+      // EventDispatcher.Shared.Dispatch(EventDefine.System.ENTER_GAME, 2179, 0);
    }
 
    public InitBind() {
@@ -72,14 +96,17 @@ export default class EgyptEternalMain extends GameMock.SlotGameBaseMock {
 
       switch (currentState) {
          case MAIN_STATE.JOIN: {
-            // if (GamesChief.SlotGame.IsGameSessionReady && GamesChief.SlotGame.GameBar && GamesChief.SlotGame.IsPlatformReady) {
-            //    this.m_state.NextState(MAIN_STATE.INIT_GAME);
-            // }
-            if (GamesChief.SlotGame.GameBar) {
+            //TODO Ide Test
+            if (GamesChief.SlotGame.IsGameSessionReady && GamesChief.SlotGame.GameBar && GamesChief.SlotGame.IsPlatformReady) {
                this.InitBind();
                this.m_bind.GameBar = GamesChief.SlotGame.GameBar;
                this.m_state.NextState(MAIN_STATE.INIT_GAME);
             }
+            // if (GamesChief.SlotGame.GameBar) {
+            //    this.InitBind();
+            //    this.m_bind.GameBar = GamesChief.SlotGame.GameBar;
+            //    this.m_state.NextState(MAIN_STATE.INIT_GAME);
+            // }
             break;
          }
 
@@ -119,6 +146,7 @@ export default class EgyptEternalMain extends GameMock.SlotGameBaseMock {
                GamesChief.SlotGame.GameReady()
             }
             this.m_gameView.MainProcess(dt);
+            this.m_mgWheel.MainProcess(dt);
             break;
          }
       }

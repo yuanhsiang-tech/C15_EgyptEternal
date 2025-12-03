@@ -201,15 +201,12 @@ export default class EgyptEternalMgReel extends CommonSpinnerControl {
          super.Init(noAwardPlate);
       }
 
-      for (let t = 0; t < this.TotalTracks; t++) {
-         let upNode = this.GetSymbolNode(t, -1);
-         let downNode = this.GetSymbolNode(t, 4);
-         upNode.active = false;
-         downNode.active = false;
-         for (let s = 0; s < this.m_totalSockets[t]; s++) {
-            this.m_symbolNodes[t][s].setSiblingIndex(this.m_totalSockets[t] - s);
-         }
-      }
+      // for (let t = 0; t < this.TotalTracks; t++) {
+      //    let upNode = this.GetSymbolNode(t, -1);
+      //    let downNode = this.GetSymbolNode(t, 4);
+      //    upNode.active = false;
+      //    downNode.active = false;
+      // }
    }
    public InitBind(bind: EgyptEternalBind) {
       this.m_bind = bind;
@@ -433,7 +430,7 @@ export default class EgyptEternalMgReel extends CommonSpinnerControl {
 
 
       this.m_symbolids[trackIdx].push(symbolId);
-
+      this.m_symbolSpriteComp[trackIdx][symbolIdx].spriteFrame = this.m_symbolSpriteFrames[symbolId]
 
       //調整Symbol節點層級，不在盤面上的層級要較低，Wheel Scatter>其他，然後下蓋上
       for (let s = 0; s < this.m_totalSockets[trackIdx]; s++) {

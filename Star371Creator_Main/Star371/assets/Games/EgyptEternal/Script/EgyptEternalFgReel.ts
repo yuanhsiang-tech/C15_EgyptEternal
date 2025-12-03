@@ -429,7 +429,7 @@ export default class EgyptEternalFgReel extends CommonSpinnerControl {
 
 
       this.m_symbolids[trackIdx].push(symbolId);
-
+      this.m_symbolSpriteComp[trackIdx][symbolIdx].spriteFrame = this.m_symbolSpriteFrames[symbolId]
 
       //調整Symbol節點層級，不在盤面上的層級要較低，Wheel Scatter>其他，然後下蓋上
       for (let s = 0; s < this.m_totalSockets[trackIdx]; s++) {

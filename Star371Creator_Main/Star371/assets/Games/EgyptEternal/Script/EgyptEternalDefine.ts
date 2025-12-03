@@ -39,6 +39,20 @@ export enum SPRITE_NAME {
    NULL = 5,
 }
 
+export enum FeatureType {
+   WILD = 0,       // 增加N顆Wild
+   MULTIPLE = 1, //乘倍強化
+   ROUND = 2       // 局數增加
+}
+
+export enum JpType {
+   MINI = 0,    // MINI
+   MINOR = 1, //MINOR
+   MAJOR = 2, //MAJOR
+   GRAND = 3, //Grand
+   MAX = 4, //沒中 
+}
+
 export default class EgyptEternalDefine {
    //遊戲名稱
    static GAME_NAME = "EgyptEternal";

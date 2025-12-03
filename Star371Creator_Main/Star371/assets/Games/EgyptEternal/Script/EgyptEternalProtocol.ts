@@ -3,6 +3,7 @@ import { GameCommonCommand } from '../../../Script/Game/Common/GameCommonCommand
 import { CarriarDecorator, CarriarParser } from 'db://assets/Script/Net/Command/Command';
 import * as FKP from './frankenstein_pb';
 import type { Int32List } from '../../../Script/Proto/gt2/list_pb';
+import EgyptEternalDefine from './EgyptEternalDefine';
 
 export class PlateData {
    symbolId: number = EgyptEternalProtocol.Symbol.JP;
@@ -326,6 +327,195 @@ export namespace EgyptEternalProtocol {
             ["jpInfo", "ji", BigNumber],
             ["plateData", "pd", PlateData],
             ["common", "c", GameCommonCommand.CommonSpinAck],
+         )
+      };
+   }
+
+   @CarriarDecorator.ClassName("SpinFakeAck")
+   export class SpinFakeAck extends CarriarParser.AliasDefine {
+      public static FromProto(data: Uint8Array): SpinFakeAck {
+         const ack = ProtoParse(data, FKP.SpinAckSchema)
+         const result = new SpinFakeAck();
+         result.ackType = ack.ackType;
+         // result.plate = PlateFakeData.FromProto(ack.plateData);
+         result.plate = [
+            [
+               0,
+               1,
+               2,
+               3
+            ],
+            [
+               3,
+               2,
+               1,
+               0
+            ],
+            [
+               4,
+               5,
+               6,
+               7
+            ],
+            [
+               8,
+               9,
+               10,
+               11
+            ],
+            [
+               8,
+               10,
+               6,
+               4
+            ],
+         ]
+         result.awardList = [];
+         result.awardTypeFlag = 0;
+         result.jpType = 0;
+         result.jpWin = 0;
+         result.totalWin = 0;
+         result.fgRemainRound = 0;
+         result.fgWheelInfoList = [];
+         result.jpMoneyVec = [];
+         result.roundIndex = '';
+
+         result.common = ack.common as unknown as GameCommonCommand.CommonSpinAck
+         return result
+      }
+
+
+      ackType: number = AckType.AT_MAX;
+      plate: Symbol[][] = [];	//盤面
+      awardList: AwardData[] = [];
+      awardTypeFlag: number = 0;
+      jpType: number = 0;
+      jpWin: number = 0;
+      totalWin: number = 0;
+      fgRemainRound: number = 0;
+      fgWheelInfoList: FgWheelInfo[] = [];
+      jpMoneyVec: JpMoneyData[] = [];
+      roundIndex: string = '';
+      convertInfo: ConvertInfo = null;
+      wordCollectionInfo: wordCollectionInfo = null;
+
+      common: GameCommonCommand.CommonSpinAck = null; // 共用層 SpinAck
+
+      constructor() {
+         super(
+            ["ackType", "at"],
+            ["plate", "pd"],
+            ["awardList", "al"],
+            ["awardTypeFlag", "atf"],
+            ["jpType", "jt"],
+            ["jpWin", "jw"],
+            ["totalWin", "tw"],
+            ["fgRemainRound", "frr"],
+            ["jpMoneyVec", "jmv"],
+            ["roundIndex", "ri"],
+            ["convertInfo", "ci"],
+            ["wordCollectionInfo", "wci"],
+            ["common", "c", GameCommonCommand.CommonSpinAck],
+         )
+      };
+   }
+
+   @CarriarDecorator.ClassName("AwardData")
+   export class AwardData extends CarriarParser.AliasDefine {
+      public static FromProto(data: Uint8Array): AwardData {
+         const result = new AwardData()
+         result.symbolId = 0;
+         result.symbolCount = 1;
+         return result
+      }
+
+      symbolId: number = 0;
+      symbolCount: number = 0;
+
+      constructor() {
+         super(
+            ["symbolId", "symbolId"],
+            ["symbolCount", "symbolCount"]
+         )
+      };
+   }
+
+   @CarriarDecorator.ClassName("FgWheelInfo")
+   export class FgWheelInfo extends CarriarParser.AliasDefine {
+      public static FromProto(data: Uint8Array): FgWheelInfo {
+         const result = new FgWheelInfo()
+         result.type = 0;
+         result.round = 1;
+         return result
+      }
+
+      type: number = 0;
+      round: number = 0;
+
+      constructor() {
+         super(
+            ["type", "t"],
+            ["round", "r"]
+         )
+      };
+   }
+
+   @CarriarDecorator.ClassName("JpMoneyData")
+   export class JpMoneyData extends CarriarParser.AliasDefine {
+      public static FromProto(data: Uint8Array): JpMoneyData {
+         const result = new JpMoneyData()
+         result.jpType = 0;
+         result.money = 1;
+         return result
+      }
+
+      jpType: number = 0;
+      money: number = 0;
+
+      constructor() {
+         super(
+            ["jpType", "jt"],
+            ["money", "m"]
+         )
+      };
+   }
+
+   @CarriarDecorator.ClassName("ConvertInfo")
+   export class ConvertInfo extends CarriarParser.AliasDefine {
+      public static FromProto(data: Uint8Array): ConvertInfo {
+         const result = new ConvertInfo()
+         result.itemId = 0;
+         result.convertItemValue = 1;
+         return result
+      }
+
+      itemId: number = 0;
+      convertItemValue: number = 0;
+
+      constructor() {
+         super(
+            ["itemId", "id"],
+            ["convertItemValue", "civ"]
+         )
+      };
+   }
+
+   @CarriarDecorator.ClassName("wordCollectionInfo")
+   export class wordCollectionInfo extends CarriarParser.AliasDefine {
+      public static FromProto(data: Uint8Array): wordCollectionInfo {
+         const result = new wordCollectionInfo()
+         result.itemId = 0;
+         result.convertItemValue = 1;
+         return result
+      }
+
+      itemId: number = 0;
+      convertItemValue: number = 0;
+
+      constructor() {
+         super(
+            ["itemId", "id"],
+            ["convertItemValue", "civ"]
          )
       };
    }

@@ -102,7 +102,7 @@ export class MainGamePlay implements GamePlay {
    IsFeatureGame: boolean;
    AutoplayTime = 0;
    m_mgReel: EgyptEternalMgReel;
-   m_spinAck: EgyptEternalProtocol.SpinAck = null;
+   m_spinAck: EgyptEternalProtocol.SpinFakeAck = null;
    m_effectView: EgyptEternalEffectView;
    m_freeplay: FreePlay;
    m_progress: number = 0;
@@ -130,7 +130,7 @@ export class MainGamePlay implements GamePlay {
       //塞spinAck資料
       let data = ProtoParse(content, FKP.SpinAckSchema)
       log("Proto結構 :", data)
-      this.m_spinAck = EgyptEternalProtocol.SpinAck.FromProto(content)
+      this.m_spinAck = EgyptEternalProtocol.SpinFakeAck.FromProto(content)
       log(this.m_spinAck);
 
       if (type == FRANKENSTEIN_G2U_PROTOCOL.SPIN_ACK) {
@@ -146,11 +146,138 @@ export class MainGamePlay implements GamePlay {
             let isFirstReelHasFrank: boolean = false;
             let hasScatter: boolean = false;
             let hasGreenBall: boolean = false;
+
             let fgScatterCount: number = 0;
             let bonusCount: number = 0;
             let reelStopSound: ReelStopSoundAttribute[] = []
 
+            for (let i = 0; i < EgyptEternalDefine.MAIN_COLUMN; i++) {
+               newPlateData[i] = [];
+               newEffectData[i] = [];
+               reelStopSound[i] = new ReelStopSoundAttribute();
+               for (let j = 0; j < EgyptEternalDefine.MAIN_ROW; j++) {
+                  newEffectData[i][j] = new EffectData();
+                  newPlateData[i][j] = new PlateData();
+                  newPlateData[i][j].symbolId = this.m_spinAck.plate[i][j];
+               }
+               //音效判斷
+
+               //音效判斷
+               if (isReelHasBonus[i]) {
+                  reelStopSound[i].path.push(EgyptEternalDefine.AudioFilePath.SCATTER_STOP);
+                  reelStopSound[i].priority.push(STOP_SOUND_PRIORITY.SCATTER_AND_GREENBALL);
+               }
+               else if (isReelHasScatter[i]) {
+                  reelStopSound[i].path.push(EgyptEternalDefine.AudioFilePath.SCATTER_STOP);
+                  reelStopSound[i].priority.push(STOP_SOUND_PRIORITY.SCATTER_AND_GREENBALL);
+               }
+               else {
+                  reelStopSound[i].path.push(EgyptEternalDefine.AudioFilePath.REEL_STOP);
+                  reelStopSound[i].priority.push(STOP_SOUND_PRIORITY.REEL_STOP);
+               }
+            }
+
+            if (isFirstReelHasFrank) {
+               // reelStopSound[0].path[0] = EgyptEternalDefine.AudioFilePath.FRANK_STOP;
+               // reelStopSound[0].priority[0] = STOP_SOUND_PRIORITY.FRANK;
+            }
+
+
+            //NearWin判斷
+            let scatterNearWinCount: number = 0;
+            for (let i = 0; i < EgyptEternalDefine.MAIN_COLUMN; i++) {
+               if (scatterNearWinCount >= 2) {
+                  scatterNearWin[i] = true;
+               }
+               if (isReelHasScatter[i]) {
+                  scatterNearWinCount = scatterNearWinCount + 1;
+               }
+
+               if (isFirstReelHasFrank && i > 0) {
+                  bonusNearWin[i] = true;
+               }
+            }
+            if (isFirstReelHasFrank) {
+               finalNearWin = bonusNearWin.slice();
+            }
+            else {
+               finalNearWin = scatterNearWin.slice();
+            }
+
+
+            //傳計算好的值給表演層
+            // this.m_effectView.SpinAck = this.m_spinAck;
+
+            this.m_effectView.MgFgPlate = newPlateData;
+            // this.m_effectView.MgFgEffectData = newEffectData;
+
+            // this.m_effectView.PrePhase = this.m_effectView.Phase.slice();
+            // this.m_effectView.Phase = this.m_spinAck.plateData.phase.slice();
+
+            // this.m_effectView.TotalFlyCollectCount[PhaseType.PURPLE] = fgScatterCount;
+            // this.m_effectView.TotalFlyCollectCount[PhaseType.GREEN] = bonusCount;
+
+
+            // this.m_effectView.IsFirstReelHasFrank = isFirstReelHasFrank;
+
+            // this.m_effectView.HasAddSpin = (fgScatterCount >= 3) || (this.m_spinAck.plateData.phase[PhaseType.PURPLE] == 6); //紫色FG球有三個以上或紫球最高等時
+
+            // this.m_effectView.ThisRoundTotalWinValue = this.m_spinAck.plateData.plateWin;
+            // this.m_effectView.FgTotalWin = this.m_effectView.FgTotalWin.plus(this.m_spinAck.plateData.plateWin);
+
+            // this.m_effectView.TotalFreeRound = this.m_effectView.FgSpinned + this.m_spinAck.plateData.remainFreeRound;
+
+            // this.m_effectView.ReelStopSound = reelStopSound.slice();
+
+            // this.m_effectView.HasScatter = hasScatter;
+            // this.m_effectView.HasGreenBall = hasGreenBall;
+
+            //判斷在MG Spin時，下個階段為何
+            let isEnterFeatureGame: boolean = false;
+            if (this.NextGamePlayType() == GamePlayType.FREE) {
+               isEnterFeatureGame = true;
+
+               // this.m_effectView.RemainFreeRound = this.m_spinAck.plateData.remainFreeRound;
+            }
+
+            this.m_mgReel.SetFinalData(this.m_spinAck.plate, finalNearWin);
+            EventDispatcher.Shared.Dispatch(EventDefine.Game.SPIN_WILL_FINISH, isEnterFeatureGame);
          }
+         else {
+            GamesChief.SlotGame.GameBar.StopAutoPlay();
+
+            const initPlate: EgyptEternalProtocol.Symbol[][] = [
+               [EgyptEternalProtocol.Symbol.A, EgyptEternalProtocol.Symbol.A, EgyptEternalProtocol.Symbol.A, EgyptEternalProtocol.Symbol.A],
+               [EgyptEternalProtocol.Symbol.K, EgyptEternalProtocol.Symbol.K, EgyptEternalProtocol.Symbol.K, EgyptEternalProtocol.Symbol.K],
+               [EgyptEternalProtocol.Symbol.Q, EgyptEternalProtocol.Symbol.Q, EgyptEternalProtocol.Symbol.Q, EgyptEternalProtocol.Symbol.Q],
+               [EgyptEternalProtocol.Symbol.J, EgyptEternalProtocol.Symbol.J, EgyptEternalProtocol.Symbol.J, EgyptEternalProtocol.Symbol.J],
+               [EgyptEternalProtocol.Symbol.TEN, EgyptEternalProtocol.Symbol.TEN, EgyptEternalProtocol.Symbol.TEN, EgyptEternalProtocol.Symbol.TEN]
+            ];
+            let newPlateData: EgyptEternalProtocol.Symbol[][] = [];
+            let newEffectData: EffectData[][] = [];
+            let reelStopSound: ReelStopSoundAttribute[] = []
+            for (let i = 0; i < EgyptEternalDefine.MAIN_COLUMN; i++) {
+               newPlateData[i] = [];
+               newEffectData[i] = [];
+               reelStopSound[i] = new ReelStopSoundAttribute();
+               for (let j = 0; j < EgyptEternalDefine.MAIN_ROW; j++) {
+                  newEffectData[i][j] = new EffectData();
+                  newPlateData[i][j] = initPlate[i][j];
+                  // newPlateData[i][j].symbolId = initPlate[i][j];
+               }
+            }
+
+            this.m_mgReel.SetFinalData(newPlateData);
+
+            //判斷Bet是否正確
+            if (this.m_spinAck.ackType === GameCommonCommand.SPIN_ACK_TYPE.TIME_STAMP_INVALID) {
+               EventDispatcher.Shared.Dispatch(EventDefine.Game.CURRENCY_REVERT_BY_BET, GamesChief.SlotGame.GameBar.BetValue);
+               EventDispatcher.Shared.Dispatch(EventDefine.Game.SPIN_INVALID);
+            }
+         }
+
+
+
       }
 
    }
@@ -195,7 +322,9 @@ export class MainGamePlay implements GamePlay {
       req.bet = bet;
       req.cheatType = cheatCode;
       req.timeStamp = GamesChief.SlotGame.GetCommonGameInfo().BetUnlockTS;
-      this.m_gameMain.SendGameCommand(FRANKENSTEIN_U2G_PROTOCOL.SPIN_REQ, req.ToProto());
+      //TODO Ide
+      // this.m_gameMain.SendGameCommand(FRANKENSTEIN_U2G_PROTOCOL.SPIN_REQ, req.ToProto());
+      this.OnCommand(FRANKENSTEIN_G2U_PROTOCOL.SPIN_ACK, new Uint8Array());
    }
 
    IsSpinAckReceive(): boolean {
@@ -213,7 +342,7 @@ export class MainGamePlay implements GamePlay {
 
    StartAward(isTurbo?: boolean): void {
       EventDispatcher.Shared.Dispatch(EventDefine.Game.SPIN_FINISH);
-      this.m_effectView.SpinAck = this.m_spinAck;
+      // this.m_effectView.SpinAck = this.m_spinAck;
 
       this.m_effectView.MgShowCollect(isTurbo);
    }
@@ -223,15 +352,15 @@ export class MainGamePlay implements GamePlay {
    }
 
    NextGamePlayType(): GamePlayType {
-      if (this.m_spinAck.plateData.remainFreeRound > 0) {
-         return GamePlayType.FREE;
-      }
-      else if (this.m_spinAck.plateData.remainBonusRound > 0) {
-         return GamePlayType.BONUS;
-      }
-      else {
-         return GamePlayType.MAIN;
-      }
+      // if (this.m_spinAck.plateData.remainFreeRound > 0) {
+      //    return GamePlayType.FREE;
+      // }
+      // else if (this.m_spinAck.plateData.remainBonusRound > 0) {
+      //    return GamePlayType.BONUS;
+      // }
+      // else {
+      return GamePlayType.MAIN;
+      // }
    }
 
    CommonSpinAck() {
@@ -398,7 +527,7 @@ export class FreePlay implements GamePlay {
                this.m_effectView.RemainFreeRound = this.m_spinAck.plateData.remainFreeRound;
             }
 
-            this.m_mgReel.SetFinalData(newPlateData, finalNearWin);
+            this.m_fgReel.SetFinalData(newPlateData, finalNearWin);
             EventDispatcher.Shared.Dispatch(EventDefine.Game.SPIN_WILL_FINISH, isEnterFeatureGame);
          }
          else {
@@ -427,7 +556,7 @@ export class FreePlay implements GamePlay {
 
             this.m_effectView.ReelStopSound = reelStopSound.slice();
 
-            this.m_mgReel.SetFinalData(newPlateData);
+            this.m_fgReel.SetFinalData(newPlateData);
 
             //判斷Bet是否正確
             if (this.m_spinAck.ackType === GameCommonCommand.SPIN_ACK_TYPE.TIME_STAMP_INVALID) {
@@ -472,7 +601,7 @@ export class FreePlay implements GamePlay {
       this.m_effectView.FgResetParameter();
 
       //轉輪啟動
-      this.m_mgReel.SpinReel(isFastMode, null, isTurbo);
+      this.m_fgReel.SpinReel(isFastMode, null, isTurbo);
 
       //表演動畫
       this.m_effectView.FgSpinned = this.m_effectView.FgSpinned + 1;
@@ -484,7 +613,7 @@ export class FreePlay implements GamePlay {
    }
 
    IsStopHard(): void {
-      this.m_mgReel.StopHard();
+      this.m_fgReel.StopHard();
    }
 
    IsSpinAckReceive(): boolean {
@@ -492,7 +621,7 @@ export class FreePlay implements GamePlay {
    }
 
    IsPlateStop() {
-      return this.m_mgReel.IsPlateStopped;
+      return this.m_fgReel.IsPlateStopped;
    }
 
 

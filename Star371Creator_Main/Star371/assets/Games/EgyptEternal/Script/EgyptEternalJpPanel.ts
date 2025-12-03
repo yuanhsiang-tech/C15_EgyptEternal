@@ -28,16 +28,16 @@ export class EgyptEternalJpPanel extends Component {
 
     public Init() {
         this.m_gameBar = GamesChief.SlotGame.GameBar;
-        this.m_miniTouch.node.on(TouchableEvent.Clicked, this.ForceUnlockMini, this);
-        this.m_minorTouch.node.on(TouchableEvent.Clicked, this.ForceUnlockMinor, this);
-        this.m_majorTouch.node.on(TouchableEvent.Clicked, this.ForceUnlockMajor, this);
-        this.m_grandTouch.node.on(TouchableEvent.Clicked, this.ForceUnlockGrand, this);
+        // this.m_miniTouch.node.on(TouchableEvent.Clicked, this.ForceUnlockMini, this);
+        // this.m_minorTouch.node.on(TouchableEvent.Clicked, this.ForceUnlockMinor, this);
+        // this.m_majorTouch.node.on(TouchableEvent.Clicked, this.ForceUnlockMajor, this);
+        // this.m_grandTouch.node.on(TouchableEvent.Clicked, this.ForceUnlockGrand, this);
     }
     onDestroy() {
-        this.m_miniTouch.node.off(TouchableEvent.Clicked, this.ForceUnlockMini, this);
-        this.m_minorTouch.node.off(TouchableEvent.Clicked, this.ForceUnlockMinor, this);
-        this.m_majorTouch.node.off(TouchableEvent.Clicked, this.ForceUnlockMajor, this);
-        this.m_grandTouch.node.off(TouchableEvent.Clicked, this.ForceUnlockGrand, this);
+        // this.m_miniTouch.node.off(TouchableEvent.Clicked, this.ForceUnlockMini, this);
+        // this.m_minorTouch.node.off(TouchableEvent.Clicked, this.ForceUnlockMinor, this);
+        // this.m_majorTouch.node.off(TouchableEvent.Clicked, this.ForceUnlockMajor, this);
+        // this.m_grandTouch.node.off(TouchableEvent.Clicked, this.ForceUnlockGrand, this);
         super.onDestroy && super.onDestroy();
     }
     /**強制解鎖Mini面板 */

@@ -1,4 +1,4 @@
-import { _decorator, log, Component, Vec3, isValid, sp } from 'cc';
+import { _decorator, log, Component, Vec3, isValid, sp, Button } from 'cc';
 import GameBar from "../../../Script/Game/Platform/GameBar/GameBar";
 import { GameBarDefine } from "../../../Script/Game/Platform/GameBar/GameBarDefine";
 import { GameCommonCommand } from "../../../Script/Game/Common/GameCommonCommand";
@@ -33,6 +33,10 @@ const { ccclass, property } = _decorator;
 
 @ccclass
 export default class EgyptEternalGameView extends Component {
+   /**測試按鈕 */
+   @property({ type: Button, tooltip: "測試按鈕" })
+   private m_testButton: Button = null;
+
    private m_slotMgReel: EgyptEternalMgReel = null;
    private m_slotFgReel: EgyptEternalFgReel = null;
 
@@ -117,6 +121,13 @@ export default class EgyptEternalGameView extends Component {
    //=========================================================================================================
    onLoad() {
       this.m_state = new StateManager(STATE.INIT);
+      this.m_testButton.node.on(Button.EventType.CLICK, this.onBtnClick, this);
+   }
+   /**
+    * 測試按鈕
+    */
+   private onBtnClick() {
+      this.m_bind?.EffectView?.ShowJPCompliment(2, null);
    }
    //=========================================================================================================
    protected onEnable(): void {
@@ -142,8 +153,8 @@ export default class EgyptEternalGameView extends Component {
 
       this.m_lastGameplay = this.m_mainGameplay;
 
-      //TODO Ide
-      this.m_nextGameplay = this.m_mainGameplay;
+      //TODO Ide Test
+      // this.m_nextGameplay = this.m_mainGameplay;
       //背景設定
       this.SetBackground("MG");
       //GamesChief.SlotGame.GameBar.ApplyWinEffectSettingList( EgyptEternalDefine.MG_FG_WIN_EFFECT_SETTING );
@@ -363,35 +374,35 @@ export default class EgyptEternalGameView extends Component {
          case STATE.GAME_PLAY_TRANSIT_ENTER: {
             if (this.m_state.IsEntering) {
                //若下階段是特色遊戲
-               if (this.m_nextGameplay.IsFeatureGame) {
-                  if (this.m_gameBar.IsInAutoPlay() && !this.m_isReconnecting) {
-                     // 記下目前的剩餘自動玩
-                     if (!this.m_currentGameplay.IsFeatureGame) {
+               // if (this.m_nextGameplay.IsFeatureGame) {
+               //    if (this.m_gameBar.IsInAutoPlay() && !this.m_isReconnecting) {
+               //       // 記下目前的剩餘自動玩
+               //       if (!this.m_currentGameplay.IsFeatureGame) {
 
-                        this.m_mainGameRemainAutoplay = this.m_gameBar.AutoPlayRounds;
-                     }
+               //          this.m_mainGameRemainAutoplay = this.m_gameBar.AutoPlayRounds;
+               //       }
 
-                     this.m_gameBar.SpinButtonState = GameBarDefine.SpinButtonState.CANCEL_AUTO;
-                     this.m_gameBar.AutoPlayRounds = Number.POSITIVE_INFINITY;
-                  }
+               //       this.m_gameBar.SpinButtonState = GameBarDefine.SpinButtonState.CANCEL_AUTO;
+               //       this.m_gameBar.AutoPlayRounds = Number.POSITIVE_INFINITY;
+               //    }
+               // }
+               // //若下階段是MG
+               // else {
+               //把記下的自動玩次數還回去
+               if (this.m_mainGameRemainAutoplay != 0) {
+                  this.m_gameBar.SpinButtonState = GameBarDefine.SpinButtonState.CANCEL_AUTO;
+                  this.m_gameBar.AutoPlayRounds = this.m_mainGameRemainAutoplay;
+                  this.m_mainGameRemainAutoplay = 0;
                }
-               //若下階段是MG
                else {
-                  //把記下的自動玩次數還回去
-                  if (this.m_mainGameRemainAutoplay != 0) {
-                     this.m_gameBar.SpinButtonState = GameBarDefine.SpinButtonState.CANCEL_AUTO;
-                     this.m_gameBar.AutoPlayRounds = this.m_mainGameRemainAutoplay;
-                     this.m_mainGameRemainAutoplay = 0;
-                  }
-                  else {
-                     this.m_gameBar.AutoPlayRounds = 0;
-                  }
-
-                  //離開 Feature Game 取得正確 BET
-                  if (this.m_currentGameplay.IsFeatureGame) {
-                     GamesChief.SlotGame.GameBar.BetValue = GamesChief.SlotGame.GetSavedBet();
-                  }
+                  this.m_gameBar.AutoPlayRounds = 0;
                }
+
+               //離開 Feature Game 取得正確 BET
+               if (this.m_currentGameplay.IsFeatureGame) {
+                  GamesChief.SlotGame.GameBar.BetValue = GamesChief.SlotGame.GetSavedBet();
+               }
+               // }
 
                //GamesChief.SlotGame.SetBackButtonEnabled(!this.m_nextGameplay.IsFeatureGame);
                //下階段進場表演
@@ -565,10 +576,10 @@ export default class EgyptEternalGameView extends Component {
       this.m_effectView.MgShowEnter(this.m_isReconnecting);
       this.m_state.NextState(STATE.GAME_PLAY_TRANSIT_ENTER);
       EventDispatcher.Shared.Dispatch(EventDefine.Game.GAME_START);
-      //TODO Ide
+      //TODO Ide Test
       //MG、FG輪帶初始化
-      this.m_slotMgReel.GameInit(this.m_gameBar, this.m_effectView);
-      this.m_slotMgReel.Init(null);
+      // this.m_slotMgReel.GameInit(this.m_gameBar, this.m_effectView);
+      // this.m_slotMgReel.Init(null);
    }
    //=========================================================================================================
    /**判斷音效資源是否載入完成 */
@@ -631,11 +642,7 @@ export default class EgyptEternalGameView extends Component {
          bet = gameInfoAck.bet;
       }
 
-      //設定線圈等級
-      this.m_effectView.SetPhaseLevel(gameInfoAck.phase);
-      this.m_effectView.SetPhaseState();
-
-      this.m_effectView.SetGameInfoJp(gameInfoAck, bet, isFeatureGame);
+      // this.m_effectView.SetGameInfoJp(gameInfoAck, bet, isFeatureGame);
    }
    //=========================================================================================================
    /**判斷斷線重連在哪一個階段 */
@@ -810,11 +817,8 @@ export default class EgyptEternalGameView extends Component {
       }
       else {
          this.m_isOpening = true;
-         //TODO Ide
-         if (this.m_gameBar) {
-            this.m_gameBar.SetBetBtnDisable();
-            GamesChief.SlotGame.BlockPlatformUI();
-         }
+         this.m_gameBar.SetBetBtnDisable();
+         GamesChief.SlotGame.BlockPlatformUI();
          this.m_effectView.MgOpening(() => {
             GamesChief.SlotGame.UnblockPlatformUI();
             //this.m_gameBar.SpinButtonState = GameBarSpinButtonState.SPIN;      

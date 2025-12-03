@@ -103,7 +103,7 @@ export enum GameId {
     SKYTOWER = 2190,  // [幣塔龍珠]
     GOLDEN_LUCKY = 2191,  // [好運財神]
     FRANKENSTEIN = 2192,  // [科學怪人]
-    WITCH_SLOT = 2193,  // [女巫瓶子]
+    WITCH_SLOT = 3010,  // [女巫瓶子]
     GOLDEN_LUCKY_MASSIVE = 2194,  // [大出血好運財神]
 
     EGYPT_SLOT = 2208,  // [法老王]
@@ -146,7 +146,8 @@ export enum GameId {
 const InfoList: IGameInfo[] = [
     GameInfo.New(GameId.STAR_MJ, "StarMJ").Depend("TManMJ"),                                // 麻將三缺一
     GameInfo.New(GameId.FRANKENSTEIN, "Frankenstein").Portrait(),                           // 科學怪人   
-    GameInfo.New(GameId.EGYPT_ETERNAL, "EgyptEternal")                                      // 永恆法老
+    GameInfo.New(GameId.EGYPT_ETERNAL, "EgyptEternal"),                                     // 永恆法老
+    GameInfo.New(GameId.WITCH_SLOT, "EgyptEternal")                                         // 女巫瓶子
 ];
 
 

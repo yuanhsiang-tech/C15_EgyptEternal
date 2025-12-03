@@ -1,4 +1,4 @@
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Button, Component, Node } from 'cc';
 import EgyptEternalMain from './EgyptEternalMain';
 import GameBar from "../../../Script/Game/Platform/GameBar/GameBar";
 import { EgyptEternalModel } from './EgyptEternalModel';
@@ -101,6 +101,13 @@ export class EgyptEternalBind extends Component {
 
     get HintBar(): EgyptEternalHintBar {
         return this.m_hintBar;
+    }
+
+    @property({ type: Button, tooltip: "測試按鈕" })
+    private m_testBtn: Button = null;
+
+    get TestBtn(): Button {
+        return this.m_testBtn;
     }
 }
 
